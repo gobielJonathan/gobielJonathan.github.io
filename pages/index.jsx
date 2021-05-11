@@ -1,3 +1,4 @@
+import Experience from './components/experience'
 import { Intro } from './components/intro'
 import Portfolio from './components/portfolio'
 import Service from './components/service'
@@ -11,6 +12,7 @@ export default function Home() {
       <Service />
       <Portfolio />
       <WorkProcess />
+      <Experience />
     </Layout>
   )
 }

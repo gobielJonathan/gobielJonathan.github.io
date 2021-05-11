@@ -24,6 +24,21 @@
 }
 
 .port-content div{
-    height: 100px;
+    height: 150px;
     border: 1px solid  rgba(174, 158, 159, .1);
+}
+
+.port-content div:hover .port-desc{
+    cursor: pointer;
+    display: block
+}
+.port-desc{
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .75);
+    color: white;
 }
