@@ -1,0 +1,55 @@
+@import '/assets/fonts/fa/css/font-awesome.min.css';
+
+
+@font-face {
+    font-family: 'regular';
+    src: url('/assets/fonts/Montserrat/Montserrat-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'bold';
+    src: url('/assets/fonts/Montserrat/Montserrat-Bold.ttf');
+}
+
+
+@font-face {
+    font-family: 'semi-bold';
+    src: url('/assets/fonts/Montserrat/Montserrat-SemiBold.ttf');
+}
+
+
+@font-face {
+    font-family: 'light';
+    src: url('/assets/fonts/Montserrat/Montserrat-Light.ttf');
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'regular' !important;
+    /* overflow: hidden; */
+}
+
+.section-content {
+    height: 100vh;
+}
+
+.font-bold {
+    font-family: 'bold' !important;
+}
+
+.font-light {
+    font-family: 'light' !important;
+}
+
+.font-semi-bold {
+    font-family: 'semi-bold' !important;
+}
+
+@media screen and (max-width : 768px) {
+    .d-none-md {
+        display: none !important;
+    }
+}

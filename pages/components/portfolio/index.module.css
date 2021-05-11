@@ -1,0 +1,29 @@
+.port-header{
+    position: relative;
+}
+
+.port-header::before{
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -35%);
+    width: 150px;
+    height: 150px;
+    z-index: -1;
+    background-color: rgba(252, 89, 106, .2);
+}
+
+.port-title{
+    text-align: center;
+}
+
+.port-content{
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.port-content div{
+    height: 100px;
+    border: 1px solid  rgba(174, 158, 159, .1);
+}

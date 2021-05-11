@@ -1,0 +1,27 @@
+.service-header{
+    position: relative;
+}
+
+.service-header::before{
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -35%);
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    z-index: -1;
+    background-color: rgba(174, 158, 159, .2);
+}
+
+.service-title{
+    text-align: center;
+}
+
+.service-list{
+    padding: 1rem;
+}
+
+.service-icon{
+    font-size: 3rem;
+}

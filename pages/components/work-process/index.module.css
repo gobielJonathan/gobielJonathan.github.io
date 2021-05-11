@@ -1,0 +1,19 @@
+.work-header {
+    position: relative;
+}
+
+.work-header::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    height: 150px;
+    z-index: -1;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 100px solid rgba(252, 89, 106,.2);
+}
+
+.work-title {
+    text-align: center;
+}
