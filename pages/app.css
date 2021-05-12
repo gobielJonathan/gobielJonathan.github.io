@@ -29,11 +29,11 @@ html {
 
 body {
     font-family: 'regular' !important;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .section-content {
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .font-bold {

@@ -30,7 +30,7 @@ export default function Portfolio() {
           />
 
           <div className={styles["port-desc"]}>
-            <div className="w-100 h-100 d-flex justify-content-center pl-4 flex-column">
+            <div className="w-100 h-100 d-flex justify-content-center px-3 flex-column">
               <h5 className="font-bold">Crowde</h5>
               <p>Sebuah sistem yang mengatur jadwal, dan tempat survey.</p>
             </div>
@@ -44,7 +44,7 @@ export default function Portfolio() {
             objectFit="contain"
           />
            <div className={styles["port-desc"]}>
-            <div className="w-100 h-100 d-flex justify-content-center pl-4 flex-column">
+            <div className="w-100 h-100 d-flex justify-content-center px-3 flex-column">
               <h5 className="font-bold">Cubes</h5>
               <p>Sebuah sistem yang bergerak di bidang pelatihan accounting management.</p>
             </div>
@@ -58,7 +58,7 @@ export default function Portfolio() {
             objectFit="contain"
           />
           <div className={styles["port-desc"]}>
-            <div className="w-100 h-100 d-flex justify-content-center pl-4 flex-column">
+            <div className="w-100 h-100 d-flex justify-content-center px-3 flex-column">
               <h5 className="font-bold">Firelogic</h5>
               <p>Sebuah sistem yang mendeteksi sebuah event fire alarm.</p>
             </div>
@@ -72,7 +72,7 @@ export default function Portfolio() {
             objectFit="contain"
           />
            <div className={styles["port-desc"]}>
-            <div className="w-100 h-100 d-flex justify-content-center pl-4 flex-column">
+            <div className="w-100 h-100 d-flex justify-content-center px-3 flex-column">
               <h5 className="font-bold">Inaskills</h5>
               <p>Sebuah sistem yang bergerak di bidang perlombaan yang digunakan oleh kementerian ketenagakerjaan.</p>
             </div>
@@ -86,7 +86,7 @@ export default function Portfolio() {
             objectFit="contain"
           />
           <div className={styles["port-desc"]}>
-            <div className="w-100 h-100 d-flex justify-content-center pl-4 flex-column">
+            <div className="w-100 h-100 d-flex justify-content-center px-3 flex-column">
               <h5 className="font-bold">Kleveru</h5>
               <p>Sebuah sistem yang bergerak di bidang kecantikan.</p>
             </div>
@@ -100,7 +100,7 @@ export default function Portfolio() {
             objectFit="contain"
           />
             <div className={styles["port-desc"]}>
-            <div className="w-100 h-100 d-flex justify-content-center pl-4 flex-column">
+            <div className="w-100 h-100 d-flex justify-content-center px-3 flex-column">
               <h5 className="font-bold">Sense</h5>
               <p>Sebuah sistem yang mengatur tentang laundry.</p>
             </div>
@@ -114,7 +114,7 @@ export default function Portfolio() {
             objectFit="contain"
           />
             <div className={styles["port-desc"]}>
-            <div className="w-100 h-100 d-flex justify-content-center pl-4 flex-column">
+            <div className="w-100 h-100 d-flex justify-content-center px-3 flex-column">
               <h5 className="font-bold">Tangerangsport</h5>
               <p>Sebuah toko online yang menjual macam macam tipe sepatu.</p>
             </div>

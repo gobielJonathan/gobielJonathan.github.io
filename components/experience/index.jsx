@@ -1,6 +1,5 @@
 import styles from "./index.module.css";
 import classnames from "classnames";
-import Slider from "react-slick";
 import CustomSlider from "../custom-slider";
 
 const data = [

@@ -1,7 +1,7 @@
 import Head from "next/head";
-import Dot from "./components/dot";
+import Dot from "./dot";
 
-export function Layout({
+export default function Layout({
     children,
     title,
 }) {

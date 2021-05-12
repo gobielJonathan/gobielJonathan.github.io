@@ -1,0 +1,32 @@
+.form {
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, .1);
+    border-radius: 3px;
+    position: relative;
+}
+
+.form-inquiry {
+    border: 0;
+    border-bottom: 2px solid grey;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.form-inquiry:focus {
+    outline: 0;
+}
+
+.form-inquiry[type='textarea'] {
+    resize: none;
+}
+
+.form-inquiry::placeholder {
+    text-transform: capitalize;
+}
+
+.contact-social a{
+    margin-right: 1.5rem;
+    font-size: 1.2rem;
+    color: black;
+}

@@ -1,12 +1,12 @@
 import styles from './index.module.css'
 import Image from 'next/image'
 
-export function Intro() {
+export default function Intro() {
     return <section className="section-content position-relative" id="intro">
         <div className={styles['intro-square']}>
 
         </div>
-        <div className="row mx-0 h-100">
+        <div className="row mx-0" style={{height : "100vh"}}>
             <div className="col-6 d-flex justify-content-center align-items-center flex-column">
                 <div className="text-left">
                     <h4 className="font-bold">Jonathan Gobiel</h4>

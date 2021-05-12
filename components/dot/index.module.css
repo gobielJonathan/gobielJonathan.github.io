@@ -13,8 +13,8 @@
     background-color: rgba(174, 158, 159, .25);
 }
 .dot{
-    width: 10px;
-    height: 10px;
+    width: 7px;
+    height: 7px;
     border-radius: 50px;
     background-color: rgba(174, 158, 159, 1);
 }
