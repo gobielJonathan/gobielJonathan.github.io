@@ -16,8 +16,8 @@ export default function Dot() {
       else --active;
       if (active > PAGES.length - 1) active = PAGES.length - 1;
       if (active < 0) active = 0;
-      this.window.location.hash = PAGES[active];
       setActiveIdx(active)
+      this.window.location.hash = PAGES[active];
 
     };
     return () => {
