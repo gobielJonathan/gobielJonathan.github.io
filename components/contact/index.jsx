@@ -3,8 +3,8 @@ import styles from './index.module.css'
 
 export default function Contact() {
     return <section className="section-content">
-        <div className="container d-flex" id="contact" style={{paddingTop : "5rem"}}>
-            <div className="col-md-5 pl-0 d-flex flex-column">
+        <div className="container d-flex" id="contact" style={{ paddingTop: "5rem" }}>
+            <div className="col-sm-12 col-md-5 pl-0 d-flex flex-column">
                 <h2 className="font-bold">CONTACT</h2>
 
                 <div className="mt-5">
@@ -31,13 +31,13 @@ export default function Contact() {
                     </a>
                 </div>
             </div>
-            <div className="col-md-7">
+            <div className="col-sm-12 col-md-7">
 
                 <form action="mailto:jonathangobiel13@gmail.com"
-                encType="multipart/form-data"
-                name="EmailForm"
-                 className={styles['form']}>
-                    <div className="position-absolute" style={{right : -40, top : 40}}>
+                    encType="multipart/form-data"
+                    name="EmailForm"
+                    className={styles['form']}>
+                    <div className="position-absolute" style={{ right: -40, top: 40 }}>
                         <div className="rounded-circle d-flex justify-content-center align-items-center" style={{
                             width: 80, height: 80, backgroundColor: "rgba(252, 89, 106,1)",
                             color: "white",
@@ -53,7 +53,7 @@ export default function Contact() {
                             <input className={styles['form-inquiry']} placeholder="FULL NAME" name="name" />
                         </div>
                         <div>
-                            <input className={styles['form-inquiry']} placeholder="EMAIL" name="mail"/>
+                            <input className={styles['form-inquiry']} placeholder="EMAIL" name="mail" />
                         </div>
                         <div>
                             <textarea className={styles['form-inquiry']} placeholder="MESSAGE" cols={5} name="comment"></textarea>

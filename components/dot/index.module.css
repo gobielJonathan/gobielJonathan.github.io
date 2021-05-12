@@ -26,3 +26,7 @@
 .dot:not(:last-child){
     margin-bottom:10px;
 }
+
+.dot-active{
+    background-color: white;
+}

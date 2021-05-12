@@ -39,7 +39,7 @@ export default function Experience() {
         className={classnames("container", styles["exp-list-container"])}
         style={{ marginTop: "4rem" }}
       >
-        <CustomSlider data={data}>
+        <CustomSlider slideToShowSmall={3} slideToShow={3} data={data}>
           {data.map(({ date, job, location, desc }, idx) => {
             return (
               <div key={idx} className="exp-list mb-5">

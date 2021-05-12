@@ -1,21 +1,25 @@
-import { useEffect } from "react";
+import classNames from "classnames";
+import { useEffect, useState } from "react";
 import styles from "./index.module.css";
 
 const PAGES = ["intro", "service", "port", "work-process", "exp",'contact'];
 
+let active = 0;
+
 export default function Dot() {
-  let active = 0;
+  const [activeIdx, setActiveIdx] = useState(0)
 
   useEffect(() => {
-    // window.onmousewheel = function (event) {
-    //   //scroll down
-    //   if (event.deltaY == 100) ++active;
-    //   else --active;
-    //   if (active > PAGES.length - 1) active = PAGES.length - 1;
-    //   if (active < 0) active = 0;
-    //   this.window.location.hash = PAGES[active];
+    window.onmousewheel = function (event) {
+      //scroll down
+      if (event.deltaY == 100) ++active;
+      else --active;
+      if (active > PAGES.length - 1) active = PAGES.length - 1;
+      if (active < 0) active = 0;
+      this.window.location.hash = PAGES[active];
+      setActiveIdx(active)
 
-    // };
+    };
     return () => {
       window.onmousewheel = null
     };
@@ -27,7 +31,9 @@ export default function Dot() {
         return (
           <div
             key={idx}
-            className={styles["dot"]}
+            className={classNames(styles["dot"], { 
+              [styles['dot-active']] : activeIdx == idx
+            })}
             onClick={() => {
               window.location.hash = id;
             }}

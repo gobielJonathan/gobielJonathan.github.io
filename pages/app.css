@@ -29,7 +29,8 @@ html {
 
 body {
     font-family: 'regular' !important;
-    /* overflow: hidden; */
+    overflow: hidden;
+    width: 100vw;
 }
 
 .section-content {
