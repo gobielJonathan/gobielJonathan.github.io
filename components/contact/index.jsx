@@ -3,7 +3,7 @@ import styles from './index.module.css'
 
 export default function Contact() {
     return <section className="section-content">
-        <div className="container d-flex" id="contact" style={{ paddingTop: "5rem" }}>
+        <div className="container d-flex flex-wrap" id="contact" style={{ paddingTop: "5rem" }}>
             <div className="col-sm-12 col-md-5 pl-0 d-flex flex-column">
                 <h2 className="font-bold">CONTACT</h2>
 

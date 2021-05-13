@@ -36,6 +36,7 @@ export default function Dot() {
             })}
             onClick={() => {
               window.location.hash = id;
+              setActiveIdx(idx)
             }}
           ></div>
         );
