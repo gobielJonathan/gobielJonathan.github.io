@@ -31,7 +31,7 @@ export default function Experience() {
     <section className="section-content">
       <div className={"container"} id="exp" style={{ paddingTop: "5rem" }}>
         <h1 className={classnames("font-bold", styles["exp-title"])}>
-          EXPERIENCES
+          WORK EXPERIENCES
         </h1>
       </div>
 
