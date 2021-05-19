@@ -31,7 +31,7 @@ export default function Contact() {
                     </a>
                 </div>
             </div>
-            <div className="col-sm-12 col-md-7">
+            <div className="col-sm-12 col-md-7 px-0-sm pt-2-sm">
 
                 <form action="mailto:jonathangobiel13@gmail.com"
                     encType="multipart/form-data"

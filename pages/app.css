@@ -29,8 +29,27 @@ html {
 
 body {
     font-family: 'regular', sans-serif !important;
-    overflow: hidden;
     width: 100vw;
+}
+
+@media screen and (min-width:768px) {
+    html {
+        overflow: hidden;
+    }
+}
+
+@media screen and (max-width : 425px) {
+    .d-none-sm{
+        display: none !important;
+    }
+    .px-0-sm{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    .pt-2-sm{
+        padding-top: .5rem !important;
+    }
 }
 
 .section-content {

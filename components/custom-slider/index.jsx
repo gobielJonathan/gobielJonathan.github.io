@@ -1,13 +1,14 @@
 import Slider from "react-slick";
 
-export default function CustomSlider({slideToShow = 5 ,slideToShowSmall = 1,min = 3,  data = [], children, vertical = true}) {
+export default function CustomSlider({ slideToShow = 5, slideToShowSmall = 1, min = 3, data = [], children, vertical = true }) {
+  
   const settings = {
     dots: true,
     infinite: false,
     slidesToShow: slideToShow,
     slidesToScroll: 1,
     focusOnSelect: true,
-    responsive : [
+    responsive: [
       {
         breakpoint: 768,
         settings: {
@@ -19,12 +20,12 @@ export default function CustomSlider({slideToShow = 5 ,slideToShowSmall = 1,min 
     ]
   };
 
-  if(vertical){
+  if (vertical) {
     settings['vertical'] = true
     settings['verticalSwiping'] = true
   }
 
-  if (data.length > min ) return <Slider {...settings}>{children}</Slider>;
+  if (data.length > min) return <Slider {...settings}>{children}</Slider>;
 
   return <>{children}</>
 }

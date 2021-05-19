@@ -17,21 +17,14 @@
     text-align: center;
 }
 
-.port-content{
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: 1fr 1fr 1fr;
+.port-content-wrapper{
+    height: 200px;
 }
 
-.port-content div{
-    height: 150px;
-    border: 1px solid  rgba(174, 158, 159, .1);
+.port-content-wrapper:hover .port-desc{
+    display: block;
 }
 
-.port-content div:hover .port-desc{
-    cursor: pointer;
-    display: block
-}
 .port-desc{
     display: none;
     overflow-y: auto;

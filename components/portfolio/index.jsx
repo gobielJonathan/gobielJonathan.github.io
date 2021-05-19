@@ -1,7 +1,60 @@
 import styles from "./index.module.css";
 import classnames from "classnames";
 import Image from "next/image";
+import CustomSlider from "../custom-slider";
 
+
+const data = [
+  {
+    image: '/assets/images/crowde.webp',
+    title: 'Crowde',
+    desc: 'Sebuah sistem yang mengatur jadwal, dan tempat survey.',
+    link: 'https://agent.crowde.co',
+    tags: ['ReactJs']
+  },
+  {
+    image: '/assets/images/cubes.webp',
+    title: 'Cubes',
+    desc: 'Sebuah sistem yang bergerak di bidang pelatihan accounting management.',
+    link: 'https://cubes.crmsindonesia.org',
+    tags: ['ReactJs']
+  },
+  {
+    image: '/assets/images/firelogic.webp',
+    title: 'Firelogic',
+    desc: 'Sebuah sistem yang mendeteksi sebuah event fire alarm.',
+    link: null,
+    tags: ['Flutter']
+  },
+  {
+    image: '/assets/images/kemnaker.webp',
+    title: 'Inaskills',
+    desc: 'Sebuah sistem yang bergerak di bidang perlombaan yang digunakan oleh kementerian ketenagakerjaan.',
+    link: 'https://inaskills.kemnaker.go.id',
+    tags: ['JQuery', 'Blade']
+  },
+  {
+    image: '/assets/images/kleveru.webp',
+    title: 'Kleveru',
+    desc: 'Sebuah sistem yang bergerak di bidang kecantikan.',
+    link: '',
+    tags: ['NextJs']
+  },
+  {
+    image: '/assets/images/sense.webp',
+    title: 'Sense',
+    desc: 'Sebuah sistem yang mengatur tentang laundry.',
+    link: 'http://dev.sensehospitality.id',
+    tags: ['ReactJs']
+  },
+  {
+    image: '/assets/images/tangerangsport.webp',
+    title: 'Tangerangsport',
+    desc: 'Sebuah toko online yang menjual macam macam tipe sepatu.',
+    link: 'https://tangerangsport.id',
+    tags: ['ReactJs']
+  }
+]
 export default function Portfolio() {
   return (
     <section className="section-content">
@@ -16,141 +69,41 @@ export default function Portfolio() {
       </div>
 
       <section
-        className={classnames("container", styles["port-content"])}
-        style={{ marginTop: "7rem" }}
+        className={classnames("container")}
+        style={{ marginTop: "8rem" }}
       >
-        <div
-          className="position-relative w-100"
-          style={{ gridColumn: "span 2" }}
-        >
-          <Image
-            src={"/assets/images/crowde.webp"}
-            layout="fill"
-            objectFit="contain"
-          />
+        <CustomSlider data={data} slideToShow={3} slideToShowSmall={1} vertical={false}>
 
-          <div className={styles["port-desc"]}>
-            <div className="w-100 h-100 d-flex justify-content-center px-3 flex-column">
-              <h5 className="font-bold">Crowde</h5>
-              <p>Sebuah sistem yang mengatur jadwal, dan tempat survey.</p>
-              <div className="border-0 mb-2">
-                <span class="badge badge-pill bg-primary">ReactJs</span>
+          {
+            data.map(({
+              desc,
+              image, link, tags, title
+            }, idx) => {
+              return <div
+                key={idx}
+                className={classnames('position-relative', styles['port-content-wrapper'])}
+              >
+                <Image
+                  src={image}
+                  layout="fill"
+                  objectFit="contain"
+                />
+                <div className={styles["port-desc"]}>
+                  <div className="w-100 h-100 d-flex justify-content-center px-3 flex-column">
+                    <h5 className="font-bold">{title}</h5>
+                    <p>{desc}</p>
+                    <div className="border-0 mb-2">
+                      {
+                        tags.map((t, idx) => <span key={idx} className="badge mr-2 badge-pill bg-primary">{t}</span>)
+                      }
+                    </div>
+                    <a className="btn bg-primary text-white" target="_blank" href={link} role="button">I want to see...</a>
+                  </div>
+                </div>
               </div>
-              <a className="btn bg-primary text-white" target="_blank" href="https://agent.crowde.co/auth/login" role="button">I want to see...</a>
-
-            </div>
-          </div>
-
-        </div>
-        <div className="position-relative w-100">
-          <Image
-            src={"/assets/images/cubes.webp"}
-            layout="fill"
-            objectFit="contain"
-          />
-          <div className={styles["port-desc"]}>
-            <div className="w-100 h-100 d-flex justify-content-center px-3 flex-column">
-              <h5 className="font-bold">Cubes</h5>
-              <p>Sebuah sistem yang bergerak di bidang pelatihan accounting management.</p>
-              <div className="border-0 mb-2">
-                <span class="badge badge-pill bg-primary">ReactJs</span>
-              </div>
-              <a className="btn bg-primary text-white" target="_blank" href="https://tangerangsport.id/" role="button">I want to see...</a>
-            </div>
-          </div>
-        </div>
-
-        <div className="position-relative w-100">
-          <Image
-            src={"/assets/images/firelogic.webp"}
-            layout="fill"
-            objectFit="contain"
-          />
-          <div className={styles["port-desc"]}>
-            <div className="w-100 h-100 d-flex justify-content-center px-3 flex-column">
-              <h5 className="font-bold">Firelogic</h5>
-              <div className="border-0 mb-2">
-                <span class="badge badge-pill bg-primary">Flutter</span>
-              </div>
-              <p>Sebuah sistem yang mendeteksi sebuah event fire alarm.</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="position-relative w-100">
-          <Image
-            src={"/assets/images/kemnaker.webp"}
-            layout="fill"
-            objectFit="contain"
-          />
-          <div className={styles["port-desc"]}>
-            <div className="w-100 h-100 d-flex justify-content-center px-3 flex-column">
-              <h5 className="font-bold">Inaskills</h5>
-              <div className="border-0 mb-2">
-                <span class="badge badge-pill bg-primary mr-2">JQuery</span>
-                <span class="badge badge-pill bg-primary">Blade</span>
-              </div>
-              <p>Sebuah sistem yang bergerak di bidang perlombaan yang digunakan oleh kementerian ketenagakerjaan.</p>
-              <a className="btn bg-primary text-white" target="_blank" href="https://inaskills.kemnaker.go.id/" role="button">I want to see...</a>
-
-            </div>
-          </div>
-        </div>
-
-        <div className="position-relative w-100">
-          <Image
-            src={"/assets/images/kleveru.webp"}
-            layout="fill"
-            objectFit="contain"
-          />
-          <div className={styles["port-desc"]}>
-            <div className="w-100 h-100 d-flex justify-content-center px-3 flex-column">
-              <h5 className="font-bold">Kleveru</h5>
-              <div className="border-0 mb-2">
-                <span class="badge badge-pill bg-primary">NextJs</span>
-              </div>
-              <p>Sebuah sistem yang bergerak di bidang kecantikan.</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="position-relative w-100">
-          <Image
-            src={"/assets/images/sense.webp"}
-            layout="fill"
-            objectFit="contain"
-          />
-          <div className={styles["port-desc"]}>
-            <div className="w-100 h-100 d-flex justify-content-center px-3 flex-column">
-              <h5 className="font-bold">Sense</h5>
-              <p>Sebuah sistem yang mengatur tentang laundry.</p>
-              <div className="border-0 mb-2">
-                <span class="badge badge-pill bg-primary">ReactJs</span>
-              </div>
-              <a className="btn bg-primary text-white" target="_blank" href="http://dev.sensehospitality.id/login" role="button">I want to see...</a>
-
-            </div>
-          </div>
-        </div>
-
-        <div className="position-relative w-100">
-          <Image
-            src={"/assets/images/tangerangsport.webp"}
-            layout="fill"
-            objectFit="contain"
-          />
-          <div className={styles["port-desc"]}>
-            <div className="w-100 h-100 d-flex justify-content-center px-3 flex-column">
-              <h5 className="font-bold">Tangerangsport</h5>
-              <div className="border-0 mb-2">
-                <span class="badge badge-pill bg-primary">ReactJs</span>
-              </div>
-              <p>Sebuah toko online yang menjual macam macam tipe sepatu.</p>
-
-              <a className="btn bg-primary text-white" target="_blank" href="https://tangerangsport.id/" role="button">I want to see...</a>
-            </div>
-          </div>
-        </div>
+            })
+          }
+        </CustomSlider>
 
       </section>
     </section>
