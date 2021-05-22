@@ -1,0 +1,23 @@
+.skills-header{
+    position: relative;
+}
+
+.skills-header::before{
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    height: 150px;
+    z-index: -1;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 100px solid rgba(252, 89, 106,.2);
+}
+
+.skills-title{
+    text-align: center;
+}
+
+.skills{
+    margin-bottom: 1rem;
+}

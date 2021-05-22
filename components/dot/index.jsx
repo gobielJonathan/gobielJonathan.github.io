@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { isMediumDevice } from "../../utils/screen";
 import styles from "./index.module.css";
 
-const PAGES = ["intro", "service", "port", "work-process", "exp",'contact'];
+const PAGES = ["intro","skills", "service", "port", "work-process", "exp",'contact'];
 
 let active = 0;
 
@@ -12,8 +12,9 @@ export default function Dot() {
   
   useEffect(() => {
     const activePage = window.location.hash.slice(1)
+    const idx = PAGES.findIndex(d => d == activePage.toLowerCase())
     setActiveIdx(
-      PAGES.findIndex(d => d == activePage.toLowerCase())
+      idx < 0 ? 0 : idx
     )
     if(isMediumDevice()){
       window.onmousewheel = function (event) {

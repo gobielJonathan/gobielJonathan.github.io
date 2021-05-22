@@ -5,11 +5,13 @@ import Portfolio from '../components/portfolio'
 import Service from '../components/service'
 import WorkProcess from '../components/work-process'
 import Layout from '../components/layout'
+import Skills from '../components/skills'
 
 export default function Index() {
   return (
     <Layout title="My Profile">
       <Intro />
+      <Skills />
       <Service />
       <Portfolio />
       <WorkProcess />

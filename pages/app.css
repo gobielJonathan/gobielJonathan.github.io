@@ -23,6 +23,10 @@
     src: url('/assets/fonts/Montserrat/Montserrat-Light.ttf');
 }
 
+:root{
+    --grey : rgba(174, 158, 159, .2);
+    --pink : rgba(252, 89, 106, .2);
+}
 html {
     scroll-behavior: smooth;
 }
