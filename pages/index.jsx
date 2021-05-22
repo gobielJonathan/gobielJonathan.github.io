@@ -9,7 +9,7 @@ import Skills from '../components/skills'
 
 export default function Index() {
   return (
-    <Layout title="My Profile">
+    <Layout title="Gobiel's Profile">
       <Intro />
       <Skills />
       <Service />
