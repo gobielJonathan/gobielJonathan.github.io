@@ -37,7 +37,7 @@ const data = [
     image: '/assets/images/kleveru.webp',
     title: 'Kleveru',
     desc: 'Sebuah sistem yang bergerak di bidang kecantikan.',
-    link: '',
+    link: 'http://kleveru.com/',
     tags: ['NextJs']
   },
   {
