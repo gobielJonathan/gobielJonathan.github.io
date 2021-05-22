@@ -55,6 +55,7 @@ const data = [
     tags: ['ReactJs']
   }
 ]
+
 export default function Portfolio() {
   return (
     <section className="section-content">
