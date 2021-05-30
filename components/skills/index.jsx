@@ -64,6 +64,20 @@ export default function Skills() {
               <p className="mb-1 font-light">Flutter</p>
               <ProgressBar value={70} />
             </div>
+            <div className={styles['skills']}>
+              <p className="mb-1 font-light">ReactJs</p>
+              <progress min="0" max="100" value="90" />
+            </div>
+
+            <div className={styles['skills']}>
+              <p className="mb-1 font-light">Angular</p>
+              <progress min="0" max="100" value="80" />
+            </div>
+
+            <div className={styles['skills']}>
+              <p className="mb-1 font-light">VueJs</p>
+              <progress min="0" max="100" value="70" />
+            </div>
           </div>
         </div>
       </section>
