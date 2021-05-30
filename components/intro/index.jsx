@@ -6,7 +6,7 @@ export default function Intro() {
         <div className={styles['intro-square']}>
 
         </div>
-        <div className="row mx-0" style={{height : "100vh"}}>
+        <div className="row mx-0" style={{height : "100vh", width : "100vw"}}>
             <div className="col-6 d-flex justify-content-center align-items-center flex-column">
                 <div className="text-left">
                     <h4 className="font-bold">Jonathan Gobiel</h4>

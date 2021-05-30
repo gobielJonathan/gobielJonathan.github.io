@@ -29,6 +29,7 @@ export default function Experience() {
 
   return (
     <section className="section-content">
+      <div style={{width : "100vw"}}>
       <div className={"container"} id="exp" style={{ paddingTop: "5rem" }}>
         <h1 className={classnames("font-bold", styles["exp-title"])}>
           WORK EXPERIENCES
@@ -56,6 +57,7 @@ export default function Experience() {
           })}
         </CustomSlider>
       </section>
+      </div>
     </section>
   );
 }

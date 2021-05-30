@@ -59,6 +59,7 @@ const data = [
 export default function Portfolio() {
   return (
     <section className="section-content">
+      <div style={{width : "100vw"}}>
       <div
         className={styles["port-header"]}
         id="port"
@@ -74,7 +75,6 @@ export default function Portfolio() {
         style={{ marginTop: "8rem" }}
       >
         <CustomSlider data={data} slideToShow={3} slideToShowSmall={1} vertical={false}>
-
           {
             data.map(({
               desc,
@@ -107,6 +107,7 @@ export default function Portfolio() {
         </CustomSlider>
 
       </section>
+      </div>
     </section>
   );
 }

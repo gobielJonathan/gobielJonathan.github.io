@@ -32,6 +32,7 @@ const data = [
 
 export default function WorkProcess() {
     return <section className="section-content">
+        <div style={{width : "100vw"}}>
         <div className={styles['work-header']} id="work-process" style={{ paddingTop: "5rem" }}>
             <h1 className={classnames('font-bold', styles['work-title'])}>WORK PROCESS</h1>
         </div>
@@ -52,5 +53,6 @@ export default function WorkProcess() {
             </CustomSlider>
 
         </section>
+        </div>
     </section>
 }

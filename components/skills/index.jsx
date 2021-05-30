@@ -1,5 +1,6 @@
 import styles from "./index.module.css";
 import classnames from "classnames";
+import ProgressBar from "../progress-bar";
 
 export default function Skills() {
   return (
@@ -7,7 +8,7 @@ export default function Skills() {
       <div
         className={styles['skills-header']}
         id="skills"
-        style={{ paddingTop: "5rem" }}
+        style={{ paddingTop: "5rem" , width : "100vw"}}
       >
         <h1 className={classnames("font-bold", styles["skills-title"])}>
           SKILLS
@@ -22,46 +23,46 @@ export default function Skills() {
           <div className="col-sm-12 col-md-4 d-flex flex-column align-items-center">
             <div className={styles['skills']}>
               <p className="mb-1 font-light">PHP</p>
-              <progress min="0" max="100" value="70" />
+              <ProgressBar value={80} />
             </div>
 
             <div className={styles['skills']}>
               <p className="mb-1 font-light">Javascript</p>
-              <progress min="0" max="100" value="91" />
+              <ProgressBar value={95} />
             </div>
 
             <div className={styles['skills']}>
               <p className="mb-1 font-light">HTML</p>
-              <progress min="0" max="100" value="91" />
+              <ProgressBar value={95} />
             </div>
 
             <div className={styles['skills']}>
               <p className="mb-1 font-light">CSS</p>
-              <progress min="0" max="100" value="91" />
+              <ProgressBar value={95} />
             </div>
           </div>
           <div className="col-sm-12 col-md-4 d-flex flex-column align-items-center">
             <div className={styles['skills']}>
               <p className="mb-1 font-light">Java</p>
-              <progress min="0" max="100" value="75" />
+              <ProgressBar value={76} />
             </div>
             <div className={styles['skills']}>
               <p className="mb-1 font-light">C#</p>
-              <progress min="0" max="100" value="85" />
+              <ProgressBar value={80} />
             </div>
             <div className={styles['skills']}>
               <p className="mb-1 font-light">SQL SERVER</p>
-              <progress min="0" max="100" value="70" />
+              <ProgressBar value={70} />
             </div>
             <div className={styles['skills']}>
               <p className="mb-1 font-light">DART</p>
-              <progress min="0" max="100" value="75" />
+              <ProgressBar value={70} />
             </div>
           </div>
           <div className="col-sm-12 col-md-4 d-flex flex-column align-items-center">
             <div className={styles['skills']}>
               <p className="mb-1 font-light">Flutter</p>
-              <progress min="0" max="100" value="75" />
+              <ProgressBar value={70} />
             </div>
           </div>
         </div>

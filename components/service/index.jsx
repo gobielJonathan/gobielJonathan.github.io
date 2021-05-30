@@ -3,6 +3,7 @@ import classnames from 'classnames'
 
 export default function Service() {
     return <section className={'section-content'}>
+        <div style={{width : "100vw"}}>
         <div className={styles['service-header']} id="service" style={{ paddingTop: "5rem" }}>
             <h1 className={classnames('font-bold', styles['service-title'])}>SERVICES</h1>
         </div>
@@ -54,6 +55,7 @@ export default function Service() {
 </p>
                 </div>
             </div>
+        </div>
         </div>
     </section>
 }
