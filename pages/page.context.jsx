@@ -6,7 +6,7 @@ export const PageContext = createContext({
     backward: () => { }
 })
 
-export const PageProvider = ({ children }) => {
+const PageProvider = ({ children }) => {
     const [state, setState] = useState(0)
 
     const foward = () => {
@@ -26,3 +26,5 @@ export const PageProvider = ({ children }) => {
         {children}
     </PageContext.Provider>
 }
+
+export default PageProvider
