@@ -6,7 +6,7 @@ export default function Intro() {
         <div className={styles['intro-square']}>
 
         </div>
-        <div className="row mx-0" style={{height : "100vh", width : "100vw"}}>
+        <div className="row mx-0" style={{ height: "100vh", width: "100vw" }}>
             <div className="col-6 d-flex justify-content-center align-items-center flex-column">
                 <div className="text-left">
                     <h4 className="font-bold">Jonathan Gobiel</h4>
@@ -19,7 +19,7 @@ export default function Intro() {
             </div>
             <div className="col-3 d-flex align-items-center flex-column justify-content-center d-none-md">
                 <div className={styles['intro-avatar']}>
-                    <Image src={'/assets/images/me.jpg'} alt="me" layout="fill" objectFit="cover" className="rounded"/>
+                    <Image src={'/assets/images/me.jpg'} alt="me" layout="fill" objectFit="cover" className="rounded" />
                 </div>
             </div>
         </div>
