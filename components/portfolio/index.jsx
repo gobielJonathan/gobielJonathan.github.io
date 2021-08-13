@@ -88,6 +88,7 @@ export default function Portfolio() {
                   src={image}
                   layout="fill"
                   objectFit="contain"
+                  priority={true}
                 />
                 <div className={styles["port-desc"]}>
                   <div className="w-100 h-100 d-flex justify-content-center px-3 flex-column">
