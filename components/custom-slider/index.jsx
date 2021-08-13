@@ -8,6 +8,11 @@ export default function CustomSlider({ slideToShow = 5, slideToShowSmall = 1, mi
     slidesToShow: slideToShow,
     slidesToScroll: 1,
     focusOnSelect: true,
+    customPaging: i => (
+      <div className="shadow" style={{width : 8, height : 8, borderRadius : "50%", backgroundColor : "var(--primary);"}}>
+
+      </div>
+    ),
     responsive: [
       {
         breakpoint: 768,

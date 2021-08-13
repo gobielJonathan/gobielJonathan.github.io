@@ -19,7 +19,7 @@ export default function Intro() {
             </div>
             <div className="col-3 d-flex align-items-center flex-column justify-content-center d-none-md">
                 <div className={styles['intro-avatar']}>
-                    <Image src={'/assets/images/me.jpg'} alt="me" layout="fill" objectFit="cover" className="rounded" />
+                    <Image src={'/assets/images/me.jpg'} alt="me" layout="fill" objectFit="cover" className="rounded" priority={true}/>
                 </div>
             </div>
         </div>
