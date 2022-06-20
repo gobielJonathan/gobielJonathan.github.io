@@ -1,6 +1,5 @@
 import styles from "./index.module.css";
 import classnames from "classnames";
-import CustomSlider from "../custom-slider";
 
 const data = [
   {
