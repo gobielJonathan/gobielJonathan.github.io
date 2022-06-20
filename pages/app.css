@@ -1,115 +1,105 @@
-@import '/assets/fonts/fa/css/font-awesome.min.css';
-
+@import "/assets/fonts/fa/css/font-awesome.min.css";
 
 @font-face {
-    font-family: 'regular';
-    src: url('/assets/fonts/Montserrat/Montserrat-Regular.ttf');
+  font-family: "regular";
+  src: url("/assets/fonts/Montserrat/Montserrat-Regular.ttf");
 }
 
 @font-face {
-    font-family: 'bold';
-    src: url('/assets/fonts/Montserrat/Montserrat-Bold.ttf');
+  font-family: "bold";
+  src: url("/assets/fonts/Montserrat/Montserrat-Bold.ttf");
 }
 
-
 @font-face {
-    font-family: 'semi-bold';
-    src: url('/assets/fonts/Montserrat/Montserrat-SemiBold.ttf');
+  font-family: "semi-bold";
+  src: url("/assets/fonts/Montserrat/Montserrat-SemiBold.ttf");
 }
 
-
 @font-face {
-    font-family: 'light';
-    src: url('/assets/fonts/Montserrat/Montserrat-Light.ttf');
+  font-family: "light";
+  src: url("/assets/fonts/Montserrat/Montserrat-Light.ttf");
 }
 
 :root {
-    --grey: rgba(174, 158, 159, .2);
-    --pink: rgba(252, 89, 106, .2);
+  --grey: rgba(174, 158, 159, 0.2);
+  --pink: rgba(252, 89, 106, 0.2);
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'regular', sans-serif !important;
-    width: 100vw;
-    overflow: hidden;
+  font-family: "regular", sans-serif !important;
+  width: 100vw;
 }
 
-@media screen and (min-width:768px) {
-    html {
-        overflow: hidden;
-    }
-}
+@media screen and (max-width: 425px) {
+  .d-none-sm {
+    display: none !important;
+  }
 
-@media screen and (max-width : 425px) {
-    .d-none-sm {
-        display: none !important;
-    }
+  .px-0-sm {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
 
-    .px-0-sm {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-    }
-
-    .pt-2-sm {
-        padding-top: .5rem !important;
-    }
+  .pt-2-sm {
+    padding-top: 0.5rem !important;
+  }
 }
 
 .section-content {
-    min-height: 100vh;
-    width: 100vw;
+  min-height: 100vh;
+  width: 100vw;
 }
 
 .font-bold {
-    font-family: 'bold' !important;
+  font-family: "bold" !important;
 }
 
 .font-light {
-    font-family: 'light' !important;
+  font-family: "light" !important;
 }
 
 .font-semi-bold {
-    font-family: 'semi-bold' !important;
+  font-family: "semi-bold" !important;
 }
 
-@media screen and (max-width : 768px) {
-    .d-none-md {
-        display: none !important;
-    }
+@media screen and (max-width: 768px) {
+  .d-none-md {
+    display: none !important;
+  }
 }
 
 .hover:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .slow-motion {
-    transition: all .2s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 button.btn-outline:focus {
-    outline: none !important;
+  outline: none !important;
 }
-.d-grid{
-    display: grid !important
+.d-grid {
+  display: grid !important
     ;
 }
 
-.overflow-y{
-    overflow-y: auto;
+.overflow-y {
+  overflow-y: auto;
 }
 
-.overflow-x{
-    overflow-x: auto;
+.overflow-x {
+  overflow-x: auto;
 }
 
-.slick-dots li button:before{
-    font-size: 8px !important
+.slick-dots li button:before {
+  font-size: 8px !important;
 }
 
 .shadow {
-    box-shadow: 0 0 1px solid rgba(0, 0, 0, .1);
+  box-shadow: 0 0 1px solid rgba(0, 0, 0, 0.1);
 }

@@ -2,13 +2,36 @@ import styles from "./index.module.css";
 import classnames from "classnames";
 import ProgressBar from "../progress-bar";
 
+const SKILLS = [
+  {
+    catgeory: "Frontend Platform",
+    items: [
+      { text: "HTML", score: 95 },
+      { text: "Javascript", score: 95 },
+      { text: "ReactJS", score: 95 },
+      { text: "Angular", score: 70 },
+      { text: "Vue", score: 60 },
+      { text: "Dart", score: 70 },
+      { text: "Flutter", score: 70 },
+    ],
+  },
+  {
+    catgeory: "Backend Platform",
+    items: [
+      { text: "PHP", score: 80 },
+      { text: "C#", score: 80 },
+    ],
+  },
+  { catgeory: "Database Platform", items: [{ text: "SQL Server", value: 75 }] },
+];
+
 export default function Skills() {
   return (
     <section className="section-content">
       <div
-        className={styles['skills-header']}
+        className={styles["skills-header"]}
         id="skills"
-        style={{ paddingTop: "5rem" , width : "100vw"}}
+        style={{ paddingTop: "5rem", width: "100vw" }}
       >
         <h1 className={classnames("font-bold", styles["skills-title"])}>
           SKILLS
@@ -20,65 +43,20 @@ export default function Skills() {
         style={{ marginTop: "8rem" }}
       >
         <div className="row">
-          <div className="col-sm-12 col-md-4 d-flex flex-column align-items-center">
-            <div className={styles['skills']}>
-              <p className="mb-1 font-light">PHP</p>
-              <ProgressBar value={80} />
+          {SKILLS.map((d, idx) => (
+            <div
+              key={idx}
+              className="col-sm-12 col-md-4 d-flex flex-column align-items-center"
+            >
+              <h5>{d.catgeory}</h5>
+              {d.items.map((i, idx) => (
+                <div key={idx} className={styles["skills"]}>
+                  <p className="mb-1 font-light">{i.text}</p>
+                  <ProgressBar value={i.score} />
+                </div>
+              ))}
             </div>
-
-            <div className={styles['skills']}>
-              <p className="mb-1 font-light">Javascript</p>
-              <ProgressBar value={95} />
-            </div>
-
-            <div className={styles['skills']}>
-              <p className="mb-1 font-light">HTML</p>
-              <ProgressBar value={95} />
-            </div>
-
-            <div className={styles['skills']}>
-              <p className="mb-1 font-light">CSS</p>
-              <ProgressBar value={95} />
-            </div>
-          </div>
-          <div className="col-sm-12 col-md-4 d-flex flex-column align-items-center">
-            <div className={styles['skills']}>
-              <p className="mb-1 font-light">Java</p>
-              <ProgressBar value={76} />
-            </div>
-            <div className={styles['skills']}>
-              <p className="mb-1 font-light">C#</p>
-              <ProgressBar value={80} />
-            </div>
-            <div className={styles['skills']}>
-              <p className="mb-1 font-light">SQL SERVER</p>
-              <ProgressBar value={70} />
-            </div>
-            <div className={styles['skills']}>
-              <p className="mb-1 font-light">DART</p>
-              <ProgressBar value={70} />
-            </div>
-          </div>
-          <div className="col-sm-12 col-md-4 d-flex flex-column align-items-center">
-            <div className={styles['skills']}>
-              <p className="mb-1 font-light">Flutter</p>
-              <ProgressBar value={70} />
-            </div>
-            <div className={styles['skills']}>
-              <p className="mb-1 font-light">ReactJs</p>
-              <ProgressBar value={90} />
-            </div>
-
-            <div className={styles['skills']}>
-              <p className="mb-1 font-light">Angular</p>
-              <ProgressBar value={80} />
-            </div>
-
-            <div className={styles['skills']}>
-              <p className="mb-1 font-light">VueJs</p>
-              <ProgressBar value={70} />
-            </div>
-          </div>
+          ))}
         </div>
       </section>
     </section>

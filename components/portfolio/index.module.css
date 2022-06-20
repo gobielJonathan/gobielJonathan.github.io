@@ -1,38 +1,49 @@
-.port-header{
-    position: relative;
+.port-header {
+  position: relative;
 }
 
-.port-header::before{
-    content: '';
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -35%);
-    width: 150px;
-    height: 150px;
-    z-index: -1;
-    background-color: rgba(252, 89, 106, .2);
+.port-header::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -35%);
+  width: 150px;
+  height: 150px;
+  z-index: -1;
+  background-color: rgba(252, 89, 106, 0.2);
 }
 
-.port-title{
-    text-align: center;
+.port-title {
+  text-align: center;
 }
 
-.port-content-wrapper{
-    height: 200px;
+.port-content-wrapper {
+  height: 200px;
 }
 
-.port-content-wrapper:hover .port-desc{
-    display: block;
+.port-content-wrapper:hover .port-desc {
+  display: block;
 }
 
-.port-desc{
-    display: none;
-    overflow-y: auto;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, .75);
-    color: white;
+.port-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+@media screen and (max-width: 425px) {
+  .port-container {
+    grid-template-columns: 1fr;
+  }
+}
+.port-desc {
+  display: none;
+  overflow-y: auto;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
 }
