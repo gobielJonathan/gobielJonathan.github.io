@@ -52,11 +52,18 @@ const data = [
     link: "https://tangerangsport.id",
     tags: ["ReactJs"],
   },
+  {
+    image: "/assets/images/visimedia.png",
+    title: "Visimedia Supplies",
+    desc: "Digital Printing Supplies.",
+    link: "https://visimediasupplies.id/",
+    tags: ["NextJs"],
+  },
 ];
 
 export default function Portfolio() {
   return (
-    <section className="section-content">
+    <section className="section-content" id="porto">
       <div style={{ width: "100vw" }}>
         <div
           className={styles["port-header"]}

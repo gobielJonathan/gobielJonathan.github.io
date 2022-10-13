@@ -64,6 +64,19 @@ const data = [
     job: "Software Engineer Web Platform",
     location: "Tokopedia, Ciputra World",
     date: "2019-Now",
+    desc: (
+      <code>
+        <h6>Software Engineer Web Platform at Tokopedia Digital: </h6>
+        <ul>
+          <li>Manage Existing Web Application </li>
+        </ul>
+        <h6>Tech of Web Application:</h6>
+        <ul>
+          <li>ReactJS</li>
+          <li>NodeJs</li>
+        </ul>
+      </code>
+    ),
   },
 ];
 export default function Experience() {

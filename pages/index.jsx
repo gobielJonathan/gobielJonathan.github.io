@@ -12,7 +12,7 @@ export default function Index() {
       <div className="slow-motion" style={{ transitionDuration: ".8s" }}>
         <Intro />
         <Skills />
-        <Service />
+        {/* <Service /> */}
         <Portfolio />
         <Experience />
         <Contact />
