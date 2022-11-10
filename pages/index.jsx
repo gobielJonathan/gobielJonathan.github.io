@@ -11,7 +11,7 @@ export default function Index() {
     <Layout title="Gobiel's Profile">
       <div className="slow-motion" style={{ transitionDuration: ".8s" }}>
         <Intro />
-        <Skills />
+        {/* <Skills /> */}
         {/* <Service /> */}
         <Portfolio />
         <Experience />

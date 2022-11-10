@@ -59,6 +59,13 @@ const data = [
     link: "https://visimediasupplies.id/",
     tags: ["NextJs"],
   },
+  {
+    image: "/assets/images/fita.png",
+    title: "Fita",
+    desc: "aplikasi kesehatan dengan fitur dan program yang lengkap untuk membantumu memulai hidup sehat.",
+    link: "https://fita.co.id/",
+    tags: ["NextJs"],
+  },
 ];
 
 export default function Portfolio() {
