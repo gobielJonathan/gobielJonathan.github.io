@@ -42,7 +42,7 @@ const data = [
     image: "/assets/images/sense.webp",
     title: "Sense",
     desc: "Sebuah sistem yang mengatur tentang laundry.",
-    link: "http://dev.sensehospitality.id",
+    link: "https://www.sensehospitality.id/",
     tags: ["ReactJs"],
   },
   {
@@ -89,36 +89,38 @@ export default function Portfolio() {
           <div className={styles["port-container"]}>
             {data.map(({ desc, image, link, tags, title }, idx) => {
               return (
-                <div
-                  key={idx}
-                  className={classnames(
-                    "position-relative",
-                    styles["port-content-wrapper"]
-                  )}
-                >
-                  <Image
-                    src={image}
-                    layout="fill"
-                    objectFit="contain"
-                    priority={true}
-                  />
-                  <div className={styles["port-desc"]}>
-                    <div className="w-100 h-100 d-flex justify-content-center px-3 flex-column">
-                      <h5 className="font-bold">{title}</h5>
-                      <p>{desc}</p>
-                      <div className="border-0 mb-2">
-                        {tags.map((t, idx) => (
-                          <span
-                            key={idx}
-                            className="badge mr-2 badge-pill bg-primary"
-                          >
-                            {t}
-                          </span>
-                        ))}
+                <a href={link} target="_blank">
+                  <div
+                    key={idx}
+                    className={classnames(
+                      "position-relative",
+                      styles["port-content-wrapper"]
+                    )}
+                  >
+                    <Image
+                      src={image}
+                      layout="fill"
+                      objectFit="contain"
+                      priority={true}
+                    />
+                    <div className={styles["port-desc"]}>
+                      <div className="w-100 h-100 d-flex justify-content-center px-3 flex-column">
+                        <h5 className="font-bold">{title}</h5>
+                        <p>{desc}</p>
+                        <div className="border-0 mb-2">
+                          {tags.map((t, idx) => (
+                            <span
+                              key={idx}
+                              className="badge mr-2 badge-pill bg-primary"
+                            >
+                              {t}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </a>
               );
             })}
           </div>
