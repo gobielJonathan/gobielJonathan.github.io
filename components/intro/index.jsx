@@ -14,7 +14,7 @@ export default function Intro() {
               Full Stack Developer
             </p>
 
-            <Link href="#porto">
+            <Link href="#porto" legacyBehavior>
               <p
                 className="mt-5 pb-2 font-bold"
                 style={{
