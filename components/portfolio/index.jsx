@@ -66,6 +66,13 @@ const data = [
     link: "https://fita.co.id/",
     tags: ["NextJs"],
   },
+  {
+    image: "/assets/images/brc-depo.png",
+    title: "Brc Depo",
+    desc: "aplikasi menjual peralatan rumah",
+    link: "https://brcdepo.com/",
+    tags: ["NextJs", "tailwindcss", "postgresql"],
+  },
 ];
 
 export default function Portfolio() {
