@@ -8,14 +8,14 @@ const data = [
     title: "Crowde",
     desc: "Sebuah sistem yang mengatur jadwal, dan tempat survey.",
     link: "https://agent.crowde.co",
-    tags: ["ReactJs"],
+    tags: ["ReactJs", "golang"],
   },
   {
     image: "/assets/images/cubes.webp",
     title: "Cubes",
     desc: "Sebuah sistem yang bergerak di bidang pelatihan accounting management.",
     link: "https://cubes.crmsindonesia.org",
-    tags: ["ReactJs"],
+    tags: ["ReactJs", "laravel"],
   },
   {
     image: "/assets/images/firelogic.webp",
@@ -36,7 +36,7 @@ const data = [
     title: "Kleveru",
     desc: "Sebuah sistem yang bergerak di bidang kecantikan.",
     link: "http://kleveru.com/",
-    tags: ["NextJs"],
+    tags: ["NextJs", "laravel"],
   },
   {
     image: "/assets/images/sense.webp",
@@ -57,14 +57,14 @@ const data = [
     title: "Visimedia Supplies",
     desc: "Digital Printing Supplies.",
     link: "https://visimediasupplies.id/",
-    tags: ["NextJs"],
+    tags: ["NextJs", "golang"],
   },
   {
     image: "/assets/images/fita.png",
     title: "Fita",
     desc: "aplikasi kesehatan dengan fitur dan program yang lengkap untuk membantumu memulai hidup sehat.",
     link: "https://fita.co.id/",
-    tags: ["NextJs"],
+    tags: ["NextJs", "tailwindcss"],
   },
   {
     image: "/assets/images/brc-depo.png",
