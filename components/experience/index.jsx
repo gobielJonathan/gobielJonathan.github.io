@@ -3,13 +3,6 @@ import classnames from "classnames";
 
 const data = [
   {
-    job: "Teaching",
-    location: "Sister, Taman Surya",
-    date: "2014-2015",
-    desc: "",
-  },
-
-  {
     job: "Teaching Assistant",
     location: "Bina Nusantara, Kemanggisan",
     date: "2018-2019",

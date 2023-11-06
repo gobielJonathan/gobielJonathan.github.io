@@ -1,5 +1,4 @@
 import Head from "next/head";
-import ArrowPage from "./arrow-page";
 
 export default function Layout({ children, title }) {
   return (

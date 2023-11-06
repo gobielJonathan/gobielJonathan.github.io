@@ -1,6 +1,6 @@
 import styles from "./index.module.css";
 import classnames from "classnames";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 const data = [
   {

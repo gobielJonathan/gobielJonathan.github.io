@@ -15,7 +15,7 @@ export default function Index() {
         {/* <Service /> */}
         <Portfolio />
         <Experience />
-        <Contact />
+        {/* <Contact /> */}
       </div>
     </Layout>
   );
