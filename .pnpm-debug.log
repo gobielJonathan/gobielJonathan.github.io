@@ -1,0 +1,23 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1
+  },
+  "1 info pnpm": {
+    "err": {
+      "name": "Error",
+      "message": "not found: bs",
+      "code": "ENOENT",
+      "stack": "Error: not found: bs\n    at getNotFoundError (/Users/bytedance/.nvm/versions/node/v14.21.3/pnpm-global/5/node_modules/.pnpm/pnpm@6.23.2/node_modules/pnpm/dist/pnpm.cjs:36331:51)\n    at Function.whichSync [as sync] (/Users/bytedance/.nvm/versions/node/v14.21.3/pnpm-global/5/node_modules/.pnpm/pnpm@6.23.2/node_modules/pnpm/dist/pnpm.cjs:36408:13)\n    at getCommandAbsolutePathSync (/Users/bytedance/.nvm/versions/node/v14.21.3/pnpm-global/5/node_modules/.pnpm/pnpm@6.23.2/node_modules/pnpm/dist/pnpm.cjs:37973:44)\n    at default_1 (/Users/bytedance/.nvm/versions/node/v14.21.3/pnpm-global/5/node_modules/.pnpm/pnpm@6.23.2/node_modules/pnpm/dist/pnpm.cjs:37982:32)\n    at /Users/bytedance/.nvm/versions/node/v14.21.3/pnpm-global/5/node_modules/.pnpm/pnpm@6.23.2/node_modules/pnpm/dist/pnpm.cjs:130218:39"
+    }
+  },
+  "2 error pnpm": {
+    "code": "ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL",
+    "prefix": "/Users/bytedance/Documents/code/gobielJonathan.github.io",
+    "err": {
+      "name": "pnpm",
+      "message": "not found: bs",
+      "code": "ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL",
+      "stack": "Error: not found: bs\n    at getNotFoundError (/Users/bytedance/.nvm/versions/node/v14.21.3/pnpm-global/5/node_modules/.pnpm/pnpm@6.23.2/node_modules/pnpm/dist/pnpm.cjs:36331:51)\n    at Function.whichSync [as sync] (/Users/bytedance/.nvm/versions/node/v14.21.3/pnpm-global/5/node_modules/.pnpm/pnpm@6.23.2/node_modules/pnpm/dist/pnpm.cjs:36408:13)\n    at getCommandAbsolutePathSync (/Users/bytedance/.nvm/versions/node/v14.21.3/pnpm-global/5/node_modules/.pnpm/pnpm@6.23.2/node_modules/pnpm/dist/pnpm.cjs:37973:44)\n    at default_1 (/Users/bytedance/.nvm/versions/node/v14.21.3/pnpm-global/5/node_modules/.pnpm/pnpm@6.23.2/node_modules/pnpm/dist/pnpm.cjs:37982:32)\n    at /Users/bytedance/.nvm/versions/node/v14.21.3/pnpm-global/5/node_modules/.pnpm/pnpm@6.23.2/node_modules/pnpm/dist/pnpm.cjs:130218:39"
+    }
+  }
+}

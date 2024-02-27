@@ -73,6 +73,13 @@ const data = [
     link: "https://brcdepo.com/",
     tags: ["NextJs", "tailwindcss", "postgresql"],
   },
+  {
+    image: "/assets/images/aerium.svg",
+    title: "Aerium",
+    desc: "aplikasi menjual peralatan rumah",
+    link: "https://aerium-fe.fragmindstudio.com/",
+    tags: ["NextJs", "tailwindcss"],
+  },
 ];
 
 export default function Portfolio() {

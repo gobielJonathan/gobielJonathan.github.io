@@ -1,4 +1,4 @@
-lockfileVersion: 5.4
+lockfileVersion: 5.3
 
 specifiers:
   classnames: ^2.3.1
@@ -9,7 +9,7 @@ specifiers:
 
 dependencies:
   classnames: 2.3.2
-  next: 13.5.6_2sxiyfzeap2fgw7t7svnurc6pi
+  next: 13.5.6_d4ae8c172403f4535bf3fcaada445e7a
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   sass: 1.69.5
@@ -236,7 +236,7 @@ packages:
     hasBin: true
     dev: false
 
-  /next/13.5.6_2sxiyfzeap2fgw7t7svnurc6pi:
+  /next/13.5.6_d4ae8c172403f4535bf3fcaada445e7a:
     resolution: {integrity: sha512-Y2wTcTbO4WwEsVb4A8VSnOsG1I9ok+h74q0ZdxkwM3EODqrs4pasq7O0iUxbcS9VtWMicG7f3+HAj0r1+NtKSw==}
     engines: {node: '>=16.14.0'}
     hasBin: true
