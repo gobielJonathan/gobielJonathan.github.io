@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import styles from "./index.module.css";
+import Link from "next/link";
 
 export default function Contact() {
   return (
@@ -26,21 +27,21 @@ export default function Contact() {
             </div>
 
             <div className={classNames("mt-auto", styles["contact-social"])}>
-              <a
+              <Link
                 href="https://www.facebook.com/jonathan.gobiel"
-                target={"_blank"}
+                target="_blank"
               >
                 <i className="fa fa-facebook" aria-hidden="true"></i>
-              </a>
-              <a href="https://twitter.com/gobiel__" target={"_blank"}>
+              </Link>
+              <Link href="https://twitter.com/gobiel__" target="_blank">
                 <i className="fa fa-twitter" aria-hidden="true"></i>
-              </a>
-              <a
+              </Link>
+              <Link
                 href="https://www.linkedin.com/in/jonathan-gobiel-0b1208172/"
-                target={"_blank"}
+                target="_blank"
               >
                 <i className="fa fa-linkedin" aria-hidden="true"></i>
-              </a>
+              </Link>
             </div>
           </div>
           <div className="col-sm-12 col-md-7 px-0-sm pt-2-sm">

@@ -1,13 +1,14 @@
 import styles from "./index.module.css";
 import classnames from "classnames";
 import Image from "next/legacy/image";
+import Link from "next/link";
 
 const data = [
   {
     image: "/assets/images/crowde.webp",
     title: "Crowde",
     desc: "Sebuah sistem yang mengatur jadwal, dan tempat survey.",
-    link: "https://agent.crowde.co",
+    link: "https://www.crowde.co/",
     tags: ["ReactJs", "golang"],
   },
   {
@@ -77,7 +78,7 @@ const data = [
     image: "/assets/images/aerium.svg",
     title: "Aerium",
     desc: "aplikasi menjual peralatan rumah",
-    link: "https://aerium-fe.fragmindstudio.com/",
+    link: "https://aerium-residences.com/",
     tags: ["NextJs", "tailwindcss"],
   },
 ];
@@ -103,7 +104,7 @@ export default function Portfolio() {
           <div className={styles["port-container"]}>
             {data.map(({ desc, image, link, tags, title }, idx) => {
               return (
-                <a href={link} target="_blank">
+                <Link href={link} target="_blank">
                   <div
                     key={idx}
                     className={classnames(
@@ -134,7 +135,7 @@ export default function Portfolio() {
                       </div>
                     </div>
                   </div>
-                </a>
+                </Link>
               );
             })}
           </div>
