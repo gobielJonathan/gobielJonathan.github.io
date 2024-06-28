@@ -4,7 +4,6 @@ import Intro from "../components/intro";
 import Portfolio from "../components/portfolio";
 import Service from "../components/service";
 import Layout from "../components/layout";
-import Skills from "../components/skills";
 
 export default function Index() {
   return (

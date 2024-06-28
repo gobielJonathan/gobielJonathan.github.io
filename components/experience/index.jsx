@@ -60,18 +60,42 @@ const data = [
     desc: (
       <code>
         <h6>Software Engineer Web Platform at Tokopedia Digital: </h6>
-        <ul>
-          <li>Manage Existing Web Application </li>
-        </ul>
+        <p>
+          I worked in the Web Platform team, planning and implementing various
+          tech improvements along with the team.
+        </p>
+        <p>Some projects that I worked on:</p>
+        <ol>
+          <li>
+            Contribute features into our javascript framework
+            <ul>
+              <li>Added automation report before release</li>
+              <li>Added bundle size checker in PR before merge</li>
+              <li>
+                Support seamless migration from tokopeda into tiktok ecosystem
+              </li>
+              <li>
+                Improved the build time in development by 90% to enable better
+                developer experience
+              </li>
+            </ul>
+          </li>
+
+          <li>Migrate web tokopedia service into tiktok ecosystem</li>
+        </ol>
         <h6>Tech of Web Application:</h6>
         <ul>
           <li>ReactJS</li>
           <li>NodeJs</li>
+          <li>Docker</li>
+          <li>Typescript</li>
+          <li>Graphql</li>
         </ul>
       </code>
     ),
   },
-];
+].reverse();
+
 export default function Experience() {
   return (
     <section className="section-content">

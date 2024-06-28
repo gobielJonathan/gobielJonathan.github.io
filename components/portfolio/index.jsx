@@ -22,7 +22,7 @@ const data = [
     image: "/assets/images/firelogic.webp",
     title: "Firelogic",
     desc: "Sebuah sistem yang mendeteksi sebuah event fire alarm.",
-    link: null,
+    link: '',
     tags: ["Flutter"],
   },
   {
