@@ -93,7 +93,7 @@ export default function Portfolio() {
           style={{ paddingTop: "5rem" }}
         >
           <h1 className={classnames("font-bold", styles["port-title"])}>
-            PORTOLIO
+            PORTOFOLIO
           </h1>
         </div>
 
