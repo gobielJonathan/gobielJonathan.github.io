@@ -27,9 +27,12 @@ const data = [
     date: "2019-2021",
     desc: (
       <code>
-        <h6>Software Laboratory Center: </h6>
+        <h6>Research & Developement Team at Bina Nusantara: </h6>
         <ul>
-          <li>Manage Existing Web Application and Mobile Development </li>
+          <li>Manage existing web application and mobile development</li>
+          <li>Refactor hiring web app from jQuery template into Nextjs</li>
+          <li>Refactor teaching assistant web app from asp.net into Nextjs</li>
+          <li>Mentoring teaching assistant in Research Development Phase</li>
         </ul>
         <h6>Tech of Web Application:</h6>
         <ul>
@@ -45,10 +48,6 @@ const data = [
         <ul>
           <li>Java </li>
           <li>Flutter</li>
-          <li>
-            Research about New Technology around Web Development, and Mobile
-            Development
-          </li>
         </ul>
       </code>
     ),
@@ -62,9 +61,8 @@ const data = [
         <h6>Software Engineer Web Platform at Tokopedia Digital: </h6>
         <p>
           I worked in the Web Platform team, planning and implementing various
-          tech improvements along with the team.
+          tech improvements along with the team. Some projects that I worked on:
         </p>
-        <p>Some projects that I worked on:</p>
         <ol>
           <li>
             Contribute features into our javascript framework
