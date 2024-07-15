@@ -29,10 +29,10 @@ const data = [
       <code>
         <h6>Research & Developement Team at Bina Nusantara: </h6>
         <ul>
-          <li>Manage existing web application and mobile development</li>
-          <li>Refactor hiring web app from jQuery template into Nextjs</li>
-          <li>Refactor teaching assistant web app from asp.net into Nextjs</li>
-          <li>Mentoring teaching assistant in Research Development Phase</li>
+          <li>Improved existing web application and mobile development</li>
+          <li>Transformed hiring web app from jQuery template into Nextjs</li>
+          <li>Transformed teaching assistant web app from asp.net into Nextjs</li>
+          <li>Mentor teaching assistant in Research Development Phase</li>
         </ul>
         <h6>Tech of Web Application:</h6>
         <ul>
@@ -67,15 +67,16 @@ const data = [
           <li>
             Contribute features into our javascript framework
             <ul>
-              <li>Added automation report before release</li>
-              <li>Added bundle size checker in PR before merge</li>
+              <li>Launched automation report before release</li>
+              <li>Launched bundle size checker in PR before merge</li>
               <li>
-                Support seamless migration from tokopeda into tiktok ecosystem
+              Achieved seamless migration from tokopeda into tiktok ecosystem
               </li>
               <li>
                 Improved the build time in development by 90% to enable better
                 developer experience
               </li>
+              <li>Standarized usage of i18n in tokopedia web platform ecosystem</li>
             </ul>
           </li>
 
