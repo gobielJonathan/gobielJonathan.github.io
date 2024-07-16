@@ -1,16 +1,16 @@
 .port-header {
-  position: relative;
+  /* position: relative; */
 }
 
 .port-header::before {
-  content: "";
+  /* content: "";
   position: absolute;
   left: 50%;
   transform: translate(-50%, -35%);
   width: 150px;
   height: 150px;
   z-index: -1;
-  background-color: rgba(252, 89, 106, 0.2);
+  background-color: rgba(252, 89, 106, 0.2); */
 }
 
 .port-title {
@@ -20,15 +20,11 @@
 .port-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
+  gap: 2rem;
 }
 
 @media screen and (max-width: 425px) {
   .port-container {
     grid-template-columns: 1fr;
   }
-}
-.port-desc {
-  background-color: rgba(0, 0, 0, 0.75);
-  color: white;
 }

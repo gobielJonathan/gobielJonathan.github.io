@@ -108,25 +108,23 @@ export default function Portfolio() {
                   <div
                     key={idx}
                     className={classnames(
-                      "position-relative",
-                      styles["port-content-wrapper"]
+                      styles["port-content-wrapper"],
+                      "d-flex flex-column h-100"
                     )}
                   >
-                    <Image
+                    <img
                       src={image}
-                      layout="fill"
-                      objectFit="contain"
-                      priority={true}
+                      className="w-100 h-100 object-contain mb-2"
                     />
-                    <div className={styles["port-desc"]}>
+                    <div className="mt-auto">
                       <div className="w-100 h-100 d-flex justify-content-center px-3 flex-column">
-                        <h5 className="font-bold">{title}</h5>
-                        <p>{desc}</p>
+                        <h5 className="font-bold text-dark">{title}</h5>
+                        <p className="text-dark">{desc}</p>
                         <div className="border-0 mb-2">
                           {tags.map((t, idx) => (
                             <span
                               key={idx}
-                              className="badge mr-2 badge-pill bg-primary"
+                              className="badge mr-2 badge-pill bg-primary text-white"
                             >
                               {t}
                             </span>
