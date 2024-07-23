@@ -22,7 +22,7 @@ const data = [
     image: "/assets/images/firelogic.webp",
     title: "Firelogic",
     desc: "A system that detects a fire alarm event.",
-    link: '',
+    link: "",
     tags: ["Flutter"],
   },
   {
@@ -115,6 +115,7 @@ export default function Portfolio() {
                     <img
                       src={image}
                       className="w-100 h-100 object-contain mb-2"
+                      style={{ objectFit: "contain" }}
                     />
                     <div className="mt-auto">
                       <div className="w-100 h-100 d-flex justify-content-center px-3 flex-column">
