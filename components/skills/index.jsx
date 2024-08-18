@@ -6,14 +6,14 @@ export default function Skills() {
     <div className="container">
       <h1 className="font-bold">SKILLS</h1>
       <div className={classNames("row", styles["skills"])}>
-        <div className="col-6">
+        <div className="col-12 col-md-6">
           <h3>Developer Experience</h3>
           <ul>
             <li>CI/CD: Github Action</li>
             <li>Code Quality and Best Practices: Eslint, Prettier</li>
           </ul>
         </div>
-        <div className="col-6">
+        <div className="col-12 col-md-6">
           <h3>Core Technologies</h3>
           <ul>
             <li>HTML, CSS, and JavaScript</li>
@@ -22,7 +22,7 @@ export default function Skills() {
             <li>TypeScript</li>
           </ul>
         </div>
-        <div className="col-6">
+        <div className="col-12 col-md-6">
           <h3>Tooling</h3>
           <ul>
             <li>Version Control: Git</li>
@@ -30,7 +30,7 @@ export default function Skills() {
             <li>Testing Frameworks: Jest</li>
           </ul>
         </div>
-        <div className="col-6">
+        <div className="col-12 col-md-6">
           <h3>Modern Web APIs and Performance</h3>
           <ul>
             <li>Progressive Web Apps (PWAs)</li>

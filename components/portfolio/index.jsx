@@ -92,15 +92,19 @@ export default function Portfolio() {
           </h1>
         </div>
 
-        <section>
-          <div className={styles["port-container"]}>
+        <>
+          <section className="row">
             {data.map(({ desc, image, link, tags, title }, idx) => {
               return (
-                <Link href={link} target="_blank">
+                <Link
+                  href={link}
+                  target="_blank"
+                  className="col-12 col-lg-3 mb-3"
+                >
                   <div
                     key={idx}
                     className={classnames(
-                      styles["port-content-wrapper"],
+                      // styles["port-content-wrapper"],
                       "d-flex flex-column h-100"
                     )}
                   >
@@ -129,8 +133,8 @@ export default function Portfolio() {
                 </Link>
               );
             })}
-          </div>
-        </section>
+          </section>
+        </>
       </>
     </section>
   );
