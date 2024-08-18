@@ -1,20 +1,5 @@
-.port-header {
-  /* position: relative; */
-}
-
-.port-header::before {
-  /* content: "";
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, -35%);
-  width: 150px;
-  height: 150px;
-  z-index: -1;
-  background-color: rgba(252, 89, 106, 0.2); */
-}
-
 .port-title {
-  text-align: center;
+  margin-bottom: 4rem;
 }
 
 .port-container {

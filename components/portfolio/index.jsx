@@ -1,6 +1,5 @@
 import styles from "./index.module.css";
 import classnames from "classnames";
-import Image from "next/legacy/image";
 import Link from "next/link";
 
 const data = [
@@ -85,22 +84,15 @@ const data = [
 
 export default function Portfolio() {
   return (
-    <section className="section-content" id="porto">
-      <div style={{ width: "100vw" }}>
-        <div
-          className={styles["port-header"]}
-          id="port"
-          style={{ paddingTop: "5rem" }}
-        >
+    <section className="container" id="porto">
+      <>
+        <div className={styles["port-header"]} id="port">
           <h1 className={classnames("font-bold", styles["port-title"])}>
             PORTOFOLIO
           </h1>
         </div>
 
-        <section
-          className={classnames("container")}
-          style={{ marginTop: "8rem" }}
-        >
+        <section>
           <div className={styles["port-container"]}>
             {data.map(({ desc, image, link, tags, title }, idx) => {
               return (
@@ -139,7 +131,7 @@ export default function Portfolio() {
             })}
           </div>
         </section>
-      </div>
+      </>
     </section>
   );
 }

@@ -2,6 +2,7 @@ import Experience from "../components/experience";
 import Intro from "../components/intro";
 import Portfolio from "../components/portfolio";
 import Layout from "../components/layout";
+import Skills from "../components/skills";
 
 export default function Index() {
   return (
@@ -9,7 +10,12 @@ export default function Index() {
       <div className="slow-motion" style={{ transitionDuration: ".8s" }}>
         <Intro />
         <Portfolio />
-        <Experience />
+        <div className="my-5">
+          <Skills />
+        </div>
+        <div className="my-5">
+          <Experience />
+        </div>
       </div>
     </Layout>
   );

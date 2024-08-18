@@ -31,7 +31,9 @@ const data = [
         <ul>
           <li>Improved existing web application and mobile development</li>
           <li>Transformed hiring web app from jQuery template into Nextjs</li>
-          <li>Transformed teaching assistant web app from asp.net into Nextjs</li>
+          <li>
+            Transformed teaching assistant web app from asp.net into Nextjs
+          </li>
           <li>Mentor teaching assistant in Research Development Phase</li>
         </ul>
         <h6>Tech of Web Application:</h6>
@@ -70,13 +72,15 @@ const data = [
               <li>Launched automation report before release</li>
               <li>Launched bundle size checker in PR before merge</li>
               <li>
-              Achieved seamless migration from tokopeda into tiktok ecosystem
+                Achieved seamless migration from tokopeda into tiktok ecosystem
               </li>
               <li>
                 Improved the build time in development by 90% to enable better
                 developer experience
               </li>
-              <li>Standarized usage of i18n in tokopedia web platform ecosystem</li>
+              <li>
+                Standarized usage of i18n in tokopedia web platform ecosystem
+              </li>
             </ul>
           </li>
 
@@ -98,8 +102,8 @@ const data = [
 export default function Experience() {
   return (
     <section className="section-content">
-      <div style={{ width: "100vw" }}>
-        <div className={"container"} id="exp" style={{ paddingTop: "5rem" }}>
+      <div>
+        <div className="container" id="exp">
           <h1 className={classnames("font-bold", styles["exp-title"])}>
             WORK EXPERIENCES
           </h1>
@@ -107,7 +111,6 @@ export default function Experience() {
 
         <section
           className={classnames("container", styles["exp-list-container"])}
-          style={{ marginTop: "4rem" }}
         >
           {data.map(({ date, job, location, desc }, idx) => {
             return (
