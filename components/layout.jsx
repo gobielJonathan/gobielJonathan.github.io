@@ -20,6 +20,29 @@ export default function Layout({ children, title }) {
         <link rel="canonical" href="https://gobiel.vercel.app/" />
       </Head>
 
+      <header className="d-flex align-items-center py-2 px-4">
+        <div className="ml-auto d-flex" style={{ columnGap: "1rem" }}>
+          <div className="linked-in">
+            <a
+              style={{ fontSize: "2rem" }}
+              target="_blank"
+              href="https://www.linkedin.com/in/jonathan-gobiel/"
+            >
+              <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+            </a>
+          </div>
+
+          <div className="github">
+            <a
+              style={{ fontSize: "2rem" }}
+              target="_blank"
+              href="https://github.com/gobielJonathan/"
+            >
+              <i class="fa fa-github" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </header>
       <main>{children}</main>
     </>
   );
