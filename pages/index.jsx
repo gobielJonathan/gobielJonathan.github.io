@@ -7,16 +7,16 @@ import Skills from "../components/skills";
 export default function Index() {
   return (
     <Layout title="Gobiel's Profile">
-      <div className="slow-motion" style={{ transitionDuration: ".8s" }}>
+      <>
         <Intro />
         <Portfolio />
-        <div className="my-5">
+        <div className="py-12">
           <Skills />
         </div>
-        <div className="my-5">
+        <div className="py-12">
           <Experience />
         </div>
-      </div>
+      </>
     </Layout>
   );
 }

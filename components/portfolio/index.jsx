@@ -1,6 +1,5 @@
-import styles from "./index.module.css";
-import classnames from "classnames";
 import Link from "next/link";
+import Badge from "../badge";
 
 const data = [
   {
@@ -8,14 +7,14 @@ const data = [
     title: "Crowde",
     desc: "A system that manages schedules and survey locations.",
     link: "https://www.crowde.co/",
-    tags: ["ReactJs", "golang"],
+    tags: ["ReactJs", "Golang"],
   },
   {
     image: "/assets/images/cubes.webp",
     title: "Cubes",
     desc: "A system that operates in the field of accounting management training.",
     link: "https://cubes.crmsindonesia.org",
-    tags: ["ReactJs", "laravel"],
+    tags: ["ReactJs", "Laravel"],
   },
   {
     image: "/assets/images/firelogic.webp",
@@ -29,14 +28,14 @@ const data = [
     title: "Inaskills",
     desc: "A system that operates in the field of competitions used by the Ministry of Manpower.",
     link: "https://inaskills.kemnaker.go.id",
-    tags: ["JQuery", "Blade"],
+    tags: ["JQuery"],
   },
   {
     image: "/assets/images/kleveru.webp",
     title: "Kleveru",
     desc: "A system that operates in the field of beauty.",
     link: "http://kleveru.com/",
-    tags: ["NextJs", "laravel"],
+    tags: ["NextJs", "Laravel"],
   },
   {
     image: "/assets/images/sense.webp",
@@ -57,84 +56,65 @@ const data = [
     title: "Visimedia Supplies",
     desc: "Digital Printing Supplies.",
     link: "https://visimediasupplies.id/",
-    tags: ["NextJs", "golang"],
+    tags: ["NextJs", "Golang"],
   },
   {
     image: "/assets/images/fita.png",
     title: "Fita",
     desc: "A health application with comprehensive features and programs to help you start living a healthy life.",
     link: "https://fita.co.id/",
-    tags: ["NextJs", "tailwindcss"],
+    tags: ["NextJs", "Tailwindcss"],
   },
   {
     image: "/assets/images/brc-depo.png",
     title: "Brc Depo",
     desc: "An application for selling household equipment.",
     link: "https://brcdepo.com/",
-    tags: ["NextJs", "tailwindcss", "postgresql"],
+    tags: ["NextJs", "Tailwindcss", "Postgresql"],
   },
   {
     image: "/assets/images/aerium.svg",
     title: "Aerium",
     desc: "Residence Landing Page",
     link: "https://aerium-residences.com/",
-    tags: ["NextJs", "tailwindcss"],
+    tags: ["NextJs", "Tailwindcss"],
   },
 ];
 
 export default function Portfolio() {
   return (
-    <section className="container" id="porto">
+    <section className="container mx-auto px-4" id="porto">
       <>
-        <div className={styles["port-header"]} id="port">
-          <h1 className={classnames("font-bold", styles["port-title"])}>
+        <div id="port">
+          <h1 className="font-bold text-4xl mb-16 text-slate-900 dark:text-white">
             PORTOFOLIO
           </h1>
         </div>
 
-        <>
-          <section className="row">
-            {data.map(({ desc, image, link, tags, title }, idx) => {
-              return (
-                <Link
-                  href={link}
-                  target="_blank"
-                  className="col-12 col-lg-3 mb-3"
-                >
-                  <div
-                    key={idx}
-                    className={classnames(
-                      // styles["port-content-wrapper"],
-                      "d-flex flex-column h-100"
-                    )}
-                  >
-                    <img
-                      src={image}
-                      className="w-100 h-100 object-contain mb-2"
-                      style={{ objectFit: "contain" }}
-                    />
-                    <div className="mt-auto">
-                      <div className="w-100 h-100 d-flex justify-content-center px-3 flex-column">
-                        <h5 className="font-bold text-dark">{title}</h5>
-                        <p className="text-dark">{desc}</p>
-                        <div className="border-0 mb-2">
-                          {tags.map((t, idx) => (
-                            <span
-                              key={idx}
-                              className="badge mr-2 badge-pill bg-primary text-white"
-                            >
-                              {t}
-                            </span>
-                          ))}
-                        </div>
+        <section className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {data.map(({ desc, image, link, tags, title }, idx) => {
+            return (
+              <Link key={idx} href={link} target="_blank" className="mb-3">
+                <div className="flex flex-col h-full">
+                  <img src={image} className="h-[200px] mb-2 object-contain" />
+                  <div className="mt-auto">
+                    <div className="w-full h-full flex justify-center flex-col">
+                      <h5 className="font-bold text-slate-900 dark:text-white">
+                        {title}
+                      </h5>
+                      <p className="text-slate-900 dark:text-white">{desc}</p>
+                      <div className="mt-2 flex flex-wrap gap-y-2">
+                        {tags.map((t, idx) => (
+                          <Badge key={idx} text={t} />
+                        ))}
                       </div>
                     </div>
                   </div>
-                </Link>
-              );
-            })}
-          </section>
-        </>
+                </div>
+              </Link>
+            );
+          })}
+        </section>
       </>
     </section>
   );
