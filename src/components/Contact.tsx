@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
-import { GitHub, Linkedin, Mail, Phone } from 'lucide-react';
+import { Github, Linkedin, Mail, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Contact = () => {
@@ -91,7 +90,7 @@ const Contact = () => {
             className="text-slate hover:text-highlight transition-colors"
             aria-label="GitHub Profile"
           >
-            <GitHub className="h-6 w-6" />
+            <Github className="h-6 w-6" />
           </a>
           
           <a 

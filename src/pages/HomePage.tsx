@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Instagram, AtSign, ExternalLink } from 'lucide-react';
+import { Github, Linkedin, Instagram, AtSign, ExternalLink, Folder } from 'lucide-react';
 
 const HomePage = () => {
   return (
