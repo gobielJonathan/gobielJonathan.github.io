@@ -21,7 +21,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-bold text-slate-light mb-4"
+          className="text-4xl md:text-6xl lg:text-7xl font-bold text-slate-light mb-4 font-sans"
         >
           Jonathan Gobiel.
         </motion.h1>
@@ -30,7 +30,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-3xl md:text-5xl lg:text-6xl font-bold text-slate mb-6"
+          className="text-3xl md:text-5xl lg:text-6xl font-bold text-slate mb-6 font-sans"
         >
           I build accessible, pixel-perfect digital experiences for the web.
         </motion.h2>
@@ -39,7 +39,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-lg text-slate max-w-2xl mb-10"
+          className="text-lg text-slate max-w-2xl mb-10 font-sans"
         >
           I'm a Front End Engineer specializing in modern front-end technologies.
           Currently focused on building exceptional web experiences at{' '}
@@ -54,7 +54,7 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.4 }}
         >
           <a href="#projects">
-            <Button className="group bg-transparent hover:bg-highlight/10 text-highlight border border-highlight px-7 py-5 rounded">
+            <Button className="group bg-transparent hover:bg-highlight/10 text-highlight border border-highlight px-7 py-5 rounded font-sans">
               Check out my work
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Button>

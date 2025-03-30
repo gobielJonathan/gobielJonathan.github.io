@@ -50,10 +50,11 @@
 
   body {
     @apply bg-navy-dark text-slate font-sans;
+    font-family: 'Inter', sans-serif;
   }
 
   .nav-link {
-    @apply relative px-2 py-1 text-slate hover:text-highlight transition-colors duration-200;
+    @apply relative px-2 py-1 text-slate hover:text-highlight transition-colors duration-200 font-sans;
   }
 
   .nav-link::after {
@@ -66,7 +67,7 @@
   }
 
   .section-heading {
-    @apply flex items-center gap-2 text-2xl font-semibold text-slate-light mb-10;
+    @apply flex items-center gap-2 text-2xl font-semibold text-slate-light mb-10 font-sans;
   }
 
   .section-heading::after {
@@ -92,11 +93,11 @@
   }
 
   .skill-tag {
-    @apply bg-navy px-3 py-1 rounded-full text-sm text-slate-light hover:bg-navy-light hover:text-highlight transition-all duration-200 cursor-default;
+    @apply bg-navy px-3 py-1 rounded-full text-sm text-slate-light hover:bg-navy-light hover:text-highlight transition-all duration-200 cursor-default font-sans;
   }
 
   .project-card {
-    @apply relative border border-navy rounded-lg bg-navy/60 backdrop-blur-sm transition-all duration-300;
+    @apply relative border border-navy rounded-lg bg-navy/60 backdrop-blur-sm transition-all duration-300 font-sans;
   }
   
   .project-card:hover {
@@ -104,7 +105,7 @@
   }
 
   .project-tech {
-    @apply text-xs text-slate-light;
+    @apply text-xs text-slate-light font-sans;
   }
   
   .timeline-entry {
