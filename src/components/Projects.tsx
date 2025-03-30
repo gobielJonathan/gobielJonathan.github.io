@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Folder, Github } from 'lucide-react';
+import { ExternalLink, Folder, Github, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
 
 const Projects = () => {
+  const [showAll, setShowAll] = useState(false);
+  
   const featuredProjects = [
     {
       title: "TalkToMe",
@@ -54,6 +57,8 @@ const Projects = () => {
       external: "https://aerium.example.com"
     }
   ];
+
+  const displayedProjects = showAll ? otherProjects : otherProjects.slice(0, 3);
 
   return (
     <section id="projects" className="py-20 px-6 lg:px-20">
@@ -143,7 +148,7 @@ const Projects = () => {
       <h3 className="text-center text-2xl font-semibold text-slate-light mb-10">Other Noteworthy Projects</h3>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {otherProjects.map((project, i) => (
+        {displayedProjects.map((project, i) => (
           <motion.div
             key={project.title}
             initial={{ opacity: 0, y: 20 }}
@@ -198,6 +203,18 @@ const Projects = () => {
           </motion.div>
         ))}
       </div>
+      
+      {!showAll && (
+        <div className="flex justify-center mt-12">
+          <Button 
+            onClick={() => setShowAll(true)}
+            className="group bg-transparent hover:bg-highlight/10 text-highlight border border-highlight px-7 py-5 rounded"
+          >
+            View Full Project Archive
+            <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+          </Button>
+        </div>
+      )}
     </section>
   );
 };

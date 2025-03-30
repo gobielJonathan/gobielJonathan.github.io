@@ -32,7 +32,7 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-3xl md:text-5xl lg:text-6xl font-bold text-slate mb-6"
         >
-          I build things for the web.
+          I build accessible, pixel-perfect digital experiences for the web.
         </motion.h2>
 
         <motion.p
@@ -41,7 +41,7 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="text-lg text-slate max-w-2xl mb-10"
         >
-          I'm a Web Software Engineer specializing in modern front-end technologies.
+          I'm a Front End Engineer specializing in modern front-end technologies.
           Currently focused on building exceptional web experiences at{' '}
           <a href="https://www.tokopedia.com" target="_blank" rel="noopener noreferrer" className="link-with-highlight">
             Tokopedia

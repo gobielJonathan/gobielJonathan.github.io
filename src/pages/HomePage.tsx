@@ -1,8 +1,38 @@
-import React from 'react';
+
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Instagram, AtSign, ExternalLink, Folder } from 'lucide-react';
 
 const HomePage = () => {
+  const [activeSection, setActiveSection] = useState('');
+  
+  useEffect(() => {
+    // Function to check which section is in viewport
+    const handleScroll = () => {
+      const sections = ['about', 'experience', 'projects'];
+      
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (!element) continue;
+        
+        const rect = element.getBoundingClientRect();
+        const isInView = rect.top <= 200 && rect.bottom >= 200;
+        
+        if (isInView) {
+          setActiveSection(section);
+          break;
+        }
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+  
   return (
     <div className="min-h-screen bg-navy-dark flex">
       {/* Left sidebar navigation */}
@@ -14,25 +44,46 @@ const HomePage = () => {
       >
         <div>
           <h1 className="text-5xl font-bold text-slate-light mb-1">Jonathan Gobiel</h1>
-          <h2 className="text-xl text-slate mb-10">Web Software Engineer</h2>
+          <h2 className="text-xl text-slate mb-10">Front End Engineer</h2>
           
           <nav className="mt-16">
             <ul className="space-y-6">
               <li>
-                <a href="#about" className="text-slate hover:text-highlight text-lg transition-colors flex items-center">
-                  <span className="w-8 h-[1px] bg-slate mr-4"></span>
+                <a 
+                  href="#about" 
+                  className={`text-lg transition-colors flex items-center ${
+                    activeSection === 'about' ? 'text-highlight' : 'text-slate hover:text-highlight'
+                  }`}
+                >
+                  <span className={`w-8 h-[1px] mr-4 ${
+                    activeSection === 'about' ? 'bg-highlight' : 'bg-slate'
+                  }`}></span>
                   ABOUT
                 </a>
               </li>
               <li>
-                <a href="#experience" className="text-slate hover:text-highlight text-lg transition-colors flex items-center">
-                  <span className="w-8 h-[1px] bg-slate mr-4"></span>
+                <a 
+                  href="#experience" 
+                  className={`text-lg transition-colors flex items-center ${
+                    activeSection === 'experience' ? 'text-highlight' : 'text-slate hover:text-highlight'
+                  }`}
+                >
+                  <span className={`w-8 h-[1px] mr-4 ${
+                    activeSection === 'experience' ? 'bg-highlight' : 'bg-slate'
+                  }`}></span>
                   EXPERIENCE
                 </a>
               </li>
               <li>
-                <a href="#projects" className="text-slate hover:text-highlight text-lg transition-colors flex items-center">
-                  <span className="w-8 h-[1px] bg-slate mr-4"></span>
+                <a 
+                  href="#projects" 
+                  className={`text-lg transition-colors flex items-center ${
+                    activeSection === 'projects' ? 'text-highlight' : 'text-slate hover:text-highlight'
+                  }`}
+                >
+                  <span className={`w-8 h-[1px] mr-4 ${
+                    activeSection === 'projects' ? 'bg-highlight' : 'bg-slate'
+                  }`}></span>
                   PROJECTS
                 </a>
               </li>
