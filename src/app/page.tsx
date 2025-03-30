@@ -1,7 +1,11 @@
+'use client'
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Instagram, AtSign, ExternalLink, Folder } from 'lucide-react';
+
+const sections = ['about', 'experience', 'projects'];
+
 
 const HomePage = () => {
   const [activeSection, setActiveSection] = useState('');
@@ -9,7 +13,6 @@ const HomePage = () => {
   useEffect(() => {
     // Function to check which section is in viewport
     const handleScroll = () => {
-      const sections = ['about', 'experience', 'projects'];
       
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -51,12 +54,12 @@ const HomePage = () => {
               <li>
                 <a 
                   href="#about" 
-                  className={`text-lg transition-colors flex items-center ${
+                  className={`text-lg transition-colors flex items-center group ${
                     activeSection === 'about' ? 'text-highlight' : 'text-slate hover:text-highlight'
                   }`}
                 >
-                  <span className={`w-8 h-[1px] mr-4 ${
-                    activeSection === 'about' ? 'bg-highlight' : 'bg-slate'
+                  <span className={`w-8 h-[1px] mr-4 line transition-all group-hover:!w-14 group-hover:bg-highlight ${
+                    activeSection === 'about' ? 'bg-highlight !w-14' : 'bg-slate'
                   }`}></span>
                   ABOUT
                 </a>
@@ -64,12 +67,12 @@ const HomePage = () => {
               <li>
                 <a 
                   href="#experience" 
-                  className={`text-lg transition-colors flex items-center ${
+                  className={`text-lg transition-colors flex items-center group ${
                     activeSection === 'experience' ? 'text-highlight' : 'text-slate hover:text-highlight'
                   }`}
                 >
-                  <span className={`w-8 h-[1px] mr-4 ${
-                    activeSection === 'experience' ? 'bg-highlight' : 'bg-slate'
+                  <span className={`w-8 h-[1px]  mr-4 group-hover:!w-14 group-hover:bg-highlight transition-all ${
+                    activeSection === 'experience' ? 'bg-highlight !w-14' : 'bg-slate'
                   }`}></span>
                   EXPERIENCE
                 </a>
@@ -77,12 +80,12 @@ const HomePage = () => {
               <li>
                 <a 
                   href="#projects" 
-                  className={`text-lg transition-colors flex items-center ${
+                  className={`text-lg transition-colors flex items-center group ${
                     activeSection === 'projects' ? 'text-highlight' : 'text-slate hover:text-highlight'
                   }`}
                 >
-                  <span className={`w-8 h-[1px] mr-4 ${
-                    activeSection === 'projects' ? 'bg-highlight' : 'bg-slate'
+                  <span className={`w-8 h-[1px]  mr-4 group-hover:!w-14 group-hover:bg-highlight transition-all ${
+                    activeSection === 'projects' ? 'bg-highlight !w-14' : 'bg-slate'
                   }`}></span>
                   PROJECTS
                 </a>
@@ -162,7 +165,7 @@ const HomePage = () => {
             
             <p className="text-lg text-slate mb-6">
               In the past, I've had the opportunity to develop software across a variety 
-              of settings — from my work at <a href="#" className="text-highlight">Bina Nusantara University</a> where 
+              of settings — from my work at <a href="https://binus.ac.id/" className="text-highlight">Bina Nusantara University</a> where 
               I enhanced existing web and mobile applications, focusing on performance optimization
               and modernizing legacy systems.
             </p>
@@ -228,7 +231,7 @@ const HomePage = () => {
                   Research and Development Team
                   <span className="text-highlight mx-2">·</span> 
                   Bina Nusantara University
-                  <a href="#" className="ml-2 text-slate hover:text-highlight">
+                  <a href="https://binus.ac.id/" className="ml-2 text-slate hover:text-highlight">
                     <ExternalLink className="h-4 w-4" />
                   </a>
                 </h3>
@@ -281,7 +284,7 @@ const HomePage = () => {
                   <a href="https://github.com/gobielJonathan/TalkToMe" target="_blank" rel="noopener noreferrer" className="text-slate hover:text-highlight">
                     <Github className="h-5 w-5" />
                   </a>
-                  <a href="#" target="_blank" rel="noopener noreferrer" className="text-slate hover:text-highlight">
+                  <a href="https://talktome.up.railway.app/" target="_blank" rel="noopener noreferrer" className="text-slate hover:text-highlight">
                     <ExternalLink className="h-5 w-5" />
                   </a>
                 </div>
@@ -299,10 +302,7 @@ const HomePage = () => {
                 <h3 className="text-xl text-slate-light">Kleveru</h3>
                 <div className="h-[1px] flex-1 bg-navy-light mx-4"></div>
                 <div className="flex gap-3">
-                  <a href="https://github.com/gobielJonathan/Kleveru" target="_blank" rel="noopener noreferrer" className="text-slate hover:text-highlight">
-                    <Github className="h-5 w-5" />
-                  </a>
-                  <a href="#" target="_blank" rel="noopener noreferrer" className="text-slate hover:text-highlight">
+                  <a href="https://kleveru.co.id/" target="_blank" rel="noopener noreferrer" className="text-slate hover:text-highlight">
                     <ExternalLink className="h-5 w-5" />
                   </a>
                 </div>
@@ -320,10 +320,7 @@ const HomePage = () => {
                 <h3 className="text-xl text-slate-light">Fita</h3>
                 <div className="h-[1px] flex-1 bg-navy-light mx-4"></div>
                 <div className="flex gap-3">
-                  <a href="https://github.com/gobielJonathan/Fita" target="_blank" rel="noopener noreferrer" className="text-slate hover:text-highlight">
-                    <Github className="h-5 w-5" />
-                  </a>
-                  <a href="#" target="_blank" rel="noopener noreferrer" className="text-slate hover:text-highlight">
+                  <a href="https://fita.co.id/" target="_blank" rel="noopener noreferrer" className="text-slate hover:text-highlight">
                     <ExternalLink className="h-5 w-5" />
                   </a>
                 </div>
@@ -332,7 +329,6 @@ const HomePage = () => {
               <div className="flex flex-wrap gap-2">
                 <span className="text-xs text-highlight font-mono">Next.js</span>
                 <span className="text-xs text-highlight font-mono">TailwindCSS</span>
-                <span className="text-xs text-highlight font-mono">Firebase</span>
               </div>
             </div>
             
@@ -341,10 +337,7 @@ const HomePage = () => {
                 <div className="flex justify-between items-start mb-4">
                   <Folder className="h-10 w-10 text-highlight" />
                   <div className="flex gap-3">
-                    <a href="https://github.com/gobielJonathan/Sense" target="_blank" rel="noopener noreferrer" className="text-slate hover:text-highlight">
-                      <Github className="h-4 w-4" />
-                    </a>
-                    <a href="#" target="_blank" rel="noopener noreferrer" className="text-slate hover:text-highlight">
+                    <a href="https://www.sensehospitality.id/" target="_blank" rel="noopener noreferrer" className="text-slate hover:text-highlight">
                       <ExternalLink className="h-4 w-4" />
                     </a>
                   </div>
@@ -354,7 +347,6 @@ const HomePage = () => {
                 <div className="flex flex-wrap gap-2">
                   <span className="text-xs text-slate-light">React.js</span>
                   <span className="text-xs text-slate-light">Node.js</span>
-                  <span className="text-xs text-slate-light">MongoDB</span>
                 </div>
               </div>
               
@@ -362,10 +354,7 @@ const HomePage = () => {
                 <div className="flex justify-between items-start mb-4">
                   <Folder className="h-10 w-10 text-highlight" />
                   <div className="flex gap-3">
-                    <a href="https://github.com/gobielJonathan/BrcDepo" target="_blank" rel="noopener noreferrer" className="text-slate hover:text-highlight">
-                      <Github className="h-4 w-4" />
-                    </a>
-                    <a href="#" target="_blank" rel="noopener noreferrer" className="text-slate hover:text-highlight">
+                    <a href="https://www.brcdepo.com/" target="_blank" rel="noopener noreferrer" className="text-slate hover:text-highlight">
                       <ExternalLink className="h-4 w-4" />
                     </a>
                   </div>
@@ -383,10 +372,7 @@ const HomePage = () => {
                 <div className="flex justify-between items-start mb-4">
                   <Folder className="h-10 w-10 text-highlight" />
                   <div className="flex gap-3">
-                    <a href="https://github.com/gobielJonathan/Aerium" target="_blank" rel="noopener noreferrer" className="text-slate hover:text-highlight">
-                      <Github className="h-4 w-4" />
-                    </a>
-                    <a href="#" target="_blank" rel="noopener noreferrer" className="text-slate hover:text-highlight">
+                    <a href="https://www.aerium-residences.com/" target="_blank" rel="noopener noreferrer" className="text-slate hover:text-highlight">
                       <ExternalLink className="h-4 w-4" />
                     </a>
                   </div>
