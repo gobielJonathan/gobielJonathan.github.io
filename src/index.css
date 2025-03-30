@@ -43,6 +43,10 @@
   * {
     @apply border-border;
   }
+  
+  html {
+    @apply scroll-smooth;
+  }
 
   body {
     @apply bg-navy-dark text-slate font-sans;
@@ -92,18 +96,22 @@
   }
 
   .project-card {
-    @apply relative border border-navy rounded-lg p-6 bg-navy/60 backdrop-blur-sm transition-all duration-300;
+    @apply relative border border-navy rounded-lg bg-navy/60 backdrop-blur-sm transition-all duration-300;
   }
   
   .project-card:hover {
     @apply border-highlight/30 shadow-[0_0_15px_rgba(100,255,218,0.1)];
   }
 
-  .project-card-link {
-    @apply absolute inset-0 z-0;
-  }
-
   .project-tech {
     @apply text-xs text-slate-light;
+  }
+  
+  .timeline-entry {
+    @apply transition-all duration-300;
+  }
+  
+  .project-entry {
+    @apply hover:transform hover:translate-x-2 transition-all duration-300;
   }
 }

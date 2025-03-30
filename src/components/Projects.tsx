@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Folder, GitHub } from 'lucide-react';
+import { ExternalLink, Folder, Github } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const Projects = () => {
@@ -124,7 +123,7 @@ const Projects = () => {
                   className="text-slate-light hover:text-highlight transition-colors"
                   aria-label={`${project.title} GitHub Repository`}
                 >
-                  <GitHub className="h-5 w-5" />
+                  <Github className="h-5 w-5" />
                 </a>
                 <a 
                   href={project.external}
@@ -171,7 +170,7 @@ const Projects = () => {
                   className="text-slate-light hover:text-highlight transition-colors z-10"
                   aria-label={`${project.title} GitHub Repository`}
                 >
-                  <GitHub className="h-5 w-5" />
+                  <Github className="h-5 w-5" />
                 </a>
                 <a 
                   href={project.external}

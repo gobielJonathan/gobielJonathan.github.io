@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { GitHub, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 
 const SocialSidebar = () => {
   return (
@@ -18,7 +18,7 @@ const SocialSidebar = () => {
         className="text-slate hover:text-highlight transition-colors hover:-translate-y-1"
         aria-label="GitHub Profile"
       >
-        <GitHub className="h-5 w-5" />
+        <Github className="h-5 w-5" />
       </a>
       
       <a 
