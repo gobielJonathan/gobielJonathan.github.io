@@ -61,7 +61,7 @@ const Experience = () => {
           {experiences.map((exp) => (
             <TabsContent key={exp.id} value={exp.id} className="animate-slide-in">
               <div>
-                <h3 className="text-xl font-semibold text-slate-light">
+                <h3 className="text-xl font-semibold text-slate-light font-sans">
                   {exp.role}{' '}
                   <span className="text-highlight">@ {exp.company}</span>
                 </h3>
@@ -77,7 +77,7 @@ const Experience = () => {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: 0.1 * i }}
-                      className="flex"
+                      className="flex font-sans"
                     >
                       <ChevronRight className="h-5 w-5 text-highlight flex-shrink-0 mr-2" />
                       <span>{item}</span>
@@ -99,9 +99,9 @@ const Experience = () => {
       >
         <div className="relative pl-10 timeline-item">
           <div className="timeline-dot"></div>
-          <h3 className="text-lg font-semibold text-slate-light">Computer Science</h3>
-          <p className="text-sm text-slate-light">Bina Nusantara University</p>
-          <p className="text-sm text-slate mt-1">Education</p>
+          <h3 className="text-lg font-semibold text-slate-light font-sans">Computer Science</h3>
+          <p className="text-sm text-slate-light font-sans">Bina Nusantara University</p>
+          <p className="text-sm text-slate mt-1 font-sans">Education</p>
         </div>
       </motion.div>
     </section>

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, Phone } from 'lucide-react';
@@ -21,7 +22,7 @@ const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="text-3xl font-semibold text-slate-light mb-4"
+          className="text-3xl font-semibold text-slate-light mb-4 font-sans"
         >
           Let's Connect
         </motion.h3>
@@ -31,7 +32,7 @@ const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="text-slate mb-8"
+          className="text-slate mb-8 font-sans"
         >
           I'm currently looking for new opportunities and my inbox is always open.
           Whether you have a question, job opportunity, or just want to say hello,
@@ -46,7 +47,7 @@ const Contact = () => {
           className="mb-12"
         >
           <a href="mailto:jonathangobiel13@gmail.com">
-            <Button className="bg-transparent hover:bg-highlight/10 text-highlight border border-highlight px-7 py-5 rounded">
+            <Button className="bg-transparent hover:bg-highlight/10 text-highlight border border-highlight px-7 py-5 rounded font-sans">
               Say Hello
             </Button>
           </a>
@@ -61,7 +62,7 @@ const Contact = () => {
         >
           <a 
             href="mailto:jonathangobiel13@gmail.com" 
-            className="flex items-center gap-2 text-slate hover:text-highlight transition-colors"
+            className="flex items-center gap-2 text-slate hover:text-highlight transition-colors font-sans"
           >
             <Mail className="h-5 w-5" />
             <span>jonathangobiel13@gmail.com</span>
@@ -69,7 +70,7 @@ const Contact = () => {
           
           <a 
             href="tel:+6282261976970" 
-            className="flex items-center gap-2 text-slate hover:text-highlight transition-colors"
+            className="flex items-center gap-2 text-slate hover:text-highlight transition-colors font-sans"
           >
             <Phone className="h-5 w-5" />
             <span>+62 82261976970</span>
@@ -81,7 +82,7 @@ const Contact = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
-          className="mt-10 flex justify-center gap-8"
+          className="flex justify-center gap-8"
         >
           <a 
             href="https://github.com/gobielJonathan" 

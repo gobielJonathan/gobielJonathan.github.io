@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -72,7 +73,7 @@ const Navbar = () => {
               rel="noopener noreferrer"
               className="inline-flex"
             >
-              <Button variant="outline" className="border-highlight text-highlight hover:bg-highlight/10">
+              <Button variant="outline" className="border-highlight text-highlight hover:bg-highlight/10 font-sans">
                 <FileText className="mr-2 h-4 w-4" />
                 Resume
               </Button>
@@ -82,7 +83,7 @@ const Navbar = () => {
         
         <div className="md:hidden flex items-center">
           {/* Mobile menu button would go here */}
-          <Button variant="ghost" size="icon" className="text-slate hover:text-highlight">
+          <Button variant="ghost" size="icon" className="text-slate hover:text-highlight font-sans">
             <span className="sr-only">Open menu</span>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
