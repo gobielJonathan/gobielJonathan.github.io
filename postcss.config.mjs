@@ -1,5 +1,8 @@
+/** @type {import('postcss-load-config').Config} */
 const config = {
-  plugins: ["@tailwindcss/postcss", "tailwindcss-animate"],
+  plugins: {
+    tailwindcss: {},
+  },
 };
 
 export default config;
