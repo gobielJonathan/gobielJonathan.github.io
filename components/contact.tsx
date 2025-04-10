@@ -106,7 +106,7 @@ export default function Contact() {
                       <Input
                         type="text"
                         name="name"
-                        placeholder="Your Name"
+                        placeholder="Jonathan Gobiel"
                         value={formData.name}
                         onChange={handleChange}
                         required

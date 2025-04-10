@@ -7,60 +7,99 @@ import { ExternalLink, Github } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useMobile } from "@/hooks/use-mobile"
 
-// Sample project data
 const projects = [
   {
     id: 1,
-    title: "E-commerce Platform",
-    category: "Web Development",
-    image: "/placeholder.svg?height=400&width=600",
-    description: "A full-featured e-commerce platform built with Next.js, Tailwind CSS, and Stripe integration.",
-    technologies: ["Next.js", "React", "Tailwind CSS", "Stripe", "MongoDB"],
-    liveUrl: "#",
-    githubUrl: "#",
+    title: "TalkToMe",
+    image: "/talktome-icon.png",
+    description: "web application designed to replicate the functionality of Google Meet",
+    technologies: ["Next.js", "React", "Tailwind CSS", 'WebRTC', 'Socket.io'],
+    liveUrl: "https://talktome.up.railway.app/",
+    githubUrl: "https://github.com/gobielJonathan/talktome/",
   },
   {
     id: 2,
-    title: "Task Management App",
-    category: "Web Application",
-    image: "/placeholder.svg?height=400&width=600",
-    description: "A task management application with drag-and-drop functionality and real-time updates.",
-    technologies: ["React", "Node.js", "Express", "Socket.io", "PostgreSQL"],
-    liveUrl: "#",
-    githubUrl: "#",
+    title: "Crowde",
+    image: "/crowde.webp",
+    description: "A system that manages schedules and survey locations.",
+    technologies: ["React", "Golang"],
+    liveUrl: "https://www.crowde.co/",
+    githubUrl: "",
   },
   {
     id: 3,
-    title: "Portfolio Website",
-    category: "Web Design",
-    image: "/placeholder.svg?height=400&width=600",
-    description: "A modern portfolio website with animations and responsive design.",
-    technologies: ["Next.js", "Framer Motion", "Tailwind CSS", "Three.js"],
-    liveUrl: "#",
+    title: "Cubes",
+    image: "/cubes.webp",
+    description: "A system that operates in the field of accounting management training.",
+    technologies: ["Next.js", "Laravel"],
+    liveUrl: "https://cubes.crmsindonesia.org/login?return_url=/",
     githubUrl: "#",
   },
   {
     id: 4,
-    title: "Weather Dashboard",
-    category: "Web Application",
-    image: "/placeholder.svg?height=400&width=600",
-    description: "A weather dashboard that displays current and forecasted weather data.",
-    technologies: ["React", "OpenWeather API", "Chart.js", "Tailwind CSS"],
-    liveUrl: "#",
+    title: "Inaskills",
+    image: "/kemnaker.webp",
+    description: "A system that operates in the field of competitions used by the Ministry of Manpower.",
+    technologies: ["Jquery", "Laravel", "MySQL", "Bootstrap"],
+    liveUrl: "https://inaskills.kemnaker.go.id/",
+    githubUrl: "#",
+  },
+  {
+    id: 5,
+    title: "Kleveru",
+    image: "/kleveru.webp",
+    description: "A system that operates in the field of beauty.",
+    technologies: ["Next.js", "Laravel", "MySQL", "Bootstrap"],
+    liveUrl: "https://inaskills.kemnaker.go.id/",
+    githubUrl: "#",
+  },
+
+  {
+    id:6,
+    title: "Sense",
+    image: "/sense.webp",
+    description: "A system that manages laundry.",
+    technologies: ["React", "Golang"],
+    liveUrl: "https://www.sensehospitality.id/",
+    githubUrl: "#",
+  },
+
+  {
+    id: 7,
+    title: "Fita",
+    image: "/fita.png",
+    description: "A health application with comprehensive features and programs to help you start living a healthy life.",
+    technologies: ["Tailwind CSS", "Next.js"],
+    liveUrl: "https://fita.co.id/",
+    githubUrl: "#",
+  },
+
+
+  {
+    id: 8,
+    title: "Brc Depo",
+    image: "/brc-depo.png",
+    description: "An application for selling household equipment.",
+    technologies: ["Next.js", "Tailwind CSS", "PostgreSQL"],
+    liveUrl: "https://brcdepo.com/",
+    githubUrl: "#",
+  },
+
+  {
+    id: 9,
+    title: "Aerium",
+    image: "/aerium.svg",
+    description: "Residence Landing Page",
+    technologies: ["Next.js", "Tailwind CSS", "Shadcn/ui"],
+    liveUrl: "https://www.aerium-residences.com/",
     githubUrl: "#",
   },
 ]
-
-// Categories for filtering
-const categories = ["All", "Web Development", "Web Application", "Web Design"]
 
 export default function Projects() {
   const [activeCategory, setActiveCategory] = useState("All")
   const [hoveredProject, setHoveredProject] = useState<number | null>(null)
   const isMobile = useMobile()
-
-  const filteredProjects =
-    activeCategory === "All" ? projects : projects.filter((project) => project.category === activeCategory)
 
   return (
     <section id="projects" className="py-24">
@@ -79,28 +118,8 @@ export default function Projects() {
           </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex flex-wrap gap-3 mb-12"
-        >
-          {categories.map((category) => (
-            <Button
-              key={category}
-              variant={activeCategory === category ? "default" : "outline"}
-              onClick={() => setActiveCategory(category)}
-              className="transition-all duration-300"
-              size="sm"
-            >
-              {category}
-            </Button>
-          ))}
-        </motion.div>
-
         <div className="grid gap-8">
-          {filteredProjects.map((project, index) => (
+          {projects.map((project, index) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 20 }}
@@ -119,7 +138,7 @@ export default function Projects() {
                     src={project.image || "/placeholder.svg"}
                     alt={project.title}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="object-contain transition-transform duration-500 group-hover:scale-105"
                   />
                   <div
                     className={`absolute inset-0 bg-primary/80 flex items-center justify-center gap-4 transition-opacity duration-300 ${
@@ -131,18 +150,15 @@ export default function Projects() {
                         <ExternalLink className="h-5 w-5" />
                       </a>
                     </Button>
-                    <Button size="icon" variant="secondary" asChild>
+                    { Boolean(project.githubUrl) && <Button size="icon" variant="secondary" asChild>
                       <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                         <Github className="h-5 w-5" />
                       </a>
-                    </Button>
+                    </Button>}
                   </div>
                 </div>
                 <div>
                   <div className="mb-2">
-                    <span className="text-xs font-medium px-2 py-1 bg-primary/10 text-primary rounded-full">
-                      {project.category}
-                    </span>
                   </div>
                   <h3 className="text-xl font-bold mb-2">{project.title}</h3>
                   <p className="text-muted-foreground mb-4">{project.description}</p>
@@ -159,20 +175,6 @@ export default function Projects() {
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="text-center mt-12"
-        >
-          <Button variant="outline" asChild>
-            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
-              <Github className="mr-2 h-4 w-4" />
-              View More on GitHub
-            </a>
-          </Button>
-        </motion.div>
       </div>
     </section>
   )

@@ -82,7 +82,7 @@ export default function Sidebar() {
   const renderSocialLinks = () => (
     <div className="flex space-x-3">
       <a
-        href="https://github.com/yourusername"
+        href="https://github.com/gobielJonathan/"
         target="_blank"
         rel="noopener noreferrer"
         className="text-muted-foreground hover:text-foreground transition-colors"
@@ -93,7 +93,7 @@ export default function Sidebar() {
         </svg>
       </a>
       <a
-        href="https://linkedin.com/in/yourusername"
+        href="https://www.linkedin.com/in/jonathan-gobiel/"
         target="_blank"
         rel="noopener noreferrer"
         className="text-muted-foreground hover:text-foreground transition-colors"
@@ -104,7 +104,7 @@ export default function Sidebar() {
         </svg>
       </a>
       <a
-        href="https://twitter.com/yourusername"
+        href="https://x.com/gobiel__"
         target="_blank"
         rel="noopener noreferrer"
         className="text-muted-foreground hover:text-foreground transition-colors"
@@ -133,9 +133,9 @@ export default function Sidebar() {
               <div className="px-2 py-6">
                 <div className="mb-10">
                   <Link href="/" className="text-2xl font-bold">
-                    YourName
+                    Jonathan Gobiel
                   </Link>
-                  <p className="text-sm text-muted-foreground mt-2">Full Stack Developer & Designer</p>
+                  <p className="text-sm text-muted-foreground mt-2">Full Stack Developer</p>
                 </div>
                 {renderNavItems()}
                 <div className="mt-auto pt-6 border-t border-border mt-6">
@@ -150,14 +150,14 @@ export default function Sidebar() {
                       {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
                     </Button>
                   </div>
-                  <div className="mt-4 text-xs text-muted-foreground">© {new Date().getFullYear()} Your Name</div>
+                  <div className="mt-4 text-xs text-muted-foreground">© {new Date().getFullYear()} Jonathan Gobiel</div>
                 </div>
               </div>
             </SheetContent>
           </Sheet>
           <div className="ml-4">
             <Link href="/" className="text-xl font-bold">
-              YourName
+              Jonathan Gobiel
             </Link>
           </div>
           <div className="ml-auto">
@@ -187,9 +187,9 @@ export default function Sidebar() {
           className="mb-10"
         >
           <Link href="/" className="text-2xl font-bold">
-            YourName
+            Jonathan Gobiel
           </Link>
-          <p className="text-sm text-muted-foreground mt-2">Full Stack Developer & Designer</p>
+          <p className="text-sm text-muted-foreground mt-2">Full Stack Developer</p>
         </motion.div>
 
         {renderNavItems()}
@@ -207,7 +207,7 @@ export default function Sidebar() {
             {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
           </Button>
         </div>
-        <div className="mt-4 text-xs text-muted-foreground">© {new Date().getFullYear()} Your Name</div>
+        <div className="mt-4 text-xs text-muted-foreground">© {new Date().getFullYear()} Jonathan Gobiel</div>
       </div>
     </aside>
   )

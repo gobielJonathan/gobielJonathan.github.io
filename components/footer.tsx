@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
             <Link href="/" className="text-2xl font-bold">
-              YourName
+              Jonathan Gobiel
             </Link>
             <p className="text-muted-foreground mt-2 max-w-md">
               A passionate Full Stack Developer specializing in building exceptional digital experiences.
@@ -24,7 +24,7 @@ export default function Footer() {
             >
               <ArrowUp className="h-5 w-5" />
             </Link>
-            <p className="text-muted-foreground text-sm">© {currentYear} Your Name. All rights reserved.</p>
+            <p className="text-muted-foreground text-sm">© {currentYear} Jonathan Gobiel. All rights reserved.</p>
           </div>
         </div>
       </div>

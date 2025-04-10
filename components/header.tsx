@@ -39,7 +39,7 @@ export default function Header() {
       <div className="container mx-auto px-4 flex justify-between items-center">
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
           <Link href="/" className="text-2xl font-bold">
-            YourName
+            Jonathan Gobiel
           </Link>
         </motion.div>
 

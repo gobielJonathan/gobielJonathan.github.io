@@ -8,23 +8,22 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Your Name | Portfolio",
-  description: "Professional portfolio showcasing my work and skills as a developer/designer",
-  keywords: ["portfolio", "developer", "designer", "web development", "frontend", "backend"],
+  title: "Jonathan Gobiel | Portfolio",
+  description: "Professional portfolio showcasing my work and skills as a fullstack developer",
+  keywords: ["portfolio", "developer", "fullstack developer", "web development", "frontend", "backend"],
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://yourportfolio.com",
-    title: "Your Name | Portfolio",
-    description: "Professional portfolio showcasing my work and skills as a developer/designer",
-    siteName: "Your Name Portfolio",
+    url: "https://www.gobiel.online/",
+    title: "Jonathan Gobiel | Portfolio",
+    description: "Professional portfolio showcasing my work and skills as a fullstack developer",
+    siteName: "Jonathan Gobiel Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Your Name | Portfolio",
-    description: "Professional portfolio showcasing my work and skills as a developer/designer",
+    title: "Jonathan Gobiel | Portfolio",
+    description: "Professional portfolio showcasing my work and skills as a fullstack developer",
   },
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({

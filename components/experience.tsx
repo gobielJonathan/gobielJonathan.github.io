@@ -1,38 +1,72 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { BriefcaseBusiness, Calendar } from "lucide-react"
+import { motion } from "framer-motion";
+import { BriefcaseBusiness, Calendar } from "lucide-react";
 
 // Sample experience data
 const experiences = [
   {
     id: 1,
-    company: "Tech Innovators Inc.",
-    position: "Senior Frontend Developer",
-    period: "Jan 2022 - Present",
-    description:
-      "Led the development of the company's flagship product, improving performance by 40%. Mentored junior developers and implemented modern frontend practices.",
-    technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+    company: "Tokopedia Inc.",
+    position: "Software Engineer Web Platform",
+    period: "Sept 2021 - Present",
+    description: (
+      <>
+        <ul className="list-decimal ml-5">
+          <li>
+            <h4>Contribute features into our javascrit framework</h4>
+            <ol className="list-disc ml-4">
+              <li>Launched automation report before release</li>
+              <li>Launched bundle size checker in PR before merge</li>
+              <li>
+                Achieved seamless migration from tokopeda into tiktok ecosystem
+              </li>
+            </ol>
+          </li>
+
+          <li>
+            <h4>Migrate web tokopedia service into tiktok ecosystem</h4>
+            <ol className="list-disc ml-4">
+              <li>Launched automation report before release</li>
+              <li>Launched bundle size checker in PR before merge</li>
+              <li>
+                Achieved seamless migration from tokopeda into tiktok ecosystem
+              </li>
+            </ol>
+          </li>
+        </ul>
+      </>
+    ),
+    technologies: ["React","Next.js",  "Docker", 'Graphql',  "TypeScript", "Tailwind CSS"],
   },
   {
     id: 2,
-    company: "Digital Solutions Ltd.",
-    position: "Full Stack Developer",
-    period: "Mar 2019 - Dec 2021",
+    company: "Bina Nusantara Inc.",
+    position: "Research & Developement Team",
+    period: "Sept 2019 - Sept 2021",
     description:
-      "Developed and maintained multiple client projects. Implemented responsive designs and integrated various APIs. Worked in an agile team environment.",
-    technologies: ["React", "Node.js", "Express", "MongoDB", "SCSS"],
+      <ol className="list-disc ml-5">
+        <li>Improved existing web application and mobile development</li>
+        <li>Transformed hiring web app from jQuery template into Nextjs</li>
+        <li>Transformed teaching assistant web app from asp.net into Nextjs</li>
+        <li>Mentor teaching assistant in Research Development Phase</li>
+      </ol>,
+    technologies: ['C# Web API','ReactJS','Angular','Laravel','IIS','SQL Server','Java','Flutter',]
   },
   {
     id: 3,
-    company: "WebCraft Agency",
-    position: "Junior Web Developer",
-    period: "Jun 2017 - Feb 2019",
+    company: "Bina Nusantara Inc.",
+    position: "Teaching Assistant",
+    period: "Jun 2018 - Sept 2019",
     description:
-      "Built and maintained websites for various clients. Collaborated with designers to implement pixel-perfect designs. Improved site performance and SEO.",
-    technologies: ["JavaScript", "HTML", "CSS", "WordPress", "PHP"],
+      <ol className="list-disc ml-5">
+        <li>Progressive tests (projects) for assistant Game, Analysis, Web, Network, Mobile</li>
+        <li>Practicum teaching (Algorithm, Database, Multimedia, Security, Web)</li>
+        <li>Answer marking</li>
+      </ol>,
+    technologies: ["C#", "PHP (Laravel)", "CSS", "PHP"],
   },
-]
+];
 
 export default function Experience() {
   return (
@@ -59,7 +93,7 @@ export default function Experience() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="relative"
             >
-              <div className="absolute -left-[41px] bg-background p-1 border-2 border-muted rounded-full">
+              <div className="absolute -left-[48px] bg-background p-1 border-2 border-muted rounded-full">
                 <BriefcaseBusiness className="h-5 w-5 text-primary" />
               </div>
 
@@ -75,11 +109,14 @@ export default function Experience() {
                   </div>
                 </div>
 
-                <p className="text-muted-foreground mb-4">{exp.description}</p>
+                <div className="text-muted-foreground mb-4">{exp.description}</div>
 
                 <div className="flex flex-wrap gap-2">
                   {exp.technologies.map((tech) => (
-                    <span key={tech} className="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full">
+                    <span
+                      key={tech}
+                      className="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full"
+                    >
                       {tech}
                     </span>
                   ))}
@@ -90,6 +127,5 @@ export default function Experience() {
         </div>
       </div>
     </section>
-  )
+  );
 }
-

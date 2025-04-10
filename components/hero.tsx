@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import { ArrowDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useMobile } from "@/hooks/use-mobile"
+import Link from "next/link"
 
 export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -98,7 +99,7 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
           className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6"
         >
-          Hi, I'm <span className="text-primary">Your Name</span>
+          Hi, I'm <span className="text-primary">Gobiel 👋</span>
         </motion.h1>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -106,7 +107,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-xl sm:text-2xl md:text-3xl font-medium mb-8 text-muted-foreground max-w-2xl"
         >
-          Full Stack Developer & Designer creating modern digital experiences
+          Full Stack Developer creating modern digital experiences
         </motion.h2>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -114,8 +115,12 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="flex flex-wrap gap-4"
         >
+          <Link href={'#projects'}>
           <Button size={isMobile ? "default" : "lg"}>View My Work</Button>
-          <Button size={isMobile ? "default" : "lg"} variant="outline">
+          </Link>
+          <Button size={isMobile ? "default" : "lg"} variant="outline" onClick={() => {
+            window.open("https://drive.google.com/file/d/1a1-wxCLWo7g_69liq2J3YrXAMpy06GnA/view", "_blank")
+          }}>
             Download CV
           </Button>
         </motion.div>
