@@ -26,44 +26,60 @@ const experiences = [
 
           <li>
             <h4>Migrate web tokopedia service into tiktok ecosystem</h4>
-            <ol className="list-disc ml-4">
-              <li>Launched automation report before release</li>
-              <li>Launched bundle size checker in PR before merge</li>
-              <li>
-                Achieved seamless migration from tokopeda into tiktok ecosystem
-              </li>
-            </ol>
           </li>
         </ul>
       </>
     ),
-    technologies: ["React","Next.js",  "Docker", 'Graphql',  "TypeScript", "Tailwind CSS"],
+    technologies: [
+      "React",
+      "Next.js",
+      "Docker",
+      "Graphql",
+      "TypeScript",
+      "Tailwind CSS",
+    ],
   },
   {
     id: 2,
     company: "Bina Nusantara Inc.",
     position: "Research & Developement Team",
     period: "Sept 2019 - Sept 2021",
-    description:
+    description: (
       <ol className="list-disc ml-5">
         <li>Improved existing web application and mobile development</li>
         <li>Transformed hiring web app from jQuery template into Nextjs</li>
         <li>Transformed teaching assistant web app from asp.net into Nextjs</li>
         <li>Mentor teaching assistant in Research Development Phase</li>
-      </ol>,
-    technologies: ['C# Web API','ReactJS','Angular','Laravel','IIS','SQL Server','Java','Flutter',]
+      </ol>
+    ),
+    technologies: [
+      "C# Web API",
+      "ReactJS",
+      "Angular",
+      "Laravel",
+      "IIS",
+      "SQL Server",
+      "Java",
+      "Flutter",
+    ],
   },
   {
     id: 3,
     company: "Bina Nusantara Inc.",
     position: "Teaching Assistant",
     period: "Jun 2018 - Sept 2019",
-    description:
+    description: (
       <ol className="list-disc ml-5">
-        <li>Progressive tests (projects) for assistant Game, Analysis, Web, Network, Mobile</li>
-        <li>Practicum teaching (Algorithm, Database, Multimedia, Security, Web)</li>
+        <li>
+          Progressive tests (projects) for assistant Game, Analysis, Web,
+          Network, Mobile
+        </li>
+        <li>
+          Practicum teaching (Algorithm, Database, Multimedia, Security, Web)
+        </li>
         <li>Answer marking</li>
-      </ol>,
+      </ol>
+    ),
     technologies: ["C#", "PHP (Laravel)", "CSS", "PHP"],
   },
 ];
@@ -109,7 +125,9 @@ export default function Experience() {
                   </div>
                 </div>
 
-                <div className="text-muted-foreground mb-4">{exp.description}</div>
+                <div className="text-muted-foreground mb-4">
+                  {exp.description}
+                </div>
 
                 <div className="flex flex-wrap gap-2">
                   {exp.technologies.map((tech) => (
