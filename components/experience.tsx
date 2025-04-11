@@ -12,22 +12,14 @@ const experiences = [
     period: "Sept 2021 - Present",
     description: (
       <>
-        <ul className="list-decimal ml-5">
-          <li>
-            <h4>Contribute features into our javascrit framework</h4>
-            <ol className="list-disc ml-4">
-              <li>Launched automation report before release</li>
-              <li>Launched bundle size checker in PR before merge</li>
-              <li>
-                Achieved seamless migration from tokopeda into tiktok ecosystem
-              </li>
-            </ol>
-          </li>
-
-          <li>
-            <h4>Migrate web tokopedia service into tiktok ecosystem</h4>
-          </li>
-        </ul>
+        <ul className="list-disc ml-5">
+        <li>Implementing automation reporting prior to release, ensuring seamless quality control.</li>
+<li>Introducing a bundle size checker in PRs before merges, optimizing performance.</li>
+<li>Leading the smooth migration of the Tokopedia web platform into the TikTok ecosystem.</li>
+<li>Achieving a 90% reduction in build time during development, enhancing the developer experience.</li>
+<li>Standardizing the use of i18n across the Tokopedia web platform ecosystem to support internationalization.</li>
+<li>Migrating Tokopedia Web Services into the TikTok ecosystem, ensuring platform compatibility and operational continuity.</li>
+</ul>
       </>
     ),
     technologies: [
@@ -46,10 +38,10 @@ const experiences = [
     period: "Sept 2019 - Sept 2021",
     description: (
       <ol className="list-disc ml-5">
-        <li>Improved existing web application and mobile development</li>
-        <li>Transformed hiring web app from jQuery template into Nextjs</li>
-        <li>Transformed teaching assistant web app from asp.net into Nextjs</li>
-        <li>Mentor teaching assistant in Research Development Phase</li>
+       <li>Led enhancements to existing web and mobile applications, focusing on performance optimization and modernizing legacy systems.</li>
+<li>Redesigned the Hiring Web Application by migrated the platform from a jQuery-based template to a modern, high-performing Next.js architecture.</li>
+<li>Revamped the Teaching Assistant Web Application by transitioned the system from ASP.NET to Next.js, improving maintainability and user experience.</li>
+<li>Provided mentorship to teaching assistants during the research and development phase, supporting their growth and technical proficiency.</li>
       </ol>
     ),
     technologies: [
