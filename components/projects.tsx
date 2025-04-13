@@ -50,7 +50,7 @@ const projects = [
     image: "/kleveru.webp",
     description: "A system that operates in the field of beauty.",
     technologies: ["Next.js", "Laravel", "MySQL", "Bootstrap"],
-    liveUrl: "https://inaskills.kemnaker.go.id/",
+    liveUrl: "https://kleveru.co.id/",
     githubUrl: "#",
   },
 
