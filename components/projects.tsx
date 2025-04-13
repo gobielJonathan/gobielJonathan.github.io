@@ -26,6 +26,30 @@ const projects = [
     liveUrl: "https://www.crowde.co/",
     githubUrl: "",
   },
+
+
+  {
+    id: 7,
+    title: "Fita",
+    image: "/fita.png",
+    description: "A health application with comprehensive features and programs to help you start living a healthy life.",
+    technologies: ["Tailwind CSS", "Next.js"],
+    liveUrl: "https://fita.co.id/",
+    githubUrl: "#",
+  },
+
+
+
+  {
+    id: 9,
+    title: "Aerium",
+    image: "/aerium.svg",
+    description: "Residence Landing Page",
+    technologies: ["Next.js", "Tailwind CSS", "Shadcn/ui"],
+    liveUrl: "https://www.aerium-residences.com/",
+    githubUrl: "#",
+  },
+
   {
     id: 3,
     title: "Cubes",
@@ -63,18 +87,6 @@ const projects = [
     liveUrl: "https://www.sensehospitality.id/",
     githubUrl: "#",
   },
-
-  {
-    id: 7,
-    title: "Fita",
-    image: "/fita.png",
-    description: "A health application with comprehensive features and programs to help you start living a healthy life.",
-    technologies: ["Tailwind CSS", "Next.js"],
-    liveUrl: "https://fita.co.id/",
-    githubUrl: "#",
-  },
-
-
   {
     id: 8,
     title: "Brc Depo",
@@ -84,16 +96,7 @@ const projects = [
     liveUrl: "https://brcdepo.com/",
     githubUrl: "#",
   },
-
-  {
-    id: 9,
-    title: "Aerium",
-    image: "/aerium.svg",
-    description: "Residence Landing Page",
-    technologies: ["Next.js", "Tailwind CSS", "Shadcn/ui"],
-    liveUrl: "https://www.aerium-residences.com/",
-    githubUrl: "#",
-  },
+  
 ]
 
 export default function Projects() {
