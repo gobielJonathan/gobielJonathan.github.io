@@ -1,11 +1,14 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Inter, Plus_Jakarta_Sans } from "next/font/google"
 import "./globals.css"
-import Sidebar from "@/components/sidebar"
+import Navbar from "@/components/navbar"
+import SocialDock from "@/components/social-dock"
 import { ThemeProvider } from "@/components/theme-provider"
+import SmoothScroll from "@/components/smooth-scroll"
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
+const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-jakarta" })
 
 export const metadata: Metadata = {
   title: "Jonathan Gobiel | Portfolio",
@@ -32,19 +35,16 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <div className="flex min-h-screen">
-            <Sidebar />
-            <main className="flex-1 md:ml-[280px]">{children}</main>
-          </div>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${jakarta.variable}`}>
+      <body className="font-jakarta">
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+          <SmoothScroll>
+            <Navbar />
+            <SocialDock />
+            <main className="min-h-screen">{children}</main>
+          </SmoothScroll>
         </ThemeProvider>
       </body>
     </html>
   )
 }
-
-
-
-import './globals.css'

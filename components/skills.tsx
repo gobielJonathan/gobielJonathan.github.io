@@ -1,189 +1,166 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Card, CardContent } from "@/components/ui/card"
-import { Code, Database, Layout, Layers, PenTool, Server, Settings, Smartphone } from "lucide-react"
+import {
+  IconBrandReact,
+  IconBrandNextjs,
+  IconBrandVue,
+  IconBrandTypescript,
+  IconBrandJavascript,
+  IconBrandHtml5,
+  IconBrandCss3,
+  IconBrandNodejs,
+  IconBrandDocker,
+  IconBrandGit,
+  IconBrandFigma,
+  IconBrandMysql,
+  IconBrandMongodb,
+  IconBrandTailwind,
+  IconBrandGithub,
+  IconBrandGraphql,
+  IconBrandFlutter,
+  IconBrandLaravel,
+} from "@tabler/icons-react"
 
-const skills = [
+const skillGroups = [
   {
-    category: "Frontend Development",
-    icon: <Layout className="h-10 w-10 text-primary" />,
-    items: ["HTML5", "CSS3", "JavaScript", "TypeScript", "React", "Next.js", "Vue.js"],
+    label: "Frontend",
+    color: "from-violet-500 to-purple-600",
+    skills: [
+      { name: "React", Icon: IconBrandReact },
+      { name: "Next.js", Icon: IconBrandNextjs },
+      { name: "Vue.js", Icon: IconBrandVue },
+      { name: "TypeScript", Icon: IconBrandTypescript },
+      { name: "JavaScript", Icon: IconBrandJavascript },
+      { name: "HTML5", Icon: IconBrandHtml5 },
+      { name: "CSS3", Icon: IconBrandCss3 },
+      { name: "Tailwind", Icon: IconBrandTailwind },
+    ],
   },
   {
-    category: "Backend Development",
-    icon: <Server className="h-10 w-10 text-primary" />,
-    items: ["Node.js", "Express", "Python", "Django", "PHP", "Laravel"],
+    label: "Backend & DB",
+    color: "from-blue-500 to-cyan-500",
+    skills: [
+      { name: "Node.js", Icon: IconBrandNodejs },
+      { name: "Laravel", Icon: IconBrandLaravel },
+      { name: "GraphQL", Icon: IconBrandGraphql },
+      { name: "MySQL", Icon: IconBrandMysql },
+      { name: "MongoDB", Icon: IconBrandMongodb },
+    ],
   },
   {
-    category: "Database",
-    icon: <Database className="h-10 w-10 text-primary" />,
-    items: ["MongoDB", "MySQL", "PostgreSQL", "Firebase", "Redis"],
-  },
-  {
-    category: "UI/UX Design",
-    icon: <PenTool className="h-10 w-10 text-primary" />,
-    items: ["Figma", "Adobe XD", "Sketch", "Photoshop", "Illustrator"],
-  },
-  {
-    category: "Mobile Development",
-    icon: <Smartphone className="h-10 w-10 text-primary" />,
-    items: ["React Native", "Flutter", "Swift", "Kotlin"],
-  },
-  {
-    category: "DevOps",
-    icon: <Settings className="h-10 w-10 text-primary" />,
-    items: ["Git", "Docker", "Kubernetes", "AWS", "CI/CD", "Vercel"],
+    label: "Tools & More",
+    color: "from-emerald-500 to-teal-500",
+    skills: [
+      { name: "Docker", Icon: IconBrandDocker },
+      { name: "Git", Icon: IconBrandGit },
+      { name: "GitHub", Icon: IconBrandGithub },
+      { name: "Figma", Icon: IconBrandFigma },
+      { name: "Flutter", Icon: IconBrandFlutter },
+    ],
   },
 ]
 
+const stats = [
+  { value: "5+", label: "Years Coding", pct: 80 },
+  { value: "20+", label: "Projects Done", pct: 70 },
+  { value: "~100%", label: "Client Satisfaction", pct: 92 },
+]
+
 export default function Skills() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  }
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.5 },
-    },
-  }
-
   return (
-    <section id="skills" className="py-20 bg-muted/30">
-      <div className="container mx-auto px-4">
+    <section id="skills" className="relative py-28 overflow-hidden">
+      {/* BG accents */}
+      <div className="absolute inset-0 bg-muted/20 dark:bg-muted/10" />
+      <div className="absolute left-1/2 -translate-x-1/2 top-0 w-[600px] h-[300px] rounded-full bg-primary/5 blur-[100px] pointer-events-none" />
+
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-8">
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.6 }}
+          className="mb-20 text-center"
         >
-          <h2 className="text-3xl font-bold mb-2">My Skills</h2>
-          <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            I've worked with a variety of technologies and tools throughout my career. Here are some of my key skills
-            and expertise.
-          </p>
+          <span className="text-primary text-sm font-semibold tracking-[0.2em] uppercase">What I Know</span>
+          <h2 className="section-heading mt-2">Skills & Tools</h2>
+          <div className="mt-3 w-12 h-0.5 bg-gradient-to-r from-primary to-transparent rounded-full mx-auto" />
         </motion.div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
-          {skills.map((skill, index) => (
-            <motion.div key={skill.category} variants={itemVariants}>
-              <Card className="h-full hover:shadow-lg transition-shadow duration-300">
-                <CardContent className="p-6">
-                  <div className="mb-4 flex justify-center">{skill.icon}</div>
-                  <h3 className="text-xl font-bold mb-4 text-center">{skill.category}</h3>
-                  <div className="flex flex-wrap gap-2 justify-center">
-                    {skill.items.map((item) => (
-                      <motion.span
-                        key={item}
-                        className="text-sm px-3 py-1 bg-primary/10 text-primary rounded-full"
-                        whileHover={{ scale: 1.05 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                      >
-                        {item}
-                      </motion.span>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+        {/* Skill groups */}
+        <div className="space-y-12 mb-20">
+          {skillGroups.map((group, gi) => (
+            <motion.div
+              key={group.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: gi * 0.1 }}
+            >
+              <div className="flex items-center gap-3 mb-5">
+                <div className={`w-3 h-3 rounded-full bg-gradient-to-br ${group.color}`} />
+                <span className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">
+                  {group.label}
+                </span>
+                <div className="flex-1 h-px bg-border/50" />
+              </div>
+              <div className="flex flex-wrap gap-3">
+                {group.skills.map(({ name, Icon }, i) => (
+                  <motion.div
+                    key={name}
+                    initial={{ opacity: 0, scale: 0.85 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: gi * 0.1 + i * 0.04 }}
+                    whileHover={{ y: -3, scale: 1.05 }}
+                    className="group flex items-center gap-2 px-4 py-2 rounded-xl border border-border/50 bg-card/60 hover:border-primary/30 hover:bg-primary/5 hover:shadow-md hover:shadow-primary/5 transition-all duration-200 cursor-default"
+                  >
+                    <Icon size={18} className="text-muted-foreground group-hover:text-primary transition-colors" />
+                    <span className="text-sm font-medium">{name}</span>
+                  </motion.div>
+                ))}
+              </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
 
+        {/* Stats */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-16 bg-card rounded-lg p-8 shadow-lg"
+          transition={{ duration: 0.6 }}
+          className="glass-card rounded-2xl p-8"
         >
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h3 className="text-2xl font-bold mb-4">My Coding Journey</h3>
-              <p className="text-muted-foreground mb-4">
-                I started coding when I was in high school and have been passionate about it ever since. Over the years,
-                I've worked on various projects and continuously expanded my skill set to stay up-to-date with the
-                latest technologies.
-              </p>
-              <p className="text-muted-foreground">
-                I believe in writing clean, maintainable code and creating intuitive user experiences. I'm always eager
-                to learn new technologies and tackle challenging problems.
-              </p>
-            </div>
-            <div className="relative">
-              <Code className="h-40 w-40 text-primary/20 absolute -top-10 -right-10 rotate-12" />
-              <Layers className="h-32 w-32 text-primary/20 absolute -bottom-8 -left-8 -rotate-12" />
-              <div className="bg-muted rounded-lg p-6 relative z-10">
-                <div className="mb-4">
-                  <div className="text-lg font-bold">Years of Experience</div>
-                  <div className="w-full bg-muted-foreground/20 h-2 rounded-full mt-2">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      whileInView={{ width: "80%" }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1, delay: 0.5 }}
-                      className="bg-primary h-2 rounded-full"
-                    ></motion.div>
-                  </div>
-                  <div className="flex justify-between text-sm mt-2">
-                    <span>0</span>
-                    <span>5+</span>
-                  </div>
+          <h3 className="text-xl font-bold mb-8 text-center">Milestones</h3>
+          <div className="grid md:grid-cols-3 gap-8">
+            {stats.map(({ value, label, pct }, i) => (
+              <motion.div
+                key={label}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.1 }}
+              >
+                <div className="flex justify-between items-baseline mb-2">
+                  <span className="font-semibold text-foreground">{label}</span>
+                  <span className="text-2xl font-bold text-gradient">{value}</span>
                 </div>
-                <div className="mb-4">
-                  <div className="text-lg font-bold">Projects Completed</div>
-                  <div className="w-full bg-muted-foreground/20 h-2 rounded-full mt-2">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      whileInView={{ width: "70%" }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1, delay: 0.7 }}
-                      className="bg-primary h-2 rounded-full"
-                    ></motion.div>
-                  </div>
-                  <div className="flex justify-between text-sm mt-2">
-                    <span>0</span>
-                    <span>50+</span>
-                  </div>
+                <div className="w-full bg-muted h-1.5 rounded-full overflow-hidden">
+                  <motion.div
+                    initial={{ width: 0 }}
+                    whileInView={{ width: `${pct}%` }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.2, delay: 0.3 + i * 0.15, ease: [0.22, 1, 0.36, 1] }}
+                    className="h-full rounded-full bg-gradient-to-r from-primary to-purple-400"
+                  />
                 </div>
-                <div>
-                  <div className="text-lg font-bold">Client Satisfaction</div>
-                  <div className="w-full bg-muted-foreground/20 h-2 rounded-full mt-2">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      whileInView={{ width: "90%" }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1, delay: 0.9 }}
-                      className="bg-primary h-2 rounded-full"
-                    ></motion.div>
-                  </div>
-                  <div className="flex justify-between text-sm mt-2">
-                    <span>0%</span>
-                    <span>100%</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </div>
     </section>
   )
 }
-
