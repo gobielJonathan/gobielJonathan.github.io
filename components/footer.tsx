@@ -28,7 +28,7 @@ export default function Footer() {
           {/* Right */}
           <div className="flex items-center gap-4">
             <p className="text-sm text-muted-foreground flex items-center gap-1">
-              © {year} — Made with <Heart className="h-3.5 w-3.5 text-red-500 fill-red-500 mx-0.5" /> in Jakarta
+              © {year}
             </p>
             <Link
               href="#home"

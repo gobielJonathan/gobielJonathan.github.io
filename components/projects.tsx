@@ -88,6 +88,36 @@ const projects = [
     liveUrl: "https://brcdepo.com/",
     githubUrl: "",
   },
+  {
+    id: 10,
+    title: "CariEV",
+    image: "https://media.licdn.com/dms/image/v2/D5622AQHHo59ZSPuAeg/feedshare-shrink_800/B56ZzlSc2WHIAg-/0/1773373346039?e=1775088000&v=beta&t=aTa9BmpadqQ-q49LTBYev7fGJd_DIPa00dXUywSmJbQ",
+    description: "Discover public & private EV charging stations near you with one-tap navigation redirection — no more juggling multiple provider apps.",
+    technologies: ["Next.js", "React", "Leaflet", "Tailwind CSS"],
+    liveUrl: "https://cariev.vercel.app/",
+    githubUrl: "",
+    highlights: [
+      "Discover public & private EV charging stations",
+      "Direct navigation redirection to any station",
+      "Find nearby chargers at a glance",
+      "Replaces multiple provider apps in one place",
+    ],
+  },
+  {
+    id: 11,
+    title: "KirimFile",
+    image: "https://media.licdn.com/dms/image/v2/D5622AQGHbfuPcv9uug/feedshare-shrink_800/B56ZsQprBeIcAg-/0/1765510919128?e=1775088000&v=beta&t=-tJPQxvCzYGBkZSiy0oar-TtTEUydalDMB6-PxFC_6M",
+    description: "Browser-based peer-to-peer file sharing — works on Android, iOS, and desktop with zero installs. Just open and share.",
+    technologies: ["WebRTC", "React", "JavaScript"],
+    liveUrl: "https://kirimfile.vercel.app/#/",
+    githubUrl: "",
+    highlights: [
+      "Serverless P2P transfer via WebRTC",
+      "Works on any device with a browser",
+      "No installs or sign-ups required",
+      "Cross-platform: Android, iOS, PC",
+    ],
+  },
 ]
 
 function ProjectCard({ project, index }: { project: (typeof projects)[0]; index: number }) {
@@ -146,7 +176,18 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
           {/* Content */}
           <div className="p-5 flex flex-col flex-1">
             <h3 className="font-bold text-base mb-2 group-hover:text-primary transition-colors">{project.title}</h3>
-            <p className="text-sm text-muted-foreground flex-1 mb-4 leading-relaxed">{project.description}</p>
+            <p className="text-sm text-muted-foreground mb-3 leading-relaxed">{project.description}</p>
+            {project.highlights && (
+              <ul className="flex-1 mb-4 space-y-1">
+                {project.highlights.map((h) => (
+                  <li key={h} className="flex items-start gap-1.5 text-xs text-muted-foreground">
+                    <span className="mt-1 w-1 h-1 rounded-full bg-primary/70 shrink-0" />
+                    {h}
+                  </li>
+                ))}
+              </ul>
+            )}
+            {!project.highlights && <div className="flex-1" />}
             <div className="flex flex-wrap gap-1.5">
               {project.technologies.map((tech) => (
                 <span

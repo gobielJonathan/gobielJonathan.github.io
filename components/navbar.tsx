@@ -1,11 +1,38 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X, Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 import { useMobile } from "@/hooks/use-mobile"
+
+function ThemeToggle() {
+  const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
+
+  return (
+    <button
+      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      aria-label="Toggle theme"
+      className="p-2 rounded-full border border-border/50 text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-all duration-200"
+    >
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.span
+          key={mounted ? theme : "placeholder"}
+          initial={{ rotate: -90, opacity: 0 }}
+          animate={{ rotate: 0, opacity: 1 }}
+          exit={{ rotate: 90, opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          className="block w-4 h-4"
+        >
+          {mounted && (theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />)}
+        </motion.span>
+      </AnimatePresence>
+    </button>
+  )
+}
 
 const navItems = [
   { name: "Home",       href: "#home",       id: "home" },
@@ -19,12 +46,19 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState("home")
   const [scrolled, setScrolled]           = useState(false)
   const [menuOpen, setMenuOpen]           = useState(false)
-  const { theme, setTheme }               = useTheme()
   const isMobile                          = useMobile()
+  const clickLockRef                      = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  const handleNavClick = (id: string) => {
+    setActiveSection(id)
+    if (clickLockRef.current) clearTimeout(clickLockRef.current)
+    clickLockRef.current = setTimeout(() => { clickLockRef.current = null }, 1200)
+  }
 
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 20)
+      if (clickLockRef.current) return
       for (const item of navItems) {
         const el = document.getElementById(item.id)
         if (el) {
@@ -71,6 +105,7 @@ export default function Navbar() {
               <Link
                 key={item.id}
                 href={item.href}
+                onClick={() => handleNavClick(item.id)}
                 className={`relative px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200 ${
                   activeSection === item.id
                     ? "text-primary"
@@ -91,24 +126,7 @@ export default function Navbar() {
 
           {/* Right controls */}
           <div className="flex items-center gap-2">
-            <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              aria-label="Toggle theme"
-              className="p-2 rounded-full border border-border/50 text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-all duration-200"
-            >
-              <AnimatePresence mode="wait" initial={false}>
-                <motion.span
-                  key={theme}
-                  initial={{ rotate: -90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: 90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="block"
-                >
-                  {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-                </motion.span>
-              </AnimatePresence>
-            </button>
+            <ThemeToggle />
 
             {/* Mobile hamburger */}
             <button
@@ -151,7 +169,7 @@ export default function Navbar() {
                   >
                     <Link
                       href={item.href}
-                      onClick={() => setMenuOpen(false)}
+                      onClick={() => { handleNavClick(item.id); setMenuOpen(false) }}
                       className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
                         activeSection === item.id
                           ? "bg-primary/10 text-primary border border-primary/20"

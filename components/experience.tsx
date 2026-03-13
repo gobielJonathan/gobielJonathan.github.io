@@ -2,14 +2,29 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { IconBuilding, IconCalendar, IconBriefcase } from "@tabler/icons-react";
+import { IconBuilding, IconCalendar } from "@tabler/icons-react";
 
 const experiences = [
+  {
+    id: 0,
+    company: "DANA Indonesia",
+    position: "Software Engineer Web Platform",
+    period: "Oct 2025 – Present",
+    description: [
+      "Reduced page bundle size by 18% by resolving an incorrect code-splitting boundary that caused unrelated page code to be bundled together.",
+      "Achieved a 79% bundle size reduction by lazy-loading heavy animation components, significantly improving initial page load performance.",
+      "Improved Core Web Vitals by preloading critical scripts to reduce Total Blocking Time (TBT) and adopting WebP images to accelerate Largest Contentful Paint (LCP).",
+      "Enhanced developer experience by building two internal CLI tools: a Route Inspector for tracing URL-to-component ownership, and a module scaffolding generator that standardises new feature structure across the codebase.",
+      "Improved team productivity by automating local SSL certificate setup, eliminating a recurring blocker that prevented Android emulator testing.",
+    ],
+    technologies: ["Vue.js", "TypeScript", "Lottie", "WebP", "CLI", "WebPerf"],
+    color: "from-sky-500 to-blue-600",
+  },
   {
     id: 1,
     company: "Tokopedia Inc.",
     position: "Software Engineer Web Platform",
-    period: "Sept 2021 – Present",
+    period: "Sept 2021 – Oct 2025",
     description: [
       "Implemented automation reporting prior to release, ensuring seamless quality control.",
       "Introduced a bundle size checker in PRs before merges, optimizing performance.",
