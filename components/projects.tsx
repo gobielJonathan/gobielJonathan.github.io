@@ -94,7 +94,7 @@ const projects = [
     image: "https://media.licdn.com/dms/image/v2/D5622AQHHo59ZSPuAeg/feedshare-shrink_800/B56ZzlSc2WHIAg-/0/1773373346039?e=1775088000&v=beta&t=aTa9BmpadqQ-q49LTBYev7fGJd_DIPa00dXUywSmJbQ",
     description: "Discover public & private EV charging stations near you with one-tap navigation redirection — no more juggling multiple provider apps.",
     technologies: ["Next.js", "React", "Leaflet", "Tailwind CSS"],
-    liveUrl: "https://cariev.vercel.app/",
+    liveUrl: "https://cariev.gobiel.online/",
     githubUrl: "",
     highlights: [
       "Discover public & private EV charging stations",
@@ -109,13 +109,27 @@ const projects = [
     image: "https://media.licdn.com/dms/image/v2/D5622AQGHbfuPcv9uug/feedshare-shrink_800/B56ZsQprBeIcAg-/0/1765510919128?e=1775088000&v=beta&t=-tJPQxvCzYGBkZSiy0oar-TtTEUydalDMB6-PxFC_6M",
     description: "Browser-based peer-to-peer file sharing — works on Android, iOS, and desktop with zero installs. Just open and share.",
     technologies: ["WebRTC", "React", "JavaScript"],
-    liveUrl: "https://kirimfile.vercel.app/#/",
+    liveUrl: "https://kirimfile.gobiel.online/",
     githubUrl: "",
     highlights: [
       "Serverless P2P transfer via WebRTC",
       "Works on any device with a browser",
       "No installs or sign-ups required",
       "Cross-platform: Android, iOS, PC",
+    ],
+  },
+  {
+    id: 12,
+    title: "Edit PDF",
+    image: "/edit-pdf.png",
+    description: "Edit PDF text directly in your browser — 100% private, no uploads to any server.",
+    technologies: ["React", "JavaScript"],
+    liveUrl: "https://editpdf.gobiel.online/",
+    githubUrl: "",
+    highlights: [
+      "Sign any PDF — completely free, forever",
+      "Effortlessly intuitive, no learning curve needed",
+      "Zero sign-up, zero friction — just open and edit",
     ],
   },
 ]
