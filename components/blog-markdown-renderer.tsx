@@ -16,6 +16,21 @@ export function BlogMarkdownRenderer({ content }: BlogMarkdownRendererProps) {
         rehypePlugins={[rehypeMermaid]}
         components={{
           MermaidBlock,
+          a: ({ node, href, children, ...props }) => {
+            const isExternal = typeof href === "string" && /^https?:\/\//.test(href)
+
+            return (
+              <a
+                href={href}
+                target={isExternal ? "_blank" : undefined}
+                rel={isExternal ? "noreferrer noopener" : undefined}
+                className="rounded-sm px-1 py-0.5 font-medium text-primary underline decoration-accent decoration-2 underline-offset-4 transition-colors hover:bg-primary/15 hover:text-primary/90"
+                {...props}
+              >
+                {children}
+              </a>
+            )
+          },
           h2: ({ node, ...props }) => (
             <h2 className="pt-4 font-display text-3xl font-semibold tracking-[-0.05em] text-foreground" {...props} />
           ),

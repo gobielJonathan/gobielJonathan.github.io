@@ -251,6 +251,16 @@ A good skill is:
 
 If a skill says everything, it usually means nothing.
 
+## Where To Browse Existing Skills
+
+If you want examples, the public catalog at [skills.sh](https://www.skills.sh/) is a good place to start.
+
+It includes skills for agents like [GitHub Copilot](https://www.skills.sh/agent/github-copilot), [Claude Code](https://www.skills.sh/agent/claude-code), [Cursor](https://www.skills.sh/agent/cursor), and [Codex](https://www.skills.sh/agent/codex).
+
+Some useful public skills to look at are [find-skills](https://www.skills.sh/vercel-labs/skills/find-skills), [frontend-design](https://www.skills.sh/anthropics/skills/frontend-design), [skill-creator](https://www.skills.sh/anthropics/skills/skill-creator), and [vercel-react-best-practices](https://www.skills.sh/vercel-labs/agent-skills/vercel-react-best-practices).
+
+For more specialized workflows, browse [agent-browser](https://www.skills.sh/vercel-labs/agent-browser/agent-browser) or [supabase-postgres-best-practices](https://www.skills.sh/supabase/agent-skills/supabase-postgres-best-practices).
+
 ## FAQ
 
 ## What is an agent skill in a prompt?
