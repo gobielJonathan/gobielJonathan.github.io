@@ -2,52 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
+@supports (view-transition-name: auto) {
+  html {
+    view-transition-name: root;
+  }
+}
+
 @layer base {
   :root {
-    --background: 0 0% 98%;
-    --foreground: 240 10% 6%;
+    --background: 195 24% 94%;
+    --foreground: 222 36% 13%;
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 6%;
+    --card-foreground: 222 36% 13%;
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 6%;
-    --primary: 262 83% 58%;
+    --popover-foreground: 222 36% 13%;
+    --primary: 224 68% 46%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 240 5% 93%;
-    --secondary-foreground: 240 6% 10%;
-    --muted: 240 5% 93%;
-    --muted-foreground: 240 4% 46%;
-    --accent: 262 83% 94%;
-    --accent-foreground: 262 83% 40%;
-    --destructive: 0 84% 60%;
+    --secondary: 195 18% 89%;
+    --secondary-foreground: 222 26% 22%;
+    --muted: 190 18% 89%;
+    --muted-foreground: 214 16% 38%;
+    --accent: 19 90% 57%;
+    --accent-foreground: 222 36% 13%;
+    --destructive: 0 78% 55%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 6% 88%;
-    --input: 240 6% 88%;
-    --ring: 262 83% 58%;
-    --radius: 0.75rem;
-    --glow: 262 83% 58%;
+    --border: 212 22% 82%;
+    --input: 212 22% 82%;
+    --ring: 224 68% 46%;
+    --radius: 1.25rem;
+    --glow: 224 68% 46%;
   }
 
   .dark {
-    --background: 240 12% 5%;
-    --foreground: 0 0% 95%;
-    --card: 240 10% 8%;
-    --card-foreground: 0 0% 95%;
-    --popover: 240 10% 8%;
-    --popover-foreground: 0 0% 95%;
-    --primary: 262 83% 62%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 240 6% 14%;
-    --secondary-foreground: 0 0% 95%;
-    --muted: 240 6% 14%;
-    --muted-foreground: 240 5% 58%;
-    --accent: 262 60% 18%;
-    --accent-foreground: 262 83% 75%;
-    --destructive: 0 62% 30%;
+    --background: 222 41% 10%;
+    --foreground: 204 28% 92%;
+    --card: 222 35% 14%;
+    --card-foreground: 204 28% 92%;
+    --popover: 222 35% 14%;
+    --popover-foreground: 204 28% 92%;
+    --primary: 207 74% 64%;
+    --primary-foreground: 222 41% 10%;
+    --secondary: 221 26% 18%;
+    --secondary-foreground: 204 28% 92%;
+    --muted: 221 26% 18%;
+    --muted-foreground: 214 16% 72%;
+    --accent: 19 95% 62%;
+    --accent-foreground: 222 41% 10%;
+    --destructive: 0 65% 42%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 6% 16%;
-    --input: 240 6% 16%;
-    --ring: 262 83% 62%;
-    --glow: 262 83% 62%;
+    --border: 221 20% 24%;
+    --input: 221 20% 24%;
+    --ring: 207 74% 64%;
+    --glow: 207 74% 64%;
   }
 }
 
@@ -57,9 +63,26 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
+    background-image:
+      radial-gradient(circle at top left, hsl(var(--primary) / 0.1), transparent 28%),
+      radial-gradient(circle at 85% 10%, hsl(var(--accent) / 0.12), transparent 24%),
+      linear-gradient(to bottom, hsl(var(--background)), hsl(var(--background)));
   }
   html {
     @apply scroll-smooth;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(to right, hsl(var(--foreground) / 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--foreground) / 0.05) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: linear-gradient(to bottom, white 25%, transparent 100%);
+    opacity: 0.45;
+    z-index: 0;
   }
 }
 
@@ -76,32 +99,77 @@
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-primary/70;
 }
-
+/* ─── View Transitions ─────────────────────────────────── */
+@supports (view-transition-name: auto) {
+  ::view-transition-old(root) {
+    animation: fade-out 0.4s ease-in-out forwards;
+  }
+  ::view-transition-new(root) {
+    animation: fade-in 0.4s ease-in-out forwards;
+  }
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
 /* ─── Gradient Text Utility ────────────────────────────────── */
 @layer utilities {
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-purple-400 to-pink-500;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
   }
   .glow {
-    text-shadow: 0 0 20px hsl(var(--primary) / 0.6), 0 0 50px hsl(var(--primary) / 0.3);
+    text-shadow: 0 12px 32px hsl(var(--primary) / 0.18);
   }
   .glass {
-    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+    @apply backdrop-blur-md border border-border/70;
+    background-color: hsl(var(--card) / 0.85);
   }
   .glass-card {
-    @apply bg-card/60 backdrop-blur-xl border border-border/40 shadow-xl shadow-black/5;
+    @apply backdrop-blur-md border border-border/70 shadow-[0_18px_50px_-28px_rgba(16,24,40,0.42)];
+    background-color: hsl(var(--card) / 0.88);
   }
   .section-heading {
-    @apply text-3xl md:text-4xl font-bold tracking-tight;
+    @apply font-display text-3xl font-semibold tracking-[-0.04em] md:text-5xl;
+  }
+  .section-kicker {
+    @apply font-mono text-[0.68rem] uppercase tracking-[0.3em] text-muted-foreground;
+  }
+  .panel {
+    @apply rounded-[1.5rem] border border-border/70 shadow-[0_18px_50px_-28px_rgba(16,24,40,0.42)];
+    background-color: hsl(var(--card) / 0.88);
+  }
+  .panel-grid {
+    background-image:
+      linear-gradient(to right, hsl(var(--foreground) / 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--foreground) / 0.05) 1px, transparent 1px);
+    background-size: 26px 26px;
+  }
+  .rule-label {
+    @apply inline-flex items-center gap-2 font-mono text-[0.68rem] uppercase tracking-[0.28em] text-muted-foreground;
+  }
+  .rule-label::before {
+    content: "";
+    @apply h-px w-8 bg-border;
   }
 }
 
-/* ─── Gradient Mesh Background ─────────────────────────────── */
 .mesh-bg {
   background-image:
-    radial-gradient(at 20% 20%, hsl(262 83% 58% / 0.12) 0, transparent 50%),
-    radial-gradient(at 80% 0%, hsl(262 60% 75% / 0.08) 0, transparent 50%),
-    radial-gradient(at 80% 100%, hsl(262 83% 40% / 0.10) 0, transparent 50%);
+    radial-gradient(at 15% 20%, hsl(var(--primary) / 0.13) 0, transparent 48%),
+    radial-gradient(at 85% 5%, hsl(var(--accent) / 0.11) 0, transparent 32%),
+    radial-gradient(at 60% 85%, hsl(var(--primary) / 0.08) 0, transparent 40%);
 }
 
 /* ─── Floating Blob ─────────────────────────────────────────── */

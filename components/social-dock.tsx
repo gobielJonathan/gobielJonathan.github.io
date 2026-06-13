@@ -51,13 +51,11 @@ export default function SocialDock() {
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6, delay: 1.2, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed right-5 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col items-center gap-1"
+      className="fixed right-5 top-1/2 z-40 hidden -translate-y-1/2 lg:flex flex-col items-center gap-2"
     >
-      {/* Top line */}
-      <div className="w-px h-16 bg-gradient-to-b from-transparent to-border/60" />
+      <div className="h-14 w-px bg-gradient-to-b from-transparent to-border/60" />
 
-      {/* Cards */}
-      <div className="flex flex-col gap-1 glass rounded-2xl p-1.5 border border-border/30 shadow-xl shadow-black/10">
+      <div className="panel panel-grid flex flex-col gap-2 rounded-[1.6rem] p-2">
         {socials.map(({ label, href, icon }, i) => (
           <motion.a
             key={label}
@@ -68,21 +66,19 @@ export default function SocialDock() {
             initial={{ opacity: 0, x: 10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.3, delay: 1.3 + i * 0.08 }}
-            whileHover={{ scale: 1.15, x: -3 }}
+            whileHover={{ scale: 1.07, x: -2 }}
             whileTap={{ scale: 0.95 }}
-            className="group relative flex items-center justify-center w-9 h-9 rounded-xl text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors duration-200"
+            className="group relative flex h-10 w-10 items-center justify-center rounded-2xl border border-transparent text-muted-foreground transition-colors duration-200 hover:border-border/70 hover:bg-background/70 hover:text-foreground"
           >
             {icon}
-            {/* Tooltip */}
-            <span className="pointer-events-none absolute right-full mr-3 px-2 py-1 rounded-lg bg-popover text-popover-foreground text-xs font-medium whitespace-nowrap border border-border/50 shadow-lg opacity-0 group-hover:opacity-100 translate-x-1 group-hover:translate-x-0 transition-all duration-200">
+            <span className="pointer-events-none absolute right-full mr-3 translate-x-1 whitespace-nowrap rounded-full border border-border/70 bg-popover px-3 py-1 font-mono text-[0.62rem] uppercase tracking-[0.24em] text-popover-foreground opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
               {label}
             </span>
           </motion.a>
         ))}
       </div>
 
-      {/* Bottom line */}
-      <div className="w-px h-16 bg-gradient-to-b from-border/60 to-transparent" />
+      <div className="h-14 w-px bg-gradient-to-b from-border/60 to-transparent" />
     </motion.div>
   )
 }
@@ -100,7 +96,7 @@ export function SocialRow({ className = "" }: { className?: string }) {
           aria-label={label}
           whileHover={{ y: -3, scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          className="flex items-center justify-center w-9 h-9 rounded-xl border border-border/50 bg-card/40 text-muted-foreground hover:text-primary hover:border-primary/30 hover:bg-primary/5 transition-colors duration-200"
+          className="flex h-10 w-10 items-center justify-center rounded-2xl border border-border/70 bg-card/80 text-muted-foreground transition-colors duration-200 hover:border-border hover:bg-background hover:text-foreground"
         >
           {icon}
         </motion.a>

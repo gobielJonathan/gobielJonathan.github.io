@@ -1,25 +1,30 @@
 "use client"
 
-import { useRef } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
-import { TypeAnimation } from "react-type-animation"
-import { ArrowDown, Download, Eye } from "lucide-react"
+import { motion } from "framer-motion"
+import { ArrowUpRight, Download, Eye } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { SocialRow } from "@/components/social-dock"
 
+const releaseNotes = [
+  {
+    label: "Performance",
+    value: "79% bundle reduction",
+    note: "Lazy-loaded animation paths and tightened split boundaries.",
+  },
+  {
+    label: "Scale",
+    value: "Migration without chaos",
+    note: "Guided large platform moves across ecosystem boundaries.",
+  },
+  {
+    label: "DX",
+    value: "Internal tooling that sticks",
+    note: "Built route inspection and scaffolding workflows teams kept using.",
+  },
+]
+
 export default function Hero() {
-  const sectionRef = useRef<HTMLElement>(null)
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"],
-  })
-
-  const y1 = useTransform(scrollYProgress, [0, 1], ["0%", "30%"])
-  const y2 = useTransform(scrollYProgress, [0, 1], ["0%", "15%"])
-  const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0])
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -36,153 +41,118 @@ export default function Hero() {
   return (
     <section
       id="home"
-      ref={sectionRef}
-      className="relative min-h-screen flex items-center overflow-hidden pt-16"
+      className="relative flex min-h-screen items-center overflow-hidden pt-16 sm:pt-20"
     >
-      {/* ── Mesh gradient background ──────────────────────────── */}
       <div className="absolute inset-0 mesh-bg" />
+      <div className="absolute inset-x-0 top-0 h-px bg-border/70" />
 
-      {/* ── Parallax blobs ────────────────────────────────────── */}
       <motion.div
-        style={{ y: y1 }}
-        className="absolute -top-24 -left-24 w-[500px] h-[500px] rounded-full bg-primary/10 blur-[100px] animate-blob pointer-events-none"
-      />
-      <motion.div
-        style={{ y: y2 }}
-        className="absolute top-1/2 -right-32 w-[400px] h-[400px] rounded-full bg-purple-500/10 blur-[80px] animate-blob animation-delay-2000 pointer-events-none"
-      />
-      <motion.div
-        style={{ y: y1 }}
-        className="absolute -bottom-24 left-1/3 w-[350px] h-[350px] rounded-full bg-pink-500/8 blur-[80px] animate-blob animation-delay-4000 pointer-events-none"
-      />
-
-      {/* ── Grid pattern overlay ───────────────────────────────── */}
-      <div
-        className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"
-        style={{
-          backgroundImage:
-            "linear-gradient(hsl(var(--foreground)/1) 1px,transparent 1px),linear-gradient(90deg,hsl(var(--foreground)/1) 1px,transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
-      />
-
-      {/* ── Main content ──────────────────────────────────────── */}
-      <motion.div
-        style={{ opacity }}
-        className="relative z-10 w-full max-w-5xl mx-auto px-8 py-20"
+        className="relative z-10 mx-auto w-full max-w-6xl px-5 py-10 sm:px-6 sm:py-16"
       >
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
+          className="grid items-start gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(320px,0.8fr)] lg:gap-12"
         >
-          {/* Badge */}
-          <motion.div variants={itemVariants} className="mb-8">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm font-medium">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
+          <div>
+            <motion.div variants={itemVariants} className="mb-6">
+              <span className="inline-flex items-center gap-3 rounded-full border border-border/70 bg-card/80 px-4 py-2 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-muted-foreground shadow-[0_14px_40px_-28px_rgba(15,23,42,0.4)]">
+                <span className="h-2 w-2 rounded-full bg-accent" />
+                Jakarta based, open for freelance
               </span>
-              Available for freelance
-            </span>
-          </motion.div>
+            </motion.div>
 
-          {/* Main heading */}
-          <motion.div variants={itemVariants}>
-            <h1 className="text-5xl sm:text-6xl md:text-7xl xl:text-8xl font-bold tracking-tight leading-[1.05] mb-6">
-              <span className="block text-foreground/90">Hi, I'm</span>
-              <span className="block text-gradient glow">Gobiel 👋</span>
-            </h1>
-          </motion.div>
+            <motion.div variants={itemVariants}>
+              <p className="rule-label mb-4">for teams that want quality without release drama</p>
+              <h1 className="font-display text-[3.35rem] font-semibold leading-[0.92] tracking-[-0.07em] text-foreground sm:text-[4.5rem] lg:text-[6.4rem]">
+                I ship calm,
+                <span className="block text-gradient glow">fast web products.</span>
+              </h1>
+            </motion.div>
 
-          {/* Type animation */}
-          <motion.div variants={itemVariants} className="h-12 mb-8">
-            <div className="text-xl sm:text-2xl md:text-3xl font-medium text-muted-foreground flex items-center gap-2">
-              <span>I</span>
-              <TypeAnimation
-                sequence={[
-                  "build full-stack web apps",
-                  2000,
-                  "craft pixel-perfect UIs",
-                  2000,
-                  "ship production-ready code",
-                  2000,
-                  "turn ideas into products",
-                  2000,
-                ]}
-                wrapper="span"
-                speed={50}
-                deletionSpeed={65}
-                repeat={Infinity}
-                className="text-primary font-semibold"
-              />
-            </div>
-          </motion.div>
+            <motion.p
+              variants={itemVariants}
+              className="mt-6 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg"
+            >
+              Full stack engineer with 5+ years across product teams in Indonesia. I turn messy requirements into stable releases, cleaner frontend systems, and measurable performance wins.
+            </motion.p>
 
-          {/* Description */}
-          <motion.p
-            variants={itemVariants}
-            className="text-base md:text-lg text-muted-foreground max-w-xl mb-10 leading-relaxed"
-          >
-            Full Stack Engineer with 5+ years building scalable web applications. Specialized in React, Next.js, and Node.js — from concept to deployment.
-          </motion.p>
-
-          {/* CTAs */}
-          <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
-            <Link href="#projects">
+            <motion.div variants={itemVariants} className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link href="#projects" className="sm:flex-1 sm:max-w-[220px]">
+                <Button
+                  size="lg"
+                  className="group w-full rounded-2xl bg-foreground px-6 text-primary-foreground shadow-[0_16px_40px_-24px_rgba(15,23,42,0.6)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-foreground/92"
+                >
+                  <Eye className="mr-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  See case studies
+                </Button>
+              </Link>
               <Button
                 size="lg"
-                className="group relative overflow-hidden bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/25 transition-all duration-300"
+                variant="outline"
+                className="group rounded-2xl border-border/80 bg-card/75 px-6 text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:bg-card"
+                onClick={() => window.open("https://drive.google.com/file/d/1a1-wxCLWo7g_69liq2J3YrXAMpy06GnA/view", "_blank")}
               >
-                <Eye className="mr-2 h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                View My Work
-                <span className="absolute inset-0 animate-shimmer" />
+                <Download className="mr-2 h-4 w-4 transition-transform group-hover:translate-y-0.5" />
+                Open resume
               </Button>
-            </Link>
-            <Button
-              size="lg"
-              variant="outline"
-              className="group border-primary/30 hover:border-primary hover:bg-primary/5 transition-all duration-300"
-              onClick={() => window.open("https://drive.google.com/file/d/1a1-wxCLWo7g_69liq2J3YrXAMpy06GnA/view", "_blank")}
-            >
-              <Download className="mr-2 h-4 w-4 transition-transform group-hover:translate-y-0.5" />
-              Download CV
-            </Button>
-          </motion.div>
+            </motion.div>
 
-          {/* Social links — visible on mobile only (desktop uses the fixed dock) */}
-          <motion.div variants={itemVariants} className="mt-8 lg:hidden">
-            <SocialRow />
-          </motion.div>
+            <motion.div variants={itemVariants} className="mt-8 lg:hidden">
+              <SocialRow className="flex-wrap" />
+            </motion.div>
 
-          {/* Stats row */}
-          <motion.div
-            variants={itemVariants}
-            className="mt-12 flex flex-wrap gap-8"
-          >
-            {[
-              { value: "5+", label: "Years Experience" },
-              { value: "20+", label: "Projects Shipped" },
-              { value: "2", label: "Companies" },
-            ].map((stat) => (
-              <div key={stat.label} className="flex flex-col">
-                <span className="text-3xl font-bold text-gradient">{stat.value}</span>
-                <span className="text-sm text-muted-foreground mt-0.5">{stat.label}</span>
-              </div>
-            ))}
-          </motion.div>
+            <motion.div variants={itemVariants} className="mt-10 grid grid-cols-2 gap-3 sm:max-w-xl sm:grid-cols-3">
+              {[
+                { value: "5+", label: "Years in product teams" },
+                { value: "20+", label: "Projects shipped" },
+                { value: "Web", label: "Frontends, DX, perf" },
+              ].map((stat) => (
+                <div key={stat.label} className="rounded-[1.35rem] border border-border/70 bg-card/82 px-4 py-4 shadow-[0_14px_36px_-28px_rgba(15,23,42,0.45)]">
+                  <div className="font-display text-3xl font-semibold tracking-[-0.06em] text-foreground">{stat.value}</div>
+                  <div className="mt-1 text-sm leading-5 text-muted-foreground">{stat.label}</div>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+
+          <motion.aside variants={itemVariants} className="panel panel-grid relative overflow-hidden p-5 sm:p-6 lg:mt-10">
+            <div className="absolute right-5 top-5 rounded-full border border-accent/30 bg-accent/12 px-3 py-1 font-mono text-[0.62rem] uppercase tracking-[0.28em] text-accent-foreground/80">
+              release manifest
+            </div>
+            <div className="pr-20">
+              <p className="section-kicker">signature slice</p>
+              <h2 className="mt-2 font-display text-3xl font-semibold tracking-[-0.05em] text-foreground">
+                Production wins, not portfolio filler.
+              </h2>
+            </div>
+
+            <div className="mt-8 space-y-4">
+              {releaseNotes.map((item) => (
+                <div key={item.label} className="rounded-[1.25rem] border border-border/70 bg-background/55 p-4">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <p className="section-kicker text-primary">{item.label}</p>
+                      <h3 className="mt-2 font-display text-xl font-semibold tracking-[-0.05em] text-foreground">
+                        {item.value}
+                      </h3>
+                    </div>
+                    <ArrowUpRight className="mt-1 h-4 w-4 text-muted-foreground" />
+                  </div>
+                  <p className="mt-3 text-sm leading-6 text-muted-foreground">{item.note}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-6 rounded-[1.25rem] border border-dashed border-border/80 bg-card/45 p-4">
+              <p className="section-kicker">what I optimize for</p>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                Clarity in handoff, disciplined frontend architecture, and pages that feel lighter in production than they did in Figma.
+              </p>
+            </div>
+          </motion.aside>
         </motion.div>
-      </motion.div>
-
-      {/* ── Scroll indicator ──────────────────────────────────── */}
-      <motion.div
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 1.8, repeat: Infinity, repeatType: "reverse" }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1"
-      >
-        <span className="text-xs text-muted-foreground tracking-widest uppercase">Scroll</span>
-        <ArrowDown className="h-4 w-4 text-primary" />
       </motion.div>
     </section>
   )

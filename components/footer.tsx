@@ -1,42 +1,40 @@
 import Link from "next/link"
-import { ArrowUp, Heart } from "lucide-react"
+import { ArrowUp } from "lucide-react"
 import { SocialRow } from "@/components/social-dock"
 
 export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="relative border-t border-border/40 bg-background/60 backdrop-blur-xl py-12 overflow-hidden">
-      {/* subtle glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[400px] h-[100px] bg-primary/5 blur-[80px] pointer-events-none" />
+    <footer className="relative overflow-hidden border-t border-border/60 bg-background/70 py-12 backdrop-blur-md">
+      <div className="absolute bottom-0 left-1/2 h-[120px] w-[420px] -translate-x-1/2 bg-primary/5 blur-[90px] pointer-events-none" />
 
-      <div className="relative z-10 w-full max-w-5xl mx-auto px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          {/* Left */}
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-5 sm:px-6">
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
           <div>
-            <Link href="/" className="text-lg font-bold text-gradient">
+            <Link href="/" className="font-display text-3xl font-semibold tracking-[-0.05em] text-foreground">
               Jonathan Gobiel
             </Link>
-            <p className="text-xs text-muted-foreground mt-1 max-w-xs">
-              Full Stack Engineer crafting exceptional digital experiences.
+            <p className="mt-2 max-w-sm text-sm leading-6 text-muted-foreground">
+              Full stack engineer for teams that want the interface, architecture, and release quality to improve together.
             </p>
           </div>
 
-          {/* Social links — always visible in footer */}
-          <SocialRow />
+          <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between lg:min-w-[420px]">
+            <SocialRow />
 
-          {/* Right */}
-          <div className="flex items-center gap-4">
-            <p className="text-sm text-muted-foreground flex items-center gap-1">
-              © {year}
-            </p>
-            <Link
-              href="#home"
-              className="p-2 rounded-full border border-primary/30 bg-primary/5 hover:bg-primary/10 text-primary transition-all duration-200 hover:-translate-y-0.5"
-              aria-label="Back to top"
-            >
-              <ArrowUp className="h-4 w-4" />
-            </Link>
+            <div className="flex items-center gap-4">
+              <p className="font-mono text-[0.68rem] uppercase tracking-[0.24em] text-muted-foreground">
+                © {year}
+              </p>
+              <Link
+                href="#home"
+                className="flex h-10 w-10 items-center justify-center rounded-2xl border border-border/70 bg-card/80 text-foreground transition-all duration-200 hover:-translate-y-0.5 hover:bg-background"
+                aria-label="Back to top"
+              >
+                <ArrowUp className="h-4 w-4" />
+              </Link>
+            </div>
           </div>
         </div>
       </div>

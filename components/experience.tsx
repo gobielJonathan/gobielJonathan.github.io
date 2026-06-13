@@ -13,9 +13,9 @@ const experiences = [
     description: [
       "Reduced page bundle size by 18% by resolving an incorrect code-splitting boundary that caused unrelated page code to be bundled together.",
       "Achieved a 79% bundle size reduction by lazy-loading heavy animation components, significantly improving initial page load performance.",
-      "Improved Core Web Vitals by preloading critical scripts to reduce Total Blocking Time (TBT) and adopting WebP images to accelerate Largest Contentful Paint (LCP).",
-      "Enhanced developer experience by building two internal CLI tools: a Route Inspector for tracing URL-to-component ownership, and a module scaffolding generator that standardises new feature structure across the codebase.",
-      "Improved team productivity by automating local SSL certificate setup, eliminating a recurring blocker that prevented Android emulator testing.",
+      "Improved Core Web Vitals by preloading critical scripts to reduce Total Blocking Time and adopting WebP images to accelerate Largest Contentful Paint.",
+      "Built internal CLI tools that clarified route ownership and standardized feature scaffolding across the codebase.",
+      "Automated local SSL certificate setup, removing a recurring blocker for Android emulator testing.",
     ],
     technologies: ["Vue.js", "TypeScript", "Lottie", "WebP", "CLI", "WebPerf"],
     color: "from-sky-500 to-blue-600",
@@ -26,12 +26,11 @@ const experiences = [
     position: "Software Engineer Web Platform",
     period: "Sept 2021 – Oct 2025",
     description: [
-      "Implemented automation reporting prior to release, ensuring seamless quality control.",
-      "Introduced a bundle size checker in PRs before merges, optimizing performance.",
-      "Led the smooth migration of the Tokopedia web platform into the TikTok ecosystem.",
-      "Achieved a 90% reduction in build time during development, enhancing DX.",
-      "Standardized i18n across the Tokopedia web platform ecosystem.",
-      "Migrated Tokopedia Web Services into the TikTok ecosystem.",
+      "Implemented automation reporting before releases to keep quality visible.",
+      "Introduced bundle size checks in pull requests before merge.",
+      "Helped steer the Tokopedia web platform migration into the TikTok ecosystem.",
+      "Cut development build time by roughly 90%, improving day-to-day developer flow.",
+      "Standardized i18n across the broader web platform ecosystem.",
     ],
     technologies: ["React", "Next.js", "Docker", "GraphQL", "TypeScript", "Tailwind CSS"],
     color: "from-violet-500 to-purple-600",
@@ -42,10 +41,10 @@ const experiences = [
     position: "Research & Development Team",
     period: "Sept 2019 – Sept 2021",
     description: [
-      "Led enhancements to existing web & mobile apps, focusing on performance optimization.",
-      "Redesigned the Hiring Web App — migrated from jQuery to Next.js architecture.",
-      "Revamped the Teaching Assistant App — transitioned from ASP.NET to Next.js.",
-      "Mentored teaching assistants during the R&D phase.",
+      "Led enhancements to web and mobile products with a strong performance lens.",
+      "Redesigned the Hiring Web App by moving it from jQuery toward a Next.js architecture.",
+      "Revamped the Teaching Assistant App by replacing an ASP.NET implementation with Next.js.",
+      "Mentored teaching assistants during R&D delivery work.",
     ],
     technologies: ["C# Web API", "ReactJS", "Angular", "Laravel", "IIS", "SQL Server", "Flutter"],
     color: "from-blue-500 to-cyan-500",
@@ -56,11 +55,11 @@ const experiences = [
     position: "Teaching Assistant",
     period: "Jun 2018 – Sept 2019",
     description: [
-      "Progressive project tests for Game, Analysis, Web, Network, Mobile assistants.",
-      "Practicum teaching: Algorithm, Database, Multimedia, Security, Web.",
-      "Answer marking and student guidance.",
+      "Ran progressive project tests across game, analysis, web, network, and mobile tracks.",
+      "Taught practicum material spanning algorithms, databases, multimedia, security, and web.",
+      "Handled assessment and student guidance across multiple technical courses.",
     ],
-    technologies: ["C#", "PHP (Laravel)", "CSS", "PHP"],
+    technologies: ["C#", "PHP", "Laravel", "CSS"],
     color: "from-emerald-500 to-teal-500",
   },
 ];
@@ -72,42 +71,41 @@ function ExperienceCard({ exp, index }: { exp: (typeof experiences)[0]; index: n
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.6, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] }}
-      className="relative pl-8"
+      className="relative pl-7 sm:pl-10"
     >
-      {/* Timeline dot */}
-      <div className="absolute left-0 top-6 -translate-x-1/2 flex items-center justify-center">
+      <div className="absolute left-0 top-6 flex -translate-x-1/2 items-center justify-center">
         <motion.div
           initial={{ scale: 0 }}
           whileInView={{ scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: index * 0.12 + 0.2 }}
-          className={`w-4 h-4 rounded-full bg-gradient-to-br ${exp.color} ring-4 ring-background shadow-lg`}
+          className={`h-4 w-4 rounded-full bg-gradient-to-br ${exp.color} ring-4 ring-background shadow-lg`}
         />
       </div>
 
-      {/* Card */}
       <motion.div
-        whileHover={{ y: -4, boxShadow: "0 20px 40px -12px hsl(var(--primary)/0.15)" }}
+        whileHover={{ y: -4, boxShadow: "0 24px 48px -28px rgba(15, 23, 42, 0.42)" }}
         transition={{ duration: 0.25 }}
-        className="glass-card rounded-2xl p-6 ml-4"
+        className="panel ml-3 p-5 sm:ml-5 sm:p-6"
       >
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-5">
+        <div className="mb-5 flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
           <div>
-            <h3 className="text-lg font-bold leading-tight">{exp.position}</h3>
-            <div className="flex items-center gap-1.5 mt-1">
+            <p className="section-kicker text-primary">{exp.period}</p>
+            <h3 className="mt-2 font-display text-2xl font-semibold leading-tight tracking-[-0.05em]">
+              {exp.position}
+            </h3>
+            <div className="mt-2 flex items-center gap-1.5">
               <IconBuilding size={14} className="text-primary" />
-              <span className="text-primary font-semibold text-sm">{exp.company}</span>
+              <span className="text-sm font-semibold text-foreground">{exp.company}</span>
             </div>
           </div>
-          <div className="flex items-center gap-1.5 shrink-0 text-muted-foreground text-sm">
+          <div className="flex items-center gap-1.5 rounded-full border border-border/70 bg-background/65 px-3 py-2 text-sm text-muted-foreground">
             <IconCalendar size={14} />
             <span>{exp.period}</span>
           </div>
         </div>
 
-        {/* Description */}
-        <ul className="space-y-1.5 mb-5">
+        <ul className="mb-5 space-y-2">
           {exp.description.map((item, i) => (
             <motion.li
               key={i}
@@ -115,21 +113,20 @@ function ExperienceCard({ exp, index }: { exp: (typeof experiences)[0]; index: n
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: index * 0.12 + i * 0.05 + 0.3 }}
-              className="flex items-start gap-2 text-sm text-muted-foreground"
+              className="flex items-start gap-3 text-sm leading-6 text-muted-foreground"
             >
-              <span className={`mt-1.5 inline-block w-1.5 h-1.5 rounded-full bg-gradient-to-br ${exp.color} shrink-0`} />
+              <span className={`mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br ${exp.color}`} />
               {item}
             </motion.li>
           ))}
         </ul>
 
-        {/* Tech badges */}
         <div className="flex flex-wrap gap-2">
           {exp.technologies.map((tech) => (
             <motion.span
               key={tech}
               whileHover={{ scale: 1.05 }}
-              className="text-xs px-2.5 py-1 rounded-full bg-primary/8 text-primary border border-primary/15 font-medium"
+              className="rounded-full border border-border/70 bg-background/65 px-3 py-1.5 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-foreground"
             >
               {tech}
             </motion.span>
@@ -146,35 +143,31 @@ export default function Experience() {
   const lineHeight = useTransform(scrollYProgress, [0.1, 0.9], ["0%", "100%"]);
 
   return (
-    <section id="experience" ref={sectionRef} className="relative py-28 overflow-hidden">
-      {/* Bg accent */}
-      <div className="absolute left-0 top-1/3 w-[400px] h-[400px] rounded-full bg-primary/5 blur-[120px] pointer-events-none" />
+    <section id="experience" ref={sectionRef} className="relative overflow-hidden py-24 sm:py-28">
+      <div className="absolute left-0 top-1/3 h-[400px] w-[400px] rounded-full bg-primary/5 blur-[120px] pointer-events-none" />
 
-      <div className="relative z-10 w-full max-w-5xl mx-auto px-8">
-        {/* Section header */}
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-5 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-20"
+          className="mb-14 sm:mb-16"
         >
-          <span className="text-primary text-sm font-semibold tracking-[0.2em] uppercase">My Journey</span>
-          <h2 className="section-heading mt-2">Work Experience</h2>
-          <div className="mt-3 w-12 h-0.5 bg-gradient-to-r from-primary to-transparent rounded-full" />
+          <span className="section-kicker">Experience</span>
+          <h2 className="section-heading mt-3 max-w-2xl">
+            A track record built on cleaner systems, faster pages, and fewer surprises in production.
+          </h2>
         </motion.div>
 
-        {/* Timeline */}
         <div className="relative">
-          {/* Animated vertical line */}
-          <div className="absolute left-0 top-0 bottom-0 w-px bg-border/50">
+          <div className="absolute bottom-0 left-0 top-0 w-px bg-border/50">
             <motion.div
               style={{ height: lineHeight }}
-              className="w-full bg-gradient-to-b from-primary via-purple-400 to-primary/20"
+              className="w-full bg-gradient-to-b from-primary via-accent to-primary/20"
             />
           </div>
 
-          {/* Experience cards */}
           <div className="space-y-10">
             {experiences.map((exp, index) => (
               <ExperienceCard key={exp.id} exp={exp} index={index} />

@@ -4,17 +4,21 @@ import { motion } from "framer-motion"
 import Image from "next/image"
 import Tilt from "react-parallax-tilt"
 import { ExternalLink, Github } from "lucide-react"
-import { Button } from "@/components/ui/button"
 
 const projects = [
   {
     id: 1,
     title: "TalkToMe",
     image: "/talktome-icon.png",
-    description: "Web application designed to replicate the functionality of Google Meet, with real-time audio/video via WebRTC.",
+    description: "Web application designed to replicate the functionality of Google Meet, with real-time audio and video via WebRTC.",
     technologies: ["Next.js", "React", "Tailwind CSS", "WebRTC", "Socket.io"],
     liveUrl: "https://talktome.up.railway.app/",
     githubUrl: "https://github.com/gobielJonathan/talktome/",
+    highlights: [
+      "Real-time browser communication via WebRTC.",
+      "Room-based interaction that feels immediate and lightweight.",
+      "Built as a practical systems exercise, not just a visual clone.",
+    ],
   },
   {
     id: 2,
@@ -92,30 +96,28 @@ const projects = [
     id: 10,
     title: "CariEV",
     image: "https://media.licdn.com/dms/image/v2/D5622AQHHo59ZSPuAeg/feedshare-shrink_800/B56ZzlSc2WHIAg-/0/1773373346039?e=1775088000&v=beta&t=aTa9BmpadqQ-q49LTBYev7fGJd_DIPa00dXUywSmJbQ",
-    description: "Discover public & private EV charging stations near you with one-tap navigation redirection — no more juggling multiple provider apps.",
+    description: "Discover public and private EV charging stations near you with one-tap navigation redirection.",
     technologies: ["Next.js", "React", "Leaflet", "Tailwind CSS"],
     liveUrl: "https://cariev.gobiel.online/",
     githubUrl: "",
     highlights: [
-      "Discover public & private EV charging stations",
-      "Direct navigation redirection to any station",
-      "Find nearby chargers at a glance",
-      "Replaces multiple provider apps in one place",
+      "Unifies charger discovery across multiple providers.",
+      "Supports quick navigation handoff instead of making users re-search.",
+      "Designed around a real local mobility problem rather than a demo brief.",
     ],
   },
   {
     id: 11,
     title: "KirimFile",
     image: "https://media.licdn.com/dms/image/v2/D5622AQGHbfuPcv9uug/feedshare-shrink_800/B56ZsQprBeIcAg-/0/1765510919128?e=1775088000&v=beta&t=-tJPQxvCzYGBkZSiy0oar-TtTEUydalDMB6-PxFC_6M",
-    description: "Browser-based peer-to-peer file sharing — works on Android, iOS, and desktop with zero installs. Just open and share.",
+    description: "Browser-based peer-to-peer file sharing that works on Android, iOS, and desktop with zero installs.",
     technologies: ["WebRTC", "React", "JavaScript"],
     liveUrl: "https://kirimfile.gobiel.online/",
     githubUrl: "",
     highlights: [
-      "Serverless P2P transfer via WebRTC",
-      "Works on any device with a browser",
-      "No installs or sign-ups required",
-      "Cross-platform: Android, iOS, PC",
+      "Serverless peer-to-peer transfer via WebRTC.",
+      "Cross-platform by default with no sign-up burden.",
+      "Built around immediacy: open, pair, and share.",
     ],
   },
   {
@@ -134,7 +136,11 @@ const projects = [
   },
 ]
 
-function ProjectCard({ project, index }: { project: (typeof projects)[0]; index: number }) {
+const featuredProjectIds = new Set([10, 11, 1])
+const featuredProjects = projects.filter((project) => featuredProjectIds.has(project.id))
+const archiveProjects = projects.filter((project) => !featuredProjectIds.has(project.id))
+
+function FeaturedProjectCard({ project, index }: { project: (typeof projects)[0]; index: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -142,33 +148,22 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.55, delay: (index % 3) * 0.08, ease: [0.22, 1, 0.36, 1] }}
     >
-      <Tilt
-        tiltMaxAngleX={6}
-        tiltMaxAngleY={6}
-        glareEnable
-        glareMaxOpacity={0.06}
-        glareColor="hsl(262 83% 70%)"
-        glarePosition="all"
-        scale={1.02}
-        transitionSpeed={1200}
-        className="h-full"
-      >
-        <div className="group glass-card rounded-2xl overflow-hidden h-full flex flex-col hover:border-primary/25 transition-colors duration-300">
-          {/* Image */}
-          <div className="relative h-48 overflow-hidden bg-muted/40">
+      <Tilt tiltMaxAngleX={4} tiltMaxAngleY={4} scale={1.01} transitionSpeed={1200} className="h-full">
+        <article className="panel group overflow-hidden p-4 sm:p-5">
+          <div className="relative h-52 overflow-hidden rounded-[1.35rem] border border-border/70 bg-muted/40 sm:h-64">
             <Image
               src={project.image || "/placeholder.svg"}
-              alt={project.title}
+              alt={`${project.title} project screenshot`}
               fill
-              className="object-contain p-6 transition-transform duration-500 group-hover:scale-108"
+              sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
+              className="object-contain p-6 transition-transform duration-500 group-hover:scale-105"
             />
-            {/* Hover overlay */}
-            <div className="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 flex items-center justify-center gap-3 transition-all duration-300 backdrop-blur-sm">
+            <div className="absolute inset-x-0 bottom-0 flex items-center gap-2 border-t border-border/70 bg-background/82 px-4 py-3 backdrop-blur-sm">
               <a
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white text-primary text-xs font-semibold hover:bg-white/90 transition-colors"
+                className="inline-flex items-center gap-1.5 rounded-full border border-border/70 bg-card px-3 py-1.5 text-xs font-semibold text-foreground transition-colors hover:bg-background"
               >
                 <ExternalLink className="h-3.5 w-3.5" />
                 Live
@@ -178,7 +173,7 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/20 text-white text-xs font-semibold border border-white/30 hover:bg-white/30 transition-colors"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-border/70 bg-card px-3 py-1.5 text-xs font-semibold text-foreground transition-colors hover:bg-background"
                 >
                   <Github className="h-3.5 w-3.5" />
                   Code
@@ -187,65 +182,145 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
             </div>
           </div>
 
-          {/* Content */}
-          <div className="p-5 flex flex-col flex-1">
-            <h3 className="font-bold text-base mb-2 group-hover:text-primary transition-colors">{project.title}</h3>
-            <p className="text-sm text-muted-foreground mb-3 leading-relaxed">{project.description}</p>
+          <div className="mt-5 flex flex-col gap-4">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="section-kicker text-primary">featured build</p>
+                <h3 className="mt-2 font-display text-3xl font-semibold tracking-[-0.05em] text-foreground">
+                  {project.title}
+                </h3>
+              </div>
+              <span className="rounded-full border border-accent/25 bg-accent/10 px-3 py-1 font-mono text-[0.62rem] uppercase tracking-[0.24em] text-foreground">
+                live product
+              </span>
+            </div>
+
+            <p className="text-sm leading-7 text-muted-foreground sm:text-base">{project.description}</p>
             {project.highlights && (
-              <ul className="flex-1 mb-4 space-y-1">
-                {project.highlights.map((h) => (
-                  <li key={h} className="flex items-start gap-1.5 text-xs text-muted-foreground">
-                    <span className="mt-1 w-1 h-1 rounded-full bg-primary/70 shrink-0" />
-                    {h}
+              <ul className="grid gap-2 sm:grid-cols-2">
+                {project.highlights.map((highlight) => (
+                  <li
+                    key={highlight}
+                    className="rounded-[1rem] border border-border/70 bg-background/60 px-3 py-3 text-xs leading-5 text-muted-foreground sm:text-sm"
+                  >
+                    {highlight}
                   </li>
                 ))}
               </ul>
             )}
-            {!project.highlights && <div className="flex-1" />}
             <div className="flex flex-wrap gap-1.5">
               {project.technologies.map((tech) => (
                 <span
                   key={tech}
-                  className="text-[11px] px-2 py-0.5 rounded-full bg-primary/8 text-primary border border-primary/15 font-medium"
+                  className="rounded-full border border-border/70 bg-background/65 px-3 py-1.5 font-mono text-[0.68rem] uppercase tracking-[0.16em] text-foreground"
                 >
                   {tech}
                 </span>
               ))}
             </div>
           </div>
-        </div>
+        </article>
       </Tilt>
     </motion.div>
   )
 }
 
+function ArchiveProjectCard({ project, index }: { project: (typeof projects)[0]; index: number }) {
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.45, delay: (index % 3) * 0.06, ease: [0.22, 1, 0.36, 1] }}
+      className="panel overflow-hidden p-4"
+    >
+      <div className="relative h-40 overflow-hidden rounded-[1.2rem] border border-border/70 bg-muted/35">
+        <Image
+          src={project.image || "/placeholder.svg"}
+          alt={`${project.title} project screenshot`}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
+          className="object-contain p-5"
+        />
+      </div>
+      <div className="mt-4 flex items-start justify-between gap-3">
+        <div>
+          <h3 className="font-display text-2xl font-semibold tracking-[-0.05em] text-foreground">{project.title}</h3>
+          <p className="mt-2 text-sm leading-6 text-muted-foreground">{project.description}</p>
+        </div>
+      </div>
+      <div className="mt-4 flex flex-wrap gap-2">
+        {project.technologies.slice(0, 4).map((tech) => (
+          <span
+            key={tech}
+            className="rounded-full border border-border/70 bg-background/60 px-3 py-1 font-mono text-[0.65rem] uppercase tracking-[0.16em] text-foreground"
+          >
+            {tech}
+          </span>
+        ))}
+      </div>
+      <div className="mt-5 flex items-center gap-2">
+        <a
+          href={project.liveUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 rounded-full border border-border/70 bg-card px-3 py-1.5 text-xs font-semibold text-foreground transition-colors hover:bg-background"
+        >
+          <ExternalLink className="h-3.5 w-3.5" />
+          Open
+        </a>
+        {project.githubUrl && (
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-full border border-border/70 bg-card px-3 py-1.5 text-xs font-semibold text-foreground transition-colors hover:bg-background"
+          >
+            <Github className="h-3.5 w-3.5" />
+            Code
+          </a>
+        )}
+      </div>
+    </motion.article>
+  )
+}
+
 export default function Projects() {
   return (
-    <section id="projects" className="relative py-28 overflow-hidden">
-      {/* Bg accent */}
+    <section id="projects" className="relative overflow-hidden py-24 sm:py-28">
       <div className="absolute right-0 bottom-0 w-[500px] h-[500px] rounded-full bg-purple-500/5 blur-[120px] pointer-events-none" />
 
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-8">
-        {/* Section header */}
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-5 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-20"
+          className="mb-14 sm:mb-16"
         >
-          <span className="text-primary text-sm font-semibold tracking-[0.2em] uppercase">Portfolio</span>
-          <h2 className="section-heading mt-2">My Projects</h2>
-          <div className="mt-3 w-12 h-0.5 bg-gradient-to-r from-primary to-transparent rounded-full" />
-          <p className="mt-4 text-muted-foreground max-w-xl">
-            Recent work across different industries — from real-time communication to e-commerce and government platforms.
+          <span className="section-kicker">Selected work</span>
+          <h2 className="section-heading mt-3 max-w-3xl">
+            A mix of production products, experiments, and tools that solve specific user problems.
+          </h2>
+          <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground">
+            Instead of throwing every thumbnail at the first screen, these are the builds that best show how I work: practical, product-shaped, and live.
           </p>
         </motion.div>
 
-        {/* Grid */}
-        <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
+        <div className="grid gap-6 lg:grid-cols-3">
+          {featuredProjects.map((project, index) => (
+            <FeaturedProjectCard key={project.id} project={project} index={index} />
+          ))}
+        </div>
+
+        <div className="mt-14 flex items-center gap-4">
+          <span className="section-kicker">Archive</span>
+          <div className="h-px flex-1 bg-border/70" />
+        </div>
+
+        <div className="mt-6 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          {archiveProjects.map((project, index) => (
+            <ArchiveProjectCard key={project.id} project={project} index={index} />
           ))}
         </div>
       </div>
