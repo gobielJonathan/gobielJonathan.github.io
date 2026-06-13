@@ -1,11 +1,14 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { IBM_Plex_Mono, Manrope, Syne } from "next/font/google"
-import "./globals.css"
+import { Analytics } from "@vercel/analytics/next"
+
 import Navbar from "@/components/navbar"
 import SocialDock from "@/components/social-dock"
 import { ThemeProvider } from "@/components/theme-provider"
 import SmoothScroll from "@/components/smooth-scroll"
+
+import "./globals.css"
 
 const display = Syne({ subsets: ["latin"], variable: "--font-display" })
 const body = Manrope({ subsets: ["latin"], variable: "--font-body" })
@@ -91,6 +94,7 @@ export default function RootLayout({
             <Navbar />
             <SocialDock />
             <main className="min-h-screen">{children}</main>
+            <Analytics />
           </SmoothScroll>
         </ThemeProvider>
       </body>
