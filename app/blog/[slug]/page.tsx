@@ -99,7 +99,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-card/70 px-3 py-1.5 text-sm font-semibold text-foreground transition-colors hover:bg-background"
         >
           <ArrowLeft className="h-4 w-4" />
-          Back to blog
+          Back
         </Link>
 
         <p className="section-kicker mt-6">{post.mainKeyword || "engineering note"}</p>
