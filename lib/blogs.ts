@@ -9,6 +9,7 @@ export type BlogPost = {
   title: string
   metaDescription: string
   mainKeyword: string
+  tags?: string[]
   source?: string
   content: string
   excerpt: string
@@ -34,6 +35,22 @@ function parsePostFile(raw: string) {
   const source =
     lines.find((line) => line.trim().startsWith("Source:"))?.replace("Source:", "").trim() ?? undefined
 
+  const publishedRaw =
+    lines.find((line) => line.trim().startsWith("Published:"))?.replace("Published:", "").trim() ?? ""
+
+  const publishedAt = publishedRaw ? new Date(publishedRaw) : null
+  const publishedIso =
+    publishedAt && !Number.isNaN(publishedAt.getTime()) ? publishedAt.toISOString() : undefined
+
+  const tagsRaw =
+    lines.find((line) => line.trim().startsWith("Tags:"))?.replace("Tags:", "").trim() ?? ""
+  const tags = tagsRaw
+    ? tagsRaw
+        .split(",")
+        .map((tag) => tag.trim())
+        .filter(Boolean)
+    : undefined
+
   let bodyStart = 0
   for (let i = 0; i < lines.length; i += 1) {
     const trimmed = lines[i].trim()
@@ -46,7 +63,9 @@ function parsePostFile(raw: string) {
       trimmed.startsWith("# ") ||
       trimmed.startsWith("Meta Description:") ||
       trimmed.startsWith("Main Keyword:") ||
-      trimmed.startsWith("Source:")
+      trimmed.startsWith("Source:") ||
+      trimmed.startsWith("Published:") ||
+      trimmed.startsWith("Tags:")
     ) {
       continue
     }
@@ -72,6 +91,8 @@ function parsePostFile(raw: string) {
     metaDescription,
     mainKeyword,
     source,
+    publishedIso,
+    tags,
     content,
     excerpt,
     readingMinutes,
@@ -90,6 +111,7 @@ export const getAllBlogPosts = cache(async (): Promise<BlogPost[]> => {
       const stats = await fs.stat(postPath)
       const raw = await fs.readFile(postPath, "utf8")
       const parsed = parsePostFile(raw)
+      const { publishedIso, ...postFields } = parsed
 
       let heroUrl: string | undefined
       try {
@@ -101,9 +123,9 @@ export const getAllBlogPosts = cache(async (): Promise<BlogPost[]> => {
 
       return {
         slug,
-        updatedAt: stats.mtime.toISOString(),
+        updatedAt: publishedIso ?? stats.mtime.toISOString(),
         heroUrl,
-        ...parsed,
+        ...postFields,
       }
     }),
   )
@@ -125,6 +147,7 @@ export const getBlogPostBySlug = cache(async (slug: string): Promise<BlogPost | 
     const stats = await fs.stat(postPath)
     const raw = await fs.readFile(postPath, "utf8")
     const parsed = parsePostFile(raw)
+    const { publishedIso, ...postFields } = parsed
 
     let heroUrl: string | undefined
     try {
@@ -136,9 +159,9 @@ export const getBlogPostBySlug = cache(async (slug: string): Promise<BlogPost | 
 
     return {
       slug: safeSlug,
-      updatedAt: stats.mtime.toISOString(),
+      updatedAt: publishedIso ?? stats.mtime.toISOString(),
       heroUrl,
-      ...parsed,
+      ...postFields,
     }
   } catch {
     return null
