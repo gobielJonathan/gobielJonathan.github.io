@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   return {
     title: post.title,
     description: post.metaDescription || post.excerpt,
-    keywords: post.mainKeyword ? [post.mainKeyword] : undefined,
+    keywords: post.tags?.length ? post.tags : post.mainKeyword ? [post.mainKeyword] : undefined,
     authors: [{ name: "Jonathan Gobiel", url: "https://www.gobiel.online" }],
     alternates: {
       canonical: `/blog/${post.slug}`,
@@ -107,6 +107,18 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           {post.title}
         </h1>
         <div className="mt-4 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+          {post.tags?.length ? (
+            <div className="flex flex-wrap gap-2">
+              {post.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full border border-border/70 bg-card/70 px-2.5 py-0.5 font-mono text-[0.62rem] uppercase tracking-[0.16em] text-foreground"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          ) : null}
           <span className="inline-flex items-center gap-1">
             <Clock3 className="h-4 w-4" />
             {post.readingMinutes} min read
