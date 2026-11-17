@@ -1,17 +1,9 @@
-"use client"
-
-import { motion } from "framer-motion"
 import type { ReactNode } from "react"
 
-/** Re-mounts on every navigation, giving each route a soft entrance. */
+/**
+ * Re-mounts on every navigation, so the CSS entrance (.page-enter in globals.css)
+ * replays per route. CSS-only: no hydration wait, and transforms don't count toward CLS.
+ */
 export default function Template({ children }: { children: ReactNode }) {
-  return (
-    <motion.div
-      initial={{ y: 12 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-    >
-      {children}
-    </motion.div>
-  )
+  return <div className="page-enter">{children}</div>
 }

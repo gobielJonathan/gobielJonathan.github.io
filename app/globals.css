@@ -254,6 +254,32 @@
   animation: caret-blink 1s steps(1) infinite;
 }
 
+
+/* ─── Entrances (CSS-only, run on first paint) ──────────────── */
+@keyframes word-rise {
+  from {
+    transform: translateY(110%) rotate(4deg);
+  }
+  to {
+    transform: translateY(0) rotate(0);
+  }
+}
+.word-rise {
+  animation: word-rise 0.75s var(--ease-out-expo) both;
+  animation-delay: var(--word-delay, 0s);
+}
+@keyframes page-enter {
+  from {
+    transform: translateY(12px);
+  }
+  to {
+    transform: none;
+  }
+}
+.page-enter {
+  animation: page-enter 0.55s var(--ease-out-expo) both;
+}
+
 /* ─── Reduced motion: keep the layout, drop the movement ────── */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -264,6 +290,7 @@
   *::after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
+    animation-delay: 0s !important;
     transition-duration: 0.001ms !important;
   }
 }

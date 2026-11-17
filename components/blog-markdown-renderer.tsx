@@ -30,6 +30,14 @@ export function BlogMarkdownRenderer({ content }: BlogMarkdownRendererProps) {
               />
             )
           },
+          // The page title is the only <h1>; demote any "# " inside a post body.
+          h1: ({ node, ...props }) => (
+            <h2 className="pt-4 font-display text-3xl font-semibold tracking-[-0.05em] text-foreground" {...props} />
+          ),
+          img: ({ node, alt, ...props }: any) => (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img {...props} alt={alt || ""} loading="lazy" decoding="async" className="my-6 h-auto max-w-full rounded-[1.1rem] border border-border/70" />
+          ),
           h2: ({ node, ...props }) => (
             <h2 className="pt-4 font-display text-3xl font-semibold tracking-[-0.05em] text-foreground" {...props} />
           ),
