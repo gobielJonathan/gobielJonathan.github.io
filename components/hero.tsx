@@ -127,7 +127,7 @@ export default function Hero() {
             </Magnetic>
             <Magnetic strength={0.2}>
               <a
-                href="https://drive.google.com/file/d/1a1-wxCLWo7g_69liq2J3YrXAMpy06GnA/view"
+                href="https://drive.google.com/file/d/1WO8bGA7hUkRZEiuic65JWbqfVST8iudG/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex h-12 items-center gap-2 rounded-full border border-border bg-card/70 px-6 text-sm font-semibold text-foreground backdrop-blur transition-colors hover:border-primary/50"
