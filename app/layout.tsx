@@ -1,5 +1,5 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { IBM_Plex_Mono, Manrope, Syne } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 
@@ -7,39 +7,40 @@ import Navbar from "@/components/navbar"
 import SocialDock from "@/components/social-dock"
 import { ThemeProvider } from "@/components/theme-provider"
 import SmoothScroll from "@/components/smooth-scroll"
+import MotionProvider from "@/components/motion/motion-provider"
+import CursorGlow from "@/components/motion/cursor-glow"
+import ScrollProgress from "@/components/motion/scroll-progress"
+import { site, siteUrl } from "@/lib/site"
 
 import "./globals.css"
 
-const display = Syne({ subsets: ["latin"], variable: "--font-display" })
-const body = Manrope({ subsets: ["latin"], variable: "--font-body" })
-const mono = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-mono" })
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.startsWith("http")
-  ? process.env.NEXT_PUBLIC_SITE_URL
-  : "https://www.gobiel.online"
+const display = Syne({ subsets: ["latin"], variable: "--font-display", display: "swap" })
+const body = Manrope({ subsets: ["latin"], variable: "--font-body", display: "swap" })
+const mono = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-mono", display: "swap" })
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#eef1f6" },
+    { media: "(prefers-color-scheme: dark)", color: "#0b0f1a" },
+  ],
+  colorScheme: "light dark",
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Jonathan Gobiel | Full Stack Developer Indonesia",
+    default: site.title,
     template: "%s | Jonathan Gobiel",
   },
-  description:
-    "Hire Jonathan Gobiel, a full stack developer in Indonesia. Explore Next.js, React, and Node.js projects, experience, and proven web performance results.",
-  keywords: [
-    "Jonathan Gobiel",
-    "full stack engineer",
-    "full stack developer portfolio",
-    "Next.js developer",
-    "React developer",
-    "Node.js developer",
-    "web performance",
-  ],
+  description: site.description,
+  applicationName: site.name,
+  keywords: [...site.keywords],
   alternates: {
     canonical: "/",
   },
-  authors: [{ name: "Jonathan Gobiel", url: "https://www.gobiel.online" }],
-  creator: "Jonathan Gobiel",
-  publisher: "Jonathan Gobiel",
+  authors: [{ name: site.name, url: siteUrl }],
+  creator: site.name,
+  publisher: site.name,
   category: "technology",
   robots: {
     index: true,
@@ -52,33 +53,30 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
-  },
+  // Google Search Console: after verifying ownership, either keep the DNS TXT method
+  // (recommended, nothing needed here) or paste the HTML-tag token below / set
+  // NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION in Vercel. Do not commit a made-up token.
+  // verification: { google: "PASTE_SEARCH_CONSOLE_TOKEN_HERE" },
+  ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? { verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION } }
+    : {}),
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: site.locale,
     url: "/",
-    title: "Jonathan Gobiel | Full Stack Developer Indonesia",
-    description:
-      "Hire Jonathan Gobiel, a full stack developer in Indonesia with proven Next.js, React, and Node.js delivery experience.",
-    siteName: "Jonathan Gobiel",
-    images: [
-      {
-        url: "/opengraph-image",
-        width: 1200,
-        height: 630,
-        alt: "Jonathan Gobiel social preview",
-      },
-    ],
+    title: site.title,
+    description: site.shortDescription,
+    siteName: site.name,
+    // images come from app/opengraph-image.tsx
   },
   twitter: {
     card: "summary_large_image",
-    title: "Jonathan Gobiel | Full Stack Developer Indonesia",
-    description:
-      "Hire Jonathan Gobiel, a full stack developer in Indonesia with proven Next.js, React, and Node.js delivery experience.",
-    images: ["/twitter-image"],
+    title: site.title,
+    description: site.shortDescription,
+    creator: site.twitterHandle,
+    // images come from app/twitter-image.tsx
   },
+  formatDetection: { email: false, address: false, telephone: false },
 }
 
 export default function RootLayout({
@@ -89,13 +87,25 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={`${display.variable} ${body.variable} ${mono.variable}`}>
       <body className="font-body">
+        <a
+          href="#content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:rounded-full focus:bg-foreground focus:px-4 focus:py-2 focus:text-background"
+        >
+          Skip to content
+        </a>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
-          <SmoothScroll>
-            <Navbar />
-            <SocialDock />
-            <main className="min-h-screen">{children}</main>
-            <Analytics />
-          </SmoothScroll>
+          <MotionProvider>
+            <SmoothScroll>
+              <ScrollProgress />
+              <CursorGlow />
+              <Navbar />
+              <SocialDock />
+              <main id="content" className="relative z-[2] min-h-screen">
+                {children}
+              </main>
+              <Analytics />
+            </SmoothScroll>
+          </MotionProvider>
         </ThemeProvider>
       </body>
     </html>

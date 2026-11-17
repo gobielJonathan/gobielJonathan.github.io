@@ -5,6 +5,7 @@ import { notFound } from "next/navigation"
 import { ArrowLeft, Clock3 } from "lucide-react"
 import { getBlogPostBySlug, getBlogSlugs } from "@/lib/blogs"
 import { BlogMarkdownRenderer } from "@/components/blog-markdown-renderer"
+import { jsonLd, personId, site, siteUrl, websiteId } from "@/lib/site"
 
 type BlogPostPageProps = {
   params: Promise<{ slug: string }>
@@ -25,31 +26,35 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     }
   }
 
+  const description = post.metaDescription || post.excerpt
+  const keywords = [post.mainKeyword, ...(post.tags ?? []), "Jonathan Gobiel"].filter(Boolean) as string[]
+
   return {
     title: post.title,
-    description: post.metaDescription || post.excerpt,
-    keywords: post.tags?.length ? post.tags : post.mainKeyword ? [post.mainKeyword] : undefined,
-    authors: [{ name: "Jonathan Gobiel", url: "https://www.gobiel.online" }],
+    description,
+    keywords,
+    authors: [{ name: site.name, url: siteUrl }],
     alternates: {
       canonical: `/blog/${post.slug}`,
     },
     openGraph: {
       title: post.title,
-      description: post.metaDescription || post.excerpt,
+      description,
       type: "article",
+      url: `/blog/${post.slug}`,
+      siteName: site.name,
+      locale: site.locale,
       publishedTime: post.updatedAt,
       modifiedTime: post.updatedAt,
-      authors: ["Jonathan Gobiel"],
-      tags: post.mainKeyword ? [post.mainKeyword] : undefined,
-      images: post.heroUrl
-        ? [{ url: post.heroUrl, alt: `${post.title} cover image` }]
-        : undefined,
+      authors: [siteUrl],
+      tags: keywords,
+      // image: app/blog/[slug]/opengraph-image.tsx
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
-      description: post.metaDescription || post.excerpt,
-      images: post.heroUrl ? [post.heroUrl] : undefined,
+      description,
+      creator: site.twitterHandle,
     },
   }
 }
@@ -62,34 +67,44 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound()
   }
 
-  const articleJsonLd = {
+  const postUrl = `${siteUrl}/blog/${post.slug}`
+  const graph = {
     "@context": "https://schema.org",
-    "@type": "Article",
-    headline: post.title,
-    description: post.metaDescription || post.excerpt,
-    datePublished: post.updatedAt,
-    dateModified: post.updatedAt,
-    author: {
-      "@type": "Person",
-      name: "Jonathan Gobiel",
-      url: "https://www.gobiel.online",
-    },
-    publisher: {
-      "@type": "Person",
-      name: "Jonathan Gobiel",
-      url: "https://www.gobiel.online",
-    },
-    url: `https://www.gobiel.online/blog/${post.slug}`,
-    ...(post.heroUrl ? { image: `https://www.gobiel.online${post.heroUrl}` } : {}),
-    keywords: post.mainKeyword,
-    inLanguage: "en-US",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "@id": `${postUrl}#article`,
+        headline: post.title,
+        description: post.metaDescription || post.excerpt,
+        datePublished: post.updatedAt,
+        dateModified: post.updatedAt,
+        url: postUrl,
+        mainEntityOfPage: { "@type": "WebPage", "@id": postUrl },
+        image: `${postUrl}/opengraph-image`,
+        author: { "@type": "Person", "@id": personId, name: site.name, url: siteUrl, sameAs: [...site.sameAs] },
+        publisher: { "@type": "Person", "@id": personId, name: site.name, url: siteUrl },
+        isPartOf: { "@id": websiteId },
+        keywords: [post.mainKeyword, ...(post.tags ?? [])].filter(Boolean).join(", "),
+        wordCount: post.content.split(/\s+/).filter(Boolean).length,
+        timeRequired: `PT${post.readingMinutes}M`,
+        inLanguage: "en-US",
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+          { "@type": "ListItem", position: 2, name: "Blog", item: `${siteUrl}/blog` },
+          { "@type": "ListItem", position: 3, name: post.title, item: postUrl },
+        ],
+      },
+    ],
   }
 
   return (
     <section className="relative overflow-hidden px-5 pb-24 pt-28 sm:px-6 sm:pt-32">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+        dangerouslySetInnerHTML={jsonLd(graph)}
       />
       <div className="absolute inset-0 mesh-bg" />
 
@@ -99,7 +114,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-card/70 px-3 py-1.5 text-sm font-semibold text-foreground transition-colors hover:bg-background"
         >
           <ArrowLeft className="h-4 w-4" />
-          Back
+          All posts
         </Link>
 
         <p className="section-kicker mt-6">{post.mainKeyword || "engineering note"}</p>

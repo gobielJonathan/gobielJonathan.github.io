@@ -2,58 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
-@supports (view-transition-name: auto) {
-  html {
-    view-transition-name: root;
-  }
-}
-
+/*
+  Design tokens — "agent loop" palette
+  fog    #EEF1F6  background (light)
+  ink    #121826  foreground
+  signal #5B4BFF  primary: agents at work
+  loop   #0FB5C9  feedback flowing back into the loop
+  gate   #F2A33A  accent: the human approval gate
+*/
 @layer base {
   :root {
-    --background: 195 24% 94%;
-    --foreground: 222 36% 13%;
+    --background: 216 33% 95%;
+    --foreground: 222 36% 11%;
     --card: 0 0% 100%;
-    --card-foreground: 222 36% 13%;
+    --card-foreground: 222 36% 11%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222 36% 13%;
-    --primary: 224 68% 46%;
+    --popover-foreground: 222 36% 11%;
+    --primary: 246 100% 63%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 195 18% 89%;
-    --secondary-foreground: 222 26% 22%;
-    --muted: 190 18% 89%;
-    --muted-foreground: 214 16% 38%;
-    --accent: 19 90% 57%;
-    --accent-foreground: 222 36% 13%;
+    --secondary: 216 24% 89%;
+    --secondary-foreground: 222 26% 20%;
+    --muted: 216 24% 90%;
+    --muted-foreground: 220 14% 36%;
+    --accent: 34 88% 56%;
+    --accent-foreground: 222 36% 11%;
+    --loop: 187 86% 38%;
     --destructive: 0 78% 55%;
     --destructive-foreground: 0 0% 98%;
-    --border: 212 22% 82%;
-    --input: 212 22% 82%;
-    --ring: 224 68% 46%;
-    --radius: 1.25rem;
-    --glow: 224 68% 46%;
+    --border: 218 22% 83%;
+    --input: 218 22% 83%;
+    --ring: 246 100% 63%;
+    --radius: 1.1rem;
+    --glow: 246 100% 63%;
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .dark {
-    --background: 222 41% 10%;
-    --foreground: 204 28% 92%;
-    --card: 222 35% 14%;
-    --card-foreground: 204 28% 92%;
-    --popover: 222 35% 14%;
-    --popover-foreground: 204 28% 92%;
-    --primary: 207 74% 64%;
-    --primary-foreground: 222 41% 10%;
-    --secondary: 221 26% 18%;
-    --secondary-foreground: 204 28% 92%;
-    --muted: 221 26% 18%;
-    --muted-foreground: 214 16% 72%;
-    --accent: 19 95% 62%;
-    --accent-foreground: 222 41% 10%;
+    --background: 226 40% 7%;
+    --foreground: 220 30% 93%;
+    --card: 226 32% 11%;
+    --card-foreground: 220 30% 93%;
+    --popover: 226 32% 11%;
+    --popover-foreground: 220 30% 93%;
+    --primary: 246 100% 74%;
+    --primary-foreground: 226 40% 7%;
+    --secondary: 226 26% 16%;
+    --secondary-foreground: 220 30% 93%;
+    --muted: 226 26% 15%;
+    --muted-foreground: 220 14% 68%;
+    --accent: 34 92% 62%;
+    --accent-foreground: 226 40% 7%;
+    --loop: 187 80% 55%;
     --destructive: 0 65% 42%;
     --destructive-foreground: 0 0% 98%;
-    --border: 221 20% 24%;
-    --input: 221 20% 24%;
-    --ring: 207 74% 64%;
-    --glow: 207 74% 64%;
+    --border: 226 22% 21%;
+    --input: 226 22% 21%;
+    --ring: 246 100% 74%;
+    --glow: 246 100% 74%;
   }
 }
 
@@ -61,32 +66,38 @@
   * {
     @apply border-border;
   }
-  body {
-    @apply bg-background text-foreground antialiased;
-    background-image:
-      radial-gradient(circle at top left, hsl(var(--primary) / 0.1), transparent 28%),
-      radial-gradient(circle at 85% 10%, hsl(var(--accent) / 0.12), transparent 24%),
-      linear-gradient(to bottom, hsl(var(--background)), hsl(var(--background)));
-  }
   html {
     @apply scroll-smooth;
   }
+  body {
+    @apply bg-background text-foreground antialiased;
+    background-image:
+      radial-gradient(60rem 40rem at 0% -10%, hsl(var(--primary) / 0.1), transparent 60%),
+      radial-gradient(40rem 30rem at 100% 0%, hsl(var(--loop) / 0.09), transparent 60%);
+    background-repeat: no-repeat;
+  }
+  /* faint dot field, like a plotting grid */
   body::before {
     content: "";
     position: fixed;
     inset: 0;
     pointer-events: none;
-    background-image:
-      linear-gradient(to right, hsl(var(--foreground) / 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, hsl(var(--foreground) / 0.05) 1px, transparent 1px);
-    background-size: 72px 72px;
-    mask-image: linear-gradient(to bottom, white 25%, transparent 100%);
-    opacity: 0.45;
+    background-image: radial-gradient(hsl(var(--foreground) / 0.12) 1px, transparent 1px);
+    background-size: 28px 28px;
+    mask-image: radial-gradient(ellipse at 50% 0%, black 10%, transparent 70%);
+    opacity: 0.5;
     z-index: 0;
+  }
+  ::selection {
+    background: hsl(var(--primary) / 0.25);
+  }
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 3px;
   }
 }
 
-/* ─── Custom Scrollbar ─────────────────────────────────────── */
+/* ─── Scrollbar ─────────────────────────────────────────────── */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -94,66 +105,44 @@
   @apply bg-background;
 }
 ::-webkit-scrollbar-thumb {
-  @apply bg-primary/40 rounded-full;
+  @apply rounded-full bg-primary/40;
 }
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-primary/70;
 }
-/* ─── View Transitions ─────────────────────────────────── */
+
+/* ─── View transitions (theme toggle) ───────────────────────── */
 @supports (view-transition-name: auto) {
-  ::view-transition-old(root) {
-    animation: fade-out 0.4s ease-in-out forwards;
-  }
+  ::view-transition-old(root),
   ::view-transition-new(root) {
-    animation: fade-in 0.4s ease-in-out forwards;
-  }
-  @keyframes fade-out {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
-  }
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+    animation-duration: 0.45s;
+    animation-timing-function: var(--ease-out-expo);
   }
 }
-/* ─── Gradient Text Utility ────────────────────────────────── */
+
 @layer utilities {
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+    background-image: linear-gradient(100deg, hsl(var(--primary)) 0%, hsl(var(--loop)) 50%, hsl(var(--primary)) 100%);
+    background-size: 200% 100%;
+    @apply bg-clip-text text-transparent;
   }
-  .glow {
-    text-shadow: 0 12px 32px hsl(var(--primary) / 0.18);
-  }
-  .glass {
-    @apply backdrop-blur-md border border-border/70;
-    background-color: hsl(var(--card) / 0.85);
-  }
-  .glass-card {
-    @apply backdrop-blur-md border border-border/70 shadow-[0_18px_50px_-28px_rgba(16,24,40,0.42)];
-    background-color: hsl(var(--card) / 0.88);
+  .text-gradient-animated {
+    animation: gradient-pan 8s linear infinite;
   }
   .section-heading {
-    @apply font-display text-3xl font-semibold tracking-[-0.04em] md:text-5xl;
+    @apply font-display text-3xl font-semibold tracking-[-0.045em] md:text-5xl;
   }
   .section-kicker {
     @apply font-mono text-[0.68rem] uppercase tracking-[0.3em] text-muted-foreground;
   }
   .panel {
-    @apply rounded-[1.5rem] border border-border/70 shadow-[0_18px_50px_-28px_rgba(16,24,40,0.42)];
-    background-color: hsl(var(--card) / 0.88);
+    @apply rounded-[1.4rem] border border-border/70 shadow-[0_18px_50px_-30px_rgba(16,24,40,0.45)];
+    background-color: hsl(var(--card) / 0.86);
   }
   .panel-grid {
     background-image:
-      linear-gradient(to right, hsl(var(--foreground) / 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, hsl(var(--foreground) / 0.05) 1px, transparent 1px);
+      linear-gradient(to right, hsl(var(--foreground) / 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--foreground) / 0.045) 1px, transparent 1px);
     background-size: 26px 26px;
   }
   .rule-label {
@@ -163,34 +152,118 @@
     content: "";
     @apply h-px w-8 bg-border;
   }
+  .chip {
+    @apply rounded-full border border-border/70 bg-background/65 px-3 py-1 font-mono text-[0.65rem] uppercase tracking-[0.16em] text-foreground;
+  }
 }
 
 .mesh-bg {
   background-image:
-    radial-gradient(at 15% 20%, hsl(var(--primary) / 0.13) 0, transparent 48%),
-    radial-gradient(at 85% 5%, hsl(var(--accent) / 0.11) 0, transparent 32%),
-    radial-gradient(at 60% 85%, hsl(var(--primary) / 0.08) 0, transparent 40%);
+    radial-gradient(at 15% 20%, hsl(var(--primary) / 0.12) 0, transparent 48%),
+    radial-gradient(at 85% 5%, hsl(var(--loop) / 0.1) 0, transparent 32%);
 }
 
-/* ─── Floating Blob ─────────────────────────────────────────── */
-@keyframes blob {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33%       { transform: translate(20px, -30px) scale(1.05); }
-  66%       { transform: translate(-15px, 15px) scale(0.95); }
+/* ─── Spotlight card: border + wash follow the pointer ──────── */
+.spotlight {
+  position: relative;
+  isolation: isolate;
 }
-.animate-blob { animation: blob 10s ease-in-out infinite; }
-.animation-delay-2000 { animation-delay: 2s; }
-.animation-delay-4000 { animation-delay: 4s; }
-
-/* ─── Shimmer ────────────────────────────────────────────────── */
-@keyframes shimmer {
-  0%   { background-position: -200% 0; }
-  100% { background-position:  200% 0; }
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: radial-gradient(
+    22rem circle at var(--mx, 50%) var(--my, 50%),
+    hsl(var(--primary) / 0.7),
+    hsl(var(--loop) / 0.35) 35%,
+    transparent 60%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.35s var(--ease-out-expo);
+  pointer-events: none;
+  z-index: 1;
 }
-.animate-shimmer {
-  background: linear-gradient(90deg, transparent 25%, hsl(var(--primary)/0.15) 50%, transparent 75%);
-  background-size: 200% 100%;
-  animation: shimmer 2.5s infinite;
+.spotlight::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(28rem circle at var(--mx, 50%) var(--my, 50%), hsl(var(--primary) / 0.07), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.35s var(--ease-out-expo);
+  pointer-events: none;
+  z-index: -1;
+}
+.spotlight:hover::before,
+.spotlight:hover::after,
+.spotlight:focus-within::before {
+  opacity: 1;
 }
 
+/* ─── Underline that draws in ────────────────────────────────── */
+.link-draw {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.45s var(--ease-out-expo);
+}
+.link-draw:hover,
+.group:hover .link-draw {
+  background-size: 100% 1px;
+}
 
+/* ─── Keyframes ─────────────────────────────────────────────── */
+@keyframes gradient-pan {
+  to {
+    background-position: -200% 0;
+  }
+}
+@keyframes orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+@keyframes caret-blink {
+  50% {
+    opacity: 0;
+  }
+}
+.animate-orbit {
+  animation: orbit-spin 80s linear infinite;
+}
+.animate-pulse-ring {
+  animation: pulse-ring 1.8s var(--ease-out-expo) infinite;
+}
+.caret {
+  animation: caret-blink 1s steps(1) infinite;
+}
+
+/* ─── Reduced motion: keep the layout, drop the movement ────── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

@@ -1,328 +1,177 @@
 "use client"
 
-import { motion } from "framer-motion"
 import Image from "next/image"
-import Tilt from "react-parallax-tilt"
-import { ExternalLink, Github } from "lucide-react"
+import { motion } from "framer-motion"
+import { ArrowUpRight, Github } from "lucide-react"
+import { Reveal } from "@/components/motion/reveal"
+import { Spotlight } from "@/components/motion/spotlight"
 
-const projects = [
+type Project = {
+  title: string
+  description: string
+  technologies: string[]
+  liveUrl?: string
+  githubUrl?: string
+  image?: string
+  highlights?: string[]
+}
+
+const featured: Project[] = [
   {
-    id: 1,
-    title: "TalkToMe",
-    image: "/talktome-icon.png",
-    description: "Web application designed to replicate the functionality of Google Meet, with real-time audio and video via WebRTC.",
-    technologies: ["Next.js", "React", "Tailwind CSS", "WebRTC", "Socket.io"],
-    liveUrl: "https://talktome.up.railway.app/",
-    githubUrl: "https://github.com/gobielJonathan/talktome/",
-    highlights: [
-      "Real-time browser communication via WebRTC.",
-      "Room-based interaction that feels immediate and lightweight.",
-      "Built as a practical systems exercise, not just a visual clone.",
-    ],
-  },
-  {
-    id: 2,
-    title: "Aerium",
-    image: "/aerium.svg",
-    description: "Premium residences landing page with elegant UI and smooth animations.",
-    technologies: ["Next.js", "Tailwind CSS", "Shadcn/ui"],
-    liveUrl: "https://www.aerium-residences.com/",
-    githubUrl: "",
-  },
-  {
-    id: 3,
-    title: "Crowde",
-    image: "/crowde.webp",
-    description: "A system that manages schedules and survey locations with real-time data.",
-    technologies: ["React", "Golang"],
-    liveUrl: "https://www.crowde.co/",
-    githubUrl: "",
-  },
-  {
-    id: 4,
-    title: "Fita",
-    image: "/fita.png",
-    description: "A health app with comprehensive features and programs to start living a healthy life.",
-    technologies: ["Tailwind CSS", "Next.js"],
-    liveUrl: "https://fita.co.id/",
-    githubUrl: "",
-  },
-  {
-    id: 5,
-    title: "Cubes",
-    image: "/cubes.webp",
-    description: "Accounting management training system used by enterprises across Indonesia.",
-    technologies: ["Next.js", "Laravel"],
-    liveUrl: "https://cubes.crmsindonesia.org/login?return_url=/",
-    githubUrl: "",
-  },
-  {
-    id: 6,
-    title: "Inaskills",
-    image: "/kemnaker.webp",
-    description: "Competition management system used by Indonesia's Ministry of Manpower.",
-    technologies: ["jQuery", "Laravel", "MySQL", "Bootstrap"],
-    liveUrl: "https://inaskills.kemnaker.go.id/",
-    githubUrl: "",
-  },
-  {
-    id: 7,
-    title: "Kleveru",
-    image: "/kleveru.webp",
-    description: "Beauty industry platform connecting service providers and customers.",
-    technologies: ["Next.js", "Laravel", "MySQL", "Bootstrap"],
-    liveUrl: "https://kleveru.co.id/",
-    githubUrl: "",
-  },
-  {
-    id: 8,
-    title: "Sense",
-    image: "/sense.webp",
-    description: "Hospitality management system for laundry operations.",
-    technologies: ["React", "Golang"],
-    liveUrl: "https://www.sensehospitality.id/",
-    githubUrl: "",
-  },
-  {
-    id: 9,
-    title: "Brc Depo",
-    image: "/brc-depo.png",
-    description: "E-commerce application for selling household equipment.",
-    technologies: ["Next.js", "Tailwind CSS", "PostgreSQL"],
-    liveUrl: "https://brcdepo.com/",
-    githubUrl: "",
-  },
-  {
-    id: 10,
     title: "CariEV",
-    image: "https://media.licdn.com/dms/image/v2/D5622AQHHo59ZSPuAeg/feedshare-shrink_800/B56ZzlSc2WHIAg-/0/1773373346039?e=1775088000&v=beta&t=aTa9BmpadqQ-q49LTBYev7fGJd_DIPa00dXUywSmJbQ",
-    description: "Discover public and private EV charging stations near you with one-tap navigation redirection.",
+    image: "/projects/cariev.webp",
+    description: "Find public and private EV charging stations nearby, with one-tap navigation handoff.",
     technologies: ["Next.js", "React", "Leaflet", "Tailwind CSS"],
     liveUrl: "https://cariev.gobiel.online/",
-    githubUrl: "",
-    highlights: [
-      "Unifies charger discovery across multiple providers.",
-      "Supports quick navigation handoff instead of making users re-search.",
-      "Designed around a real local mobility problem rather than a demo brief.",
-    ],
+    highlights: ["Charger discovery across providers", "Navigation handoff, no re-searching"],
   },
   {
-    id: 11,
     title: "KirimFile",
-    image: "https://media.licdn.com/dms/image/v2/D5622AQGHbfuPcv9uug/feedshare-shrink_800/B56ZsQprBeIcAg-/0/1765510919128?e=1775088000&v=beta&t=-tJPQxvCzYGBkZSiy0oar-TtTEUydalDMB6-PxFC_6M",
-    description: "Browser-based peer-to-peer file sharing that works on Android, iOS, and desktop with zero installs.",
+    image: "/projects/kirimfile.webp",
+    description: "Peer-to-peer file sharing in the browser across Android, iOS, and desktop, with nothing to install.",
     technologies: ["WebRTC", "React", "JavaScript"],
     liveUrl: "https://kirimfile.gobiel.online/",
-    githubUrl: "",
-    highlights: [
-      "Serverless peer-to-peer transfer via WebRTC.",
-      "Cross-platform by default with no sign-up burden.",
-      "Built around immediacy: open, pair, and share.",
-    ],
+    highlights: ["Direct transfer over WebRTC", "No sign-up: open, pair, share"],
   },
   {
-    id: 12,
     title: "Edit PDF",
     image: "/edit-pdf.png",
-    description: "Edit PDF text directly in your browser — 100% private, no uploads to any server.",
+    description: "Edit and sign PDF text directly in the browser. Files never leave your device.",
     technologies: ["React", "JavaScript"],
     liveUrl: "https://editpdf.gobiel.online/",
-    githubUrl: "",
-    highlights: [
-      "Sign any PDF — completely free, forever",
-      "Effortlessly intuitive, no learning curve needed",
-      "Zero sign-up, zero friction — just open and edit",
-    ],
+    highlights: ["Private by design, no uploads", "Free, with zero sign-up"],
   },
 ]
 
-const featuredProjectIds = new Set([10, 11, 1])
-const featuredProjects = projects.filter((project) => featuredProjectIds.has(project.id))
-const archiveProjects = projects.filter((project) => !featuredProjectIds.has(project.id))
+const archive: Project[] = [
+  {
+    title: "TalkToMe",
+    description: "A Google Meet style video calling app with real-time audio and video over WebRTC.",
+    technologies: ["Next.js", "WebRTC", "Socket.io"],
+    githubUrl: "https://github.com/gobielJonathan/talktome/",
+  },
+  { title: "Aerium", description: "Landing page for a premium residence.", technologies: ["Next.js", "Tailwind CSS"], liveUrl: "https://www.aerium-residences.com/" },
+  { title: "Crowde", description: "Schedule and survey-location management with real-time data.", technologies: ["React", "Golang"], liveUrl: "https://www.crowde.co/" },
+  { title: "Fita", description: "Health app with programs for building healthier habits.", technologies: ["Next.js", "Tailwind CSS"], liveUrl: "https://fita.co.id/" },
+  { title: "Cubes", description: "Accounting management training system for enterprises in Indonesia.", technologies: ["Next.js", "Laravel"], liveUrl: "https://cubes.crmsindonesia.org/login?return_url=/" },
+  { title: "Inaskills", description: "Competition management system for Indonesia's Ministry of Manpower.", technologies: ["Laravel", "MySQL"], liveUrl: "https://inaskills.kemnaker.go.id/" },
+  { title: "Kleveru", description: "Platform connecting beauty service providers and customers.", technologies: ["Next.js", "Laravel"], liveUrl: "https://kleveru.co.id/" },
+  { title: "Sense", description: "Hospitality management system for laundry operations.", technologies: ["React", "Golang"], liveUrl: "https://www.sensehospitality.id/" },
+  { title: "Brc Depo", description: "E-commerce store for household equipment.", technologies: ["Next.js", "PostgreSQL"], liveUrl: "https://brcdepo.com/" },
+]
 
-function FeaturedProjectCard({ project, index }: { project: (typeof projects)[0]; index: number }) {
+function FeaturedCard({ project, index }: { project: Project; index: number }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.55, delay: (index % 3) * 0.08, ease: [0.22, 1, 0.36, 1] }}
-    >
-      <Tilt tiltMaxAngleX={4} tiltMaxAngleY={4} scale={1.01} transitionSpeed={1200} className="h-full">
-        <article className="panel group overflow-hidden p-4 sm:p-5">
-          <div className="relative h-52 overflow-hidden rounded-[1.35rem] border border-border/70 bg-muted/40 sm:h-64">
-            <Image
-              src={project.image || "/placeholder.svg"}
-              alt={`${project.title} project screenshot`}
-              fill
-              sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
-              className="object-contain p-6 transition-transform duration-500 group-hover:scale-105"
-            />
-            <div className="absolute inset-x-0 bottom-0 flex items-center gap-2 border-t border-border/70 bg-background/82 px-4 py-3 backdrop-blur-sm">
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-full border border-border/70 bg-card px-3 py-1.5 text-xs font-semibold text-foreground transition-colors hover:bg-background"
-              >
-                <ExternalLink className="h-3.5 w-3.5" />
-                Live
-              </a>
-              {project.githubUrl && (
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 rounded-full border border-border/70 bg-card px-3 py-1.5 text-xs font-semibold text-foreground transition-colors hover:bg-background"
-                >
-                  <Github className="h-3.5 w-3.5" />
-                  Code
-                </a>
-              )}
-            </div>
+    <Reveal delay={index * 0.08} className="h-full">
+      <Spotlight className="group h-full rounded-[1.6rem] border border-border/70 bg-card/85">
+        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex h-full flex-col p-3.5">
+          <div className="relative aspect-[16/10] overflow-hidden rounded-[1.2rem] border border-border/60 bg-muted/50">
+            {project.image ? (
+              <Image
+                src={project.image}
+                alt={`${project.title} screenshot`}
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover object-top transition-transform duration-1000 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]"
+              />
+            ) : null}
+            <span className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-background/90 text-foreground opacity-0 shadow-md backdrop-blur transition-all duration-500 group-hover:opacity-100 group-hover:rotate-0 rotate-[-45deg]">
+              <ArrowUpRight className="h-4 w-4" />
+            </span>
           </div>
-
-          <div className="mt-5 flex flex-col gap-4">
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <p className="section-kicker text-primary">featured build</p>
-                <h3 className="mt-2 font-display text-3xl font-semibold tracking-[-0.05em] text-foreground">
-                  {project.title}
-                </h3>
-              </div>
-              <span className="rounded-full border border-accent/25 bg-accent/10 px-3 py-1 font-mono text-[0.62rem] uppercase tracking-[0.24em] text-foreground">
-                live product
-              </span>
+          <div className="flex flex-1 flex-col px-2.5 pb-2.5 pt-5">
+            <div className="flex items-center justify-between gap-3">
+              <h3 className="font-display text-2xl font-semibold tracking-[-0.04em] text-foreground">{project.title}</h3>
+              <span className="font-mono text-[0.6rem] uppercase tracking-[0.2em] text-[hsl(var(--loop))]">live</span>
             </div>
-
-            <p className="text-sm leading-7 text-muted-foreground sm:text-base">{project.description}</p>
-            {project.highlights && (
-              <ul className="grid gap-2 sm:grid-cols-2">
-                {project.highlights.map((highlight) => (
-                  <li
-                    key={highlight}
-                    className="rounded-[1rem] border border-border/70 bg-background/60 px-3 py-3 text-xs leading-5 text-muted-foreground sm:text-sm"
-                  >
-                    {highlight}
+            <p className="mt-2 flex-1 text-sm leading-6 text-muted-foreground">{project.description}</p>
+            {project.highlights ? (
+              <ul className="mt-4 space-y-1.5">
+                {project.highlights.map((h) => (
+                  <li key={h} className="flex gap-2 text-xs leading-5 text-muted-foreground">
+                    <span aria-hidden className="text-primary">→</span>
+                    {h}
                   </li>
                 ))}
               </ul>
-            )}
-            <div className="flex flex-wrap gap-1.5">
-              {project.technologies.map((tech) => (
-                <span
-                  key={tech}
-                  className="rounded-full border border-border/70 bg-background/65 px-3 py-1.5 font-mono text-[0.68rem] uppercase tracking-[0.16em] text-foreground"
-                >
-                  {tech}
+            ) : null}
+            <div className="mt-5 flex flex-wrap gap-1.5">
+              {project.technologies.map((t) => (
+                <span key={t} className="chip">
+                  {t}
                 </span>
               ))}
             </div>
           </div>
-        </article>
-      </Tilt>
-    </motion.div>
-  )
-}
-
-function ArchiveProjectCard({ project, index }: { project: (typeof projects)[0]; index: number }) {
-  return (
-    <motion.article
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.45, delay: (index % 3) * 0.06, ease: [0.22, 1, 0.36, 1] }}
-      className="panel overflow-hidden p-4"
-    >
-      <div className="relative h-40 overflow-hidden rounded-[1.2rem] border border-border/70 bg-muted/35">
-        <Image
-          src={project.image || "/placeholder.svg"}
-          alt={`${project.title} project screenshot`}
-          fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
-          className="object-contain p-5"
-        />
-      </div>
-      <div className="mt-4 flex items-start justify-between gap-3">
-        <div>
-          <h3 className="font-display text-2xl font-semibold tracking-[-0.05em] text-foreground">{project.title}</h3>
-          <p className="mt-2 text-sm leading-6 text-muted-foreground">{project.description}</p>
-        </div>
-      </div>
-      <div className="mt-4 flex flex-wrap gap-2">
-        {project.technologies.slice(0, 4).map((tech) => (
-          <span
-            key={tech}
-            className="rounded-full border border-border/70 bg-background/60 px-3 py-1 font-mono text-[0.65rem] uppercase tracking-[0.16em] text-foreground"
-          >
-            {tech}
-          </span>
-        ))}
-      </div>
-      <div className="mt-5 flex items-center gap-2">
-        <a
-          href={project.liveUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 rounded-full border border-border/70 bg-card px-3 py-1.5 text-xs font-semibold text-foreground transition-colors hover:bg-background"
-        >
-          <ExternalLink className="h-3.5 w-3.5" />
-          Open
         </a>
-        {project.githubUrl && (
-          <a
-            href={project.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-full border border-border/70 bg-card px-3 py-1.5 text-xs font-semibold text-foreground transition-colors hover:bg-background"
-          >
-            <Github className="h-3.5 w-3.5" />
-            Code
-          </a>
-        )}
-      </div>
-    </motion.article>
+      </Spotlight>
+    </Reveal>
   )
 }
 
 export default function Projects() {
   return (
-    <section id="projects" className="relative overflow-hidden py-24 sm:py-28">
-      <div className="absolute right-0 bottom-0 w-[500px] h-[500px] rounded-full bg-purple-500/5 blur-[120px] pointer-events-none" />
-
+    <section id="projects" className="relative py-24 sm:py-32">
       <div className="relative z-10 mx-auto w-full max-w-6xl px-5 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-14 sm:mb-16"
-        >
-          <span className="section-kicker">Selected work</span>
-          <h2 className="section-heading mt-3 max-w-3xl">
-            A mix of production products, experiments, and tools that solve specific user problems.
-          </h2>
+        <Reveal>
+          <span className="section-kicker">Side projects</span>
+          <h2 className="section-heading mt-3 max-w-3xl">Small products I built and still run.</h2>
           <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground">
-            Instead of throwing every thumbnail at the first screen, these are the builds that best show how I work: practical, product-shaped, and live.
+            Each one started from a real annoyance: finding a charger, sending a file, editing a PDF without uploading it.
           </p>
-        </motion.div>
+        </Reveal>
 
-        <div className="grid gap-6 lg:grid-cols-3">
-          {featuredProjects.map((project, index) => (
-            <FeaturedProjectCard key={project.id} project={project} index={index} />
+        <div className="mt-12 grid gap-5 md:grid-cols-3">
+          {featured.map((p, i) => (
+            <FeaturedCard key={p.title} project={p} index={i} />
           ))}
         </div>
 
-        <div className="mt-14 flex items-center gap-4">
-          <span className="section-kicker">Archive</span>
+        <Reveal className="mt-16 flex items-center gap-4">
+          <span className="section-kicker">Earlier work</span>
           <div className="h-px flex-1 bg-border/70" />
-        </div>
+        </Reveal>
 
-        <div className="mt-6 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {archiveProjects.map((project, index) => (
-            <ArchiveProjectCard key={project.id} project={project} index={index} />
-          ))}
-        </div>
+        <ul className="mt-4 divide-y divide-border/70 border-b border-border/70">
+          {archive.map((p, i) => {
+            const href = p.liveUrl ?? p.githubUrl
+            return (
+              <motion.li
+                key={p.title}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "0px 0px -5% 0px" }}
+                transition={{ duration: 0.45, delay: (i % 5) * 0.04, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 overflow-hidden px-2 py-4 sm:grid-cols-[10rem_minmax(0,1fr)_auto] sm:px-4"
+                >
+                  <span
+                    aria-hidden
+                    className="absolute inset-0 origin-left scale-x-0 bg-primary/[0.06] transition-transform duration-500 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100"
+                  />
+                  <span className="relative font-display text-lg font-semibold tracking-[-0.03em] text-foreground transition-transform duration-500 group-hover:translate-x-1">
+                    {p.title}
+                  </span>
+                  <span className="relative hidden text-sm text-muted-foreground sm:block">{p.description}</span>
+                  <span className="relative flex items-center gap-3">
+                    <span className="hidden font-mono text-[0.6rem] uppercase tracking-[0.16em] text-muted-foreground lg:inline">
+                      {p.technologies.join(" · ")}
+                    </span>
+                    {p.liveUrl ? (
+                      <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
+                    ) : (
+                      <Github className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-primary" />
+                    )}
+                  </span>
+                </a>
+              </motion.li>
+            )
+          })}
+        </ul>
       </div>
     </section>
   )

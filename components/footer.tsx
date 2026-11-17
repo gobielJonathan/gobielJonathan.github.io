@@ -1,46 +1,50 @@
 import Link from "next/link"
-import { ArrowUp } from "lucide-react"
+import { ArrowUp, ArrowUpRight } from "lucide-react"
 import { SocialRow } from "@/components/social-dock"
+import { Magnetic } from "@/components/motion/magnetic"
+import { Reveal } from "@/components/motion/reveal"
 
 export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="relative overflow-hidden border-t border-border/60 bg-background/70 py-12 backdrop-blur-md">
-      <div className="absolute bottom-0 left-1/2 h-[120px] w-[420px] -translate-x-1/2 bg-primary/5 blur-[90px] pointer-events-none" />
-
+    <footer className="relative overflow-hidden border-t border-border/60 pt-20 pb-10">
       <div className="relative z-10 mx-auto w-full max-w-6xl px-5 sm:px-6">
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+        <Reveal className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <div>
-            <Link href="/" className="font-display text-3xl font-semibold tracking-[-0.05em] text-foreground">
-              Jonathan Gobiel
-            </Link>
-            <p className="mt-2 max-w-sm text-sm leading-6 text-muted-foreground">
-              Full stack engineer for teams that want the interface, architecture, and release quality to improve together.
+            <span className="section-kicker">Contact</span>
+            <p className="mt-3 max-w-2xl font-display text-4xl font-semibold leading-[1.02] tracking-[-0.055em] text-foreground sm:text-6xl">
+              Building with agents too?
+              <span className="block text-gradient">Let&apos;s compare loops.</span>
             </p>
           </div>
+          <Magnetic>
+            <a
+              href="mailto:jonathangobiel13@gmail.com"
+              className="group inline-flex h-14 items-center gap-2 rounded-full bg-foreground px-7 text-sm font-semibold text-background transition-colors hover:bg-primary hover:text-primary-foreground"
+            >
+              jonathangobiel13@gmail.com
+              <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </a>
+          </Magnetic>
+        </Reveal>
 
-          <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between lg:min-w-[420px]">
-            <SocialRow />
-
-            <div className="flex items-center gap-4">
-              <p className="font-mono text-[0.68rem] uppercase tracking-[0.24em] text-muted-foreground">
-                © {year}
-              </p>
-              <Link
-                href="#home"
-                className="flex h-10 w-10 items-center justify-center rounded-2xl border border-border/70 bg-card/80 text-foreground transition-all duration-200 hover:-translate-y-0.5 hover:bg-background"
-                aria-label="Back to top"
-              >
-                <ArrowUp className="h-4 w-4" />
-              </Link>
-            </div>
+        <div className="mt-16 flex flex-col gap-6 border-t border-border/60 pt-8 sm:flex-row sm:items-center sm:justify-between">
+          <SocialRow />
+          <div className="flex items-center gap-4">
+            <p className="font-mono text-[0.66rem] uppercase tracking-[0.24em] text-muted-foreground">
+              © {year} Jonathan Gobiel
+            </p>
+            <Link
+              href="/#home"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-border/70 bg-card/80 text-foreground transition-all duration-300 hover:-translate-y-1 hover:border-primary/50"
+              aria-label="Back to top"
+            >
+              <ArrowUp className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </div>
     </footer>
   )
 }
-
-
-

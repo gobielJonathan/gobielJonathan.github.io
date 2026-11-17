@@ -15,8 +15,9 @@ function ThemeToggle() {
 
   const handleThemeToggle = () => {
     const newTheme = theme === "dark" ? "light" : "dark"
-    if (document.startViewTransition) {
-      document.startViewTransition(() => {
+    const doc = document as Document & { startViewTransition?: (cb: () => void) => unknown }
+    if (doc.startViewTransition && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      doc.startViewTransition(() => {
         setTheme(newTheme)
       })
     } else {
@@ -47,11 +48,11 @@ function ThemeToggle() {
 }
 
 const navItems = [
-  { name: "Home",       href: "/#home",       id: "home" },
-  { name: "About",      href: "/#about",      id: "about" },
+  { name: "Loop",       href: "/#loop",       id: "loop" },
+  { name: "Writing",    href: "/#writing",    id: "writing" },
   { name: "Experience", href: "/#experience", id: "experience" },
   { name: "Projects",   href: "/#projects",   id: "projects" },
-  { name: "Skills",     href: "/#skills",     id: "skills" },
+  { name: "About",      href: "/#about",      id: "about" },
 ]
 
 export default function Navbar() {
@@ -119,7 +120,7 @@ export default function Navbar() {
             </span>
             <span className="flex flex-col">
               <span className="font-display text-lg font-semibold tracking-[-0.05em] text-foreground">Jonathan Gobiel</span>
-              <span className="font-mono text-[0.62rem] uppercase tracking-[0.28em] text-muted-foreground">web platform engineer</span>
+              <span className="font-mono hidden text-[0.62rem] uppercase tracking-[0.28em] text-muted-foreground sm:block">product engineer · ai loops</span>
             </span>
           </Link>
 

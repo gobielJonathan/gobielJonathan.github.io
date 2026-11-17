@@ -16,6 +16,8 @@ export type BlogPost = {
   readingMinutes: number
   updatedAt: string
   heroUrl?: string
+  /** Set only when the post declares a "Published:" date */
+  publishedAt?: string
 }
 
 const BLOGS_DIR = path.join(process.cwd(), "blogs")
@@ -124,6 +126,7 @@ export const getAllBlogPosts = cache(async (): Promise<BlogPost[]> => {
       return {
         slug,
         updatedAt: publishedIso ?? stats.mtime.toISOString(),
+        publishedAt: publishedIso,
         heroUrl,
         ...postFields,
       }
@@ -160,6 +163,7 @@ export const getBlogPostBySlug = cache(async (slug: string): Promise<BlogPost | 
     return {
       slug: safeSlug,
       updatedAt: publishedIso ?? stats.mtime.toISOString(),
+      publishedAt: publishedIso,
       heroUrl,
       ...postFields,
     }

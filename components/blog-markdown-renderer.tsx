@@ -1,6 +1,6 @@
 "use client"
 
-import ReactMarkdown from "react-markdown"
+import ReactMarkdown, { type Components } from "react-markdown"
 import { MermaidBlock, rehypeMermaid } from "react-markdown-mermaid"
 import remarkGfm from "remark-gfm"
 
@@ -15,7 +15,8 @@ export function BlogMarkdownRenderer({ content }: BlogMarkdownRendererProps) {
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeMermaid]}
         components={{
-          MermaidBlock,
+          // react-markdown-mermaid renders <MermaidBlock> nodes produced by rehypeMermaid
+          ...({ MermaidBlock } as unknown as Components),
           a: (props: any) => {
             const href = props.href || ""
             const isExternal = /^https?:\/\//.test(href)
@@ -43,7 +44,7 @@ export function BlogMarkdownRenderer({ content }: BlogMarkdownRendererProps) {
             <ol className="space-y-2 pl-5 text-muted-foreground list-decimal" {...props} />
           ),
           li: ({ node, ...props }) => <li className="leading-7" {...props} />,
-          code: ({ node, inline, ...props }) =>
+          code: ({ node, inline, ...props }: any) =>
             inline ? (
               <code className="rounded bg-background/70 px-1.5 py-0.5 font-mono text-[0.9em] text-foreground" {...props} />
             ) : (

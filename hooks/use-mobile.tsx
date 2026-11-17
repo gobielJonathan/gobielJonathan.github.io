@@ -25,3 +25,6 @@ export function useMobile() {
   return isMobile
 }
 
+
+/** Alias used by components/ui/sidebar.tsx */
+export const useIsMobile = useMobile

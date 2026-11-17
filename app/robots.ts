@@ -1,14 +1,12 @@
 import type { MetadataRoute } from "next"
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.startsWith("http")
-  ? process.env.NEXT_PUBLIC_SITE_URL
-  : "https://www.gobiel.online"
+import { siteUrl } from "@/lib/site"
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
       allow: "/",
+      disallow: ["/blog-assets/"],
     },
     sitemap: `${siteUrl}/sitemap.xml`,
     host: siteUrl,
